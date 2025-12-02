@@ -275,6 +275,11 @@ WayfarerEnchant: {
 		'''
 }
 
+Wayfarer: {
+	DisplayName: Wayfarer
+	Tooltip: ""
+}
+
 GildedEnchant: {
 	DisplayName: Gilded Enchant
 	Tooltip: ""
@@ -405,12 +410,32 @@ SigilOfResonanace: {
 	}
 }
 
-SigilOfResonance: {
-	DisplayName: Sigil Of Resonance
-	Tooltip: ""
-}
-
 AncientRuneCollectible: {
 	DisplayName: Rune Booster
 	Tooltip: ""
+}
+
+Wayfarer: {
+	DisplayName: Wayfarer
+	Tooltip: "'Jeez, bad landing'"
+}
+
+Fallen: {
+	DisplayName: Fallen
+	Tooltip: "'I hope my junk can be of use to you'"
+}
+
+ForestNymph: {
+	DisplayName: Forest Nymph
+	Tooltip: "'Your fae says you have a good heart'"
+}
+
+Fool: {
+	DisplayName: Fool
+	Tooltip: "'Where am I?'"
+}
+
+TBot: {
+	DisplayName: Friendly T-Bot
+	Tooltip: "'I'm an Android originating from a faraway snowy wasteland'"
 }

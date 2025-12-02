@@ -33,6 +33,10 @@
 	    	<HintPath>..\ModAssemblies\ThrowerUnification_v0.3.12.dll</HintPath>
 		</Reference>
 
+		<Reference Include="ThrowerUnification">
+	    	<HintPath>..\ModAssemblies\Redemption_v0.8.0.4084.dll</HintPath>
+		</Reference>
+
 	</ItemGroup>
 
 </Project>

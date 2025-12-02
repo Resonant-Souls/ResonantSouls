@@ -47,14 +47,15 @@ namespace ResonantSouls.SpiritMod.QOL
         {
             public override void PostSetupContent()
             {
-                ModCompatibility.Fargowiltas.Mod.Call("AddSummon", 1f, "SpiritMod", "ScarabIdol", () => MyWorld.DownedScarabeus, Item.buyPrice(platinum: 0, gold: 4, silver: 10, copper: 0));
-                ModCompatibility.Fargowiltas.Mod.Call("AddSummon", 1f, "SpiritMod", "DreamlightJellyItem", () => MyWorld.DownedMoonWizard, Item.buyPrice(platinum: 0, gold: 7, silver: 90, copper: 0));
-                ModCompatibility.Fargowiltas.Mod.Call("AddSummon", 1f, "SpiritMod", "ReachBossSummon", () => MyWorld.DownedVinewrath, Item.buyPrice(platinum: 0, gold: 18, silver: 10, copper: 0));
-                ModCompatibility.Fargowiltas.Mod.Call("AddSummon", 1f, "SpiritMod", "JewelCrown", () => MyWorld.DownedAncientAvian, Item.buyPrice(platinum: 0, gold: 20, silver: 0, copper: 0));
-                ModCompatibility.Fargowiltas.Mod.Call("AddSummon", 1f, "SpiritMod", "StarWormSummon", () => MyWorld.DownedStarplate, Item.buyPrice(platinum: 0, gold: 25, silver: 30, copper: 0));
-                ModCompatibility.Fargowiltas.Mod.Call("AddSummon", 1f, "SpiritMod", "CursedCloth", () => MyWorld.DownedInfernon, Item.buyPrice(platinum: 0, gold: 33, silver: 20, copper: 0));
-                ModCompatibility.Fargowiltas.Mod.Call("AddSummon", 1f, "SpiritMod", "DuskCrown", () => MyWorld.DownedDusking, Item.buyPrice(platinum: 0, gold: 68, silver: 50, copper: 0));
-                ModCompatibility.Fargowiltas.Mod.Call("AddSummon", 1f, "SpiritMod", "StoneSkin", () => MyWorld.DownedAtlas, Item.buyPrice(platinum: 0, gold: 99, silver: 0, copper: 0));
+                Mod Fargowiltas = ModCompatibility.Fargowiltas.Mod;
+                Fargowiltas.Call("AddSummon", 1f, ModCompatibility.SpiritMod.Name, "ScarabIdol", () => MyWorld.DownedScarabeus, Item.buyPrice(platinum: 0, gold: 4, silver: 10, copper: 0));
+                Fargowiltas.Call("AddSummon", 1f, ModCompatibility.SpiritMod.Name, "DreamlightJellyItem", () => MyWorld.DownedMoonWizard, Item.buyPrice(platinum: 0, gold: 7, silver: 90, copper: 0));
+                Fargowiltas.Call("AddSummon", 1f, ModCompatibility.SpiritMod.Name, "ReachBossSummon", () => MyWorld.DownedVinewrath, Item.buyPrice(platinum: 0, gold: 18, silver: 10, copper: 0));
+                Fargowiltas.Call("AddSummon", 1f, ModCompatibility.SpiritMod.Name, "JewelCrown", () => MyWorld.DownedAncientAvian, Item.buyPrice(platinum: 0, gold: 20, silver: 0, copper: 0));
+                Fargowiltas.Call("AddSummon", 1f, ModCompatibility.SpiritMod.Name, "StarWormSummon", () => MyWorld.DownedStarplate, Item.buyPrice(platinum: 0, gold: 25, silver: 30, copper: 0));
+                Fargowiltas.Call("AddSummon", 1f, ModCompatibility.SpiritMod.Name, "CursedCloth", () => MyWorld.DownedInfernon, Item.buyPrice(platinum: 0, gold: 33, silver: 20, copper: 0));
+                Fargowiltas.Call("AddSummon", 1f, ModCompatibility.SpiritMod.Name, "DuskCrown", () => MyWorld.DownedDusking, Item.buyPrice(platinum: 0, gold: 68, silver: 50, copper: 0));
+                Fargowiltas.Call("AddSummon", 1f, ModCompatibility.SpiritMod.Name, "StoneSkin", () => MyWorld.DownedAtlas, Item.buyPrice(platinum: 0, gold: 99, silver: 0, copper: 0));
             }
         }
     }

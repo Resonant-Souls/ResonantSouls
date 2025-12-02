@@ -4,6 +4,7 @@ using Terraria.Localization;
 
 namespace ResonantSouls.Content.Items.Consumables.Summons
 {
+    [ExtendsFromMod(ModCompatibility.Redemption.Name)]
     public class SigilOfResonance : SigilOfChampions
     {
         public override string Texture => $"{Mod.Name}/Assets/Textures/Content/Items/Consumables/Summons/SigilOfResonance";
@@ -15,7 +16,7 @@ namespace ResonantSouls.Content.Items.Consumables.Summons
         {
             if (ModCompatibility.SpiritMod.Loaded)
             {
-                ModContent.TryFind("SpiritMod", "BriarSurfaceBiome", out ModBiome briarBiome);
+                ModContent.TryFind(ModCompatibility.SpiritMod.Name, "BriarSurfaceBiome", out ModBiome briarBiome);
                 if (player.InModBiome(briarBiome))
                 {
                     if (player.altFunctionUse == 2)

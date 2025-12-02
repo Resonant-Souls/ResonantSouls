@@ -13,7 +13,6 @@ namespace ResonantSouls.SpiritMod.QOL
         public override void Load()
         {
             Mod Fargowiltas = ModCompatibility.Fargowiltas.Mod;
-
             Fargowiltas.Call("AddCaughtNPC", "Adventurer", ModContent.NPCType<Adventurer>(), Mod.Name);
             Fargowiltas.Call("AddCaughtNPC", "Gambler", ModContent.NPCType<Gambler>(), Mod.Name);
             Fargowiltas.Call("AddCaughtNPC", "Bandit", ModContent.NPCType<Rogue>(), Mod.Name);

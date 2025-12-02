@@ -1,24 +1,34 @@
-ResonantSoulsSpiritConfig: {
-	DisplayName: Spirit Classic
+ResonantSoulsRedemptionConfig: {
+	DisplayName: Mod of Redemption
 	Headers.LoadedContent: Loaded Content
 
 	Enchantments: {
-		Tooltip: Determines whether Spirit Classic's enchants will be loaded
 		Label: Enchantments
+		Tooltip: ""
 	}
 
 	EternityModeAccessories: {
-		Tooltip: Determines whether Spirit Classic's Eternity Mode Accessories will be loaded
 		Label: Eternity Mode Accessories
+		Tooltip: ""
 	}
 
 	Energizers: {
-		Tooltip: Determines whether Spirit Classic's energizers and energized weapons will be loaded
 		Label: Energizers
+		Tooltip: ""
 	}
 
 	QualityOfLife: {
-		Tooltip: Determines whether Spirit Classic's quality of life features will be loaded
-		Label: Quality of Life
+		Label: Quality Of Life
+		Tooltip: ""
+	}
+}
+
+ResonantSoulsClientConfig: {
+	DisplayName: Resonant Souls Client Config
+	Headers.Miscellaneous: Miscellaneous
+
+	WarningNotification: {
+		Label: Warning Notification
+		Tooltip: Turns on and off the annoying text on join
 	}
 }
