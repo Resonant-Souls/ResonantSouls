@@ -3,7 +3,6 @@
 	<Import Project="..\tModLoader.targets" />
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="CSE" />
 		<InternalsVisibleTo Include="SecretsOfTheSouls" />
 	</ItemGroup>
 
@@ -14,27 +13,23 @@
 		</Reference>
 
 		<Reference Include="FargowiltasSouls">
-	    	<HintPath>..\ModAssemblies\FargowiltasSouls_v1.8.dll</HintPath>
+			<HintPath>..\ModAssemblies\FargowiltasSouls_v1.8.dll</HintPath>
 		</Reference>
 
 		<Reference Include="FargoSeeds">
-	    	<HintPath>..\ModAssemblies\FargoSeeds_v1.0.dll</HintPath>
+			<HintPath>..\ModAssemblies\FargoSeeds_v1.0.dll</HintPath>
+		</Reference>
+
+		<Reference Include="Daybreak">
+			<HintPath>..\ModAssemblies\Daybreak_v2.3.1.dll</HintPath>
 		</Reference>
 
 		<Reference Include="Luminance">
-	    	<HintPath>..\ModAssemblies\Luminance_v1.0.13.dll</HintPath>
+			<HintPath>..\ModAssemblies\Luminance_v1.0.13.dll</HintPath>
 		</Reference>
 
 		<Reference Include="SpiritMod">
-	    	<HintPath>..\ModAssemblies\SpiritMod_v1.5.0.39.dll</HintPath>
-		</Reference>
-
-		<Reference Include="ThrowerUnification">
-	    	<HintPath>..\ModAssemblies\ThrowerUnification_v0.3.12.dll</HintPath>
-		</Reference>
-
-		<Reference Include="ThrowerUnification">
-	    	<HintPath>..\ModAssemblies\Redemption_v0.8.0.4084.dll</HintPath>
+			<HintPath>..\ModAssemblies\SpiritMod_v1.5.0.41.dll</HintPath>
 		</Reference>
 
 	</ItemGroup>

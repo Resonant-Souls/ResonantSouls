@@ -1,6 +1,9 @@
-WarningNotification1: Hey there, here's a bit you should know before playing our mod!
-WarningNotification2: This mod ONLY adds compatibility with FARGO'S.
-WarningNotification3: If there is a bug, balancing issue, or anything of the sort related to two mods, DO NOT report it in the discord server.
-WarningNotification4: For example: If Homeward Journey and Spirit have an incompatibility, this mod will NOT fix it, that's up to the main devs.
-WarningNotification5: However, if there is an issue with Fargos and Homeward journey, this mod WILL fix it.
-WarningNotification6: After you have acknowledged this, there is a config you can turn off so you don't get this message anymore.
+WarningNotification:
+	'''
+	Hey there, here's a bit you should know before playing our mod!
+	This mod ONLY adds compatibility with FARGO'S.
+	If there is a bug, balancing issue, or anything of the sort related to two mods, DO NOT report it in the discord server.
+	For example: If Homeward Journey and Spirit have an incompatibility, this mod will NOT fix it, that's up to the main devs.
+	However, if there is an issue with Fargos and Homeward journey, this mod WILL fix it.
+	After you have acknowledged this, there is a config you can turn off so you don't get this message anymore.
+	'''

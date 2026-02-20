@@ -19,7 +19,7 @@ namespace ResonantSouls.Content.Items.Placeables.Paintings
             Item.rare = ItemRarityID.White;
             Item.createTile = ModContent.TileType<ResonantSoulsPaintingTile>();
         }
-        // Thanks to Akira, I don't know how to do this myself. If you have problems with me doing this, I'll figure out how to do it myself     - Ropro0923
+        // Thanks to Akira, I don't know how to do this myself. If you have problems with me doing this, I'll figure out how to do it myself - Ropro0923
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             if (!Main.keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftShift))
@@ -87,7 +87,6 @@ namespace ResonantSouls.Content.Items.Placeables.Paintings
             "And special thanks to the Infernal Eclipse of Ragnarok team",
             "the Community Souls Expansion team",
             "the Fargos team",
-            "the Spirit team",
             "and to everyone who plays this mod!",
         ];
     }

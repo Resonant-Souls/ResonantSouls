@@ -4,7 +4,6 @@ using Terraria.Localization;
 
 namespace ResonantSouls.Content.Items.Consumables.Summons
 {
-    [ExtendsFromMod(ModCompatibility.Redemption.Name)]
     public class SigilOfResonance : SigilOfChampions
     {
         public override string Texture => $"{Mod.Name}/Assets/Textures/Content/Items/Consumables/Summons/SigilOfResonance";

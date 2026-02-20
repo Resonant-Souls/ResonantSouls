@@ -1,28 +1,3 @@
-ResonantSoulsRedemptionConfig: {
-	DisplayName: Mod of Redemption
-	Headers.LoadedContent: Loaded Content
-
-	Enchantments: {
-		Label: Enchantments
-		Tooltip: ""
-	}
-
-	EternityModeAccessories: {
-		Label: Eternity Mode Accessories
-		Tooltip: ""
-	}
-
-	Energizers: {
-		Label: Energizers
-		Tooltip: ""
-	}
-
-	QualityOfLife: {
-		Label: Quality Of Life
-		Tooltip: ""
-	}
-}
-
 ResonantSoulsClientConfig: {
 	DisplayName: Resonant Souls Client Config
 	Headers.Miscellaneous: Miscellaneous

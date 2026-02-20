@@ -8,12 +8,7 @@ namespace ResonantSouls.Core.ModPlayers
         {
             if (ResonantSoulsClientConfig.Instance.WarningNotification)
             {
-                Main.NewText(Language.GetTextValue($"Mods.{Mod.Name}.Message.WarningNotification1"), Color.Red);
-                Main.NewText(Language.GetTextValue($"Mods.{Mod.Name}.Message.WarningNotification2"), Color.Red);
-                Main.NewText(Language.GetTextValue($"Mods.{Mod.Name}.Message.WarningNotification3"), Color.Red);
-                Main.NewText(Language.GetTextValue($"Mods.{Mod.Name}.Message.WarningNotification4"), Color.Red);
-                Main.NewText(Language.GetTextValue($"Mods.{Mod.Name}.Message.WarningNotification5"), Color.Red);
-                Main.NewText(Language.GetTextValue($"Mods.{Mod.Name}.Message.WarningNotification6"), Color.Red);
+                Main.NewText(Language.GetTextValue($"Mods.{Mod.Name}.Message.WarningNotification"), Color.Red);
             }
         }
     }
