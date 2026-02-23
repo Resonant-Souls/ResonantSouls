@@ -1,9 +1,34 @@
 ResonantSoulsClientConfig: {
-	DisplayName: Resonant Souls Client Config
+	DisplayName: Client Config
 	Headers.Miscellaneous: Miscellaneous
 
 	WarningNotification: {
 		Label: Warning Notification
 		Tooltip: Turns on and off the annoying text on join
 	}
+}
+
+ResonantSoulsBombusApisConfig: {
+	QualityOfLife: {
+		Tooltip: Determines whether Bombus Apis' quality of life changes will be loaded
+		Label: Quality Of Life
+	}
+
+	Energizers: {
+		Tooltip: Determines whether Bombus Apis' energizers will be loaded
+		Label: Energizers
+	}
+
+	EternityModeAccessories: {
+		Tooltip: Determines whether Bombus Apis' eternity mode accessories will be loaded
+		Label: Eternity Mode Accessories
+	}
+
+	Enchantments: {
+		Tooltip: Determines whether Bombus Apis' enchantments will be loaded
+		Label: Enchantments
+	}
+
+	Headers.LoadedContent: Loaded Content
+	DisplayName: Bombus Apis
 }

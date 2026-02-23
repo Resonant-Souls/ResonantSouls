@@ -32,6 +32,10 @@
 			<HintPath>..\ModAssemblies\SpiritMod_v1.5.0.41.dll</HintPath>
 		</Reference>
 
+		<Reference Include="BombusApisBee">
+			<HintPath>..\ModAssemblies\BombusApisBee_v2.2.0.4.dll</HintPath>
+		</Reference>
+
 	</ItemGroup>
 
 </Project>

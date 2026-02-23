@@ -8,17 +8,62 @@ ResonantSoulsPainting: {
 }
 
 SigilOfResonance: {
-	DisplayName: Sigil of Resonance
-	Tooltip:
-		'''
-		Summons the Resonant Champions
-		Summons vary depending on time and biome
-		Right click to check for possible summons
-		Not consumed on use
-		'''
-
 	Message: {
 		Etheriality: The briar shivers...
 		Nothing: Nothing seems to answer the call...
 	}
+
+	DisplayName: Sigil Of Resonance
+	Tooltip:
+		'''
+		Summons the Resonant Champions
+		Summons vary depending on time and biome
+		<right> to check for possible summons
+		Not consumed on use
+		'''
+}
+
+BeekeeperEnchant: {
+	DisplayName: Beekeeper Enchant
+	Tooltip: ""
+}
+
+BeeSniperEnchant: {
+	DisplayName: Bee Sniper Enchant
+	Tooltip: ""
+}
+
+HoneycombCrusaderEnchant: {
+	DisplayName: Honeycomb Crusader Enchant
+	Tooltip: ""
+}
+
+HoneyphyteEnchant: {
+	DisplayName: Honeyphyte Enchant
+	Tooltip: ""
+}
+
+LivingFlowerEnchant: {
+	DisplayName: Living Flower Enchant
+	Tooltip: ""
+}
+
+SkeletalBeeEnchant: {
+	DisplayName: Skeletal Bee Enchant
+	Tooltip: ""
+}
+
+WaspEnchant: {
+	DisplayName: Wasp Enchant
+	Tooltip: ""
+}
+
+ApiaristsSoul: {
+	DisplayName: Apiarists Soul
+	Tooltip: ""
+}
+
+PollinationForce: {
+	Tooltip: ""
+	DisplayName: Pollination Force
 }

@@ -10,9 +10,13 @@ global using ResonantSouls.Core;
 global using System;
 global using System.Linq;
 global using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+global using FargowiltasSouls.Content.Projectiles.Accessories.Souls;
 global using FargowiltasSouls.Core.AccessoryEffectSystem;
 global using System.Collections.Generic;
 global using Fargowiltas.Content.Items.Tiles;
+global using FargowiltasSouls.Content.Items.Accessories.Souls;
+// Look I know it's a lot of globals. I don't care.
+
 
 namespace ResonantSouls
 {

@@ -6,6 +6,7 @@ namespace ResonantSouls.Content.Tiles
 {
     public class ResonantSoulsPaintingTile : ModTile
     {
+        public override string Texture => "ResonantSouls/Assets/Textures/Content/Tiles/ResonantSoulsPaintingTile";
         public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;

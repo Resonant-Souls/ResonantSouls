@@ -73,7 +73,7 @@ namespace ResonantSouls.Content.Items.Placeables.Paintings
             "WardrobeHummus",
             "Ma3allim",
             "DanHameln",
-            "Cheesenuggets",
+            "cheesenuggets",
             "Soltan",
             "magegor11",
             "Vergenum",
