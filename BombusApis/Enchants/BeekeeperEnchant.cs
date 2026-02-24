@@ -11,7 +11,6 @@ namespace ResonantSouls.BombusApis.Enchants
         public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.Enchantments;
         public override string Texture => Debug.Placeholder;
         public override Color nameColor => Color.White;
-
         public override void AddRecipes()
         {
             CreateRecipe()

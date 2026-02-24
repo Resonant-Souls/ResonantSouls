@@ -1,39 +1,27 @@
-using System.Text.RegularExpressions;
-using BombusApisBee.Items.Armor.BeeKeeperDamageClass;
 using ResonantSouls.BombusApis.Souls;
-using Terraria.Localization;
 
 namespace ResonantSouls.BombusApis.Core
 {
 
     [JITWhenModsEnabled(ModCompatibility.BombusApisBee.Name)]
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
-    public class ResonantSoulsBombusApisPlayer : GlobalItem
+    public class ResonantSoulsBombusApisItem : GlobalItem
     {
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            if (ResonantSoulsBombusApisConfig.Instance.Enchantments)
-            {
-                if (item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>())
-                {
+            bool Universe = item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
 
-                }
+            if (Universe)
+            {
+                player.AddEffect<ApiaristSoulThing>(item);
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.ModItem is null)
-                return;
-
-            if (item.ModItem is UniverseSoul)
+            if (item.type == ModContent.ItemType<UniverseSoul>())
             {
-                foreach (var line in tooltips)
-                {
-                    if (line.Text.Contains("[i:FargowiltasSouls/ConjuristsSoul]"))
-                    {
-                        line.Text = line.Text.Replace("[i:FargowiltasSouls/ConjuristsSoul]", "[i:FargowiltasSouls/ConjuristsSoul][i:ResonantSouls/ApiaristsSoul]");
-                    }
-                }
+                int Conjurist = tooltips.FindIndex(t => t.Text.Contains("[i:FargowiltasSouls/ConjuristsSoul]"));
+                tooltips[Conjurist].Text = tooltips[Conjurist].Text.Replace("[i:FargowiltasSouls/ConjuristsSoul]", "[i:FargowiltasSouls/ConjuristsSoul]" + "[i:ResonantSouls/ApiaristsSoul]");
             }
         }
     }

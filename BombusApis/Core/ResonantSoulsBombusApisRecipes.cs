@@ -1,5 +1,4 @@
 using BombusApisBee.Items.Armor.BeeKeeperDamageClass;
-using FargowiltasSouls.Content.Items.Materials;
 using ResonantSouls.BombusApis.Souls;
 using Terraria.Localization;
 
@@ -18,14 +17,19 @@ namespace ResonantSouls.BombusApis.Core
 
                 if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<ApiaristsSoul>())
                 {
-                    // Thanks autocomplete? I have no clue how this works.
-                    int abom = recipe.requiredItem.Where(item => item.type == ModContent.ItemType<AbomEnergy>()).Sum(item => item.stack);
-                    recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
-                    recipe.AddIngredient<ApiaristsSoul>();
-                    recipe.AddIngredient<AbomEnergy>(abom);
+                    // Uh, I think this works? 
+
+                    List<Item> notSoul = recipe.requiredItem.Where(item => item.ModItem is not BaseSoul).ToList();
+
+                    foreach (var item in notSoul)
+                    {
+                        int count = item.stack;
+                        recipe.RemoveIngredient(item);
+                        if (!recipe.HasIngredient<ApiaristsSoul>()) recipe.AddIngredient<ApiaristsSoul>();
+                        recipe.AddIngredient(item.type, count);
+                    }
                 }
             }
-            
         }
         public override void AddRecipeGroups()
         {

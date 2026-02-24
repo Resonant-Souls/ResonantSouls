@@ -67,3 +67,8 @@ PollinationForce: {
 	Tooltip: ""
 	DisplayName: Pollination Force
 }
+
+TraitorBee: {
+	DisplayName: Traitor Bee
+	Tooltip: ""
+}

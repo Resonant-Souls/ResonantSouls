@@ -1,14 +1,23 @@
-using Luminance.Assets;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
+using System.Reflection;
+using Fargowiltas.Content.Items.CaughtNPCs;
+using Luminance.Common.Utilities;
 
 namespace ResonantSouls.Core
 {
     public class ResonantSoulsUtilities
     {
-        public static LazyAsset<Texture2D> GetEnchantTexture(string Enchant)
+        public static void Add(string internalName, int id)
         {
-            return LazyAsset<Texture2D>.Request($"ResonantSouls/Assets/Textures/Content/Items/Accessories/Enchantments/{Enchant}", AssetRequestMode.AsyncLoad);
+            if (ResonantSouls.Instance == null)
+            {
+                ResonantSouls.Instance = ModContent.GetInstance<ResonantSouls>();
+            }
+            CaughtNPCItem item = new(internalName, id);
+            ResonantSouls.Instance.AddContent(item);
+            FieldInfo info = typeof(CaughtNPCItem).GetField("CaughtTownies", Utilities.UniversalBindingFlags);
+            Dictionary<int, int> list = (Dictionary<int, int>)info.GetValue(info);
+            list.Add(id, item.Type);
+            info.SetValue(info, list);
         }
     }
 }
