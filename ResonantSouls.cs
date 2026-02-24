@@ -15,6 +15,10 @@ global using FargowiltasSouls.Core.AccessoryEffectSystem;
 global using System.Collections.Generic;
 global using Fargowiltas.Content.Items.Tiles;
 global using FargowiltasSouls.Content.Items.Accessories.Souls;
+global using FargowiltasSouls.Core;
+global using FargowiltasSouls;
+global using FargowiltasSouls.Core.ModPlayers;
+
 // Look I know it's a lot of globals. I don't care.
 
 

@@ -15,20 +15,7 @@ namespace ResonantSouls.BombusApis.Core
             {
                 Recipe recipe = Main.recipe[i];
 
-                if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<ApiaristsSoul>())
-                {
-                    // Uh, I think this works? 
-
-                    List<Item> notSoul = recipe.requiredItem.Where(item => item.ModItem is not BaseSoul).ToList();
-
-                    foreach (var item in notSoul)
-                    {
-                        int count = item.stack;
-                        recipe.RemoveIngredient(item);
-                        if (!recipe.HasIngredient<ApiaristsSoul>()) recipe.AddIngredient<ApiaristsSoul>();
-                        recipe.AddIngredient(item.type, count);
-                    }
-                }
+                if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<ApiaristsSoul>()) recipe.AddIngredient<ApiaristsSoul>();
             }
         }
         public override void AddRecipeGroups()

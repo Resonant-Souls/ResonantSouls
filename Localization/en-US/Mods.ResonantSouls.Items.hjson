@@ -72,3 +72,8 @@ TraitorBee: {
 	DisplayName: Traitor Bee
 	Tooltip: ""
 }
+
+MicroverseSoul: {
+	Tooltip: ""
+	DisplayName: Microverse Soul
+}

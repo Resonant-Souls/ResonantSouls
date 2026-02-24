@@ -18,6 +18,7 @@ namespace ResonantSouls.BombusApis.Core
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+            // How Fargo's DLC does it.
             if (item.type == ModContent.ItemType<UniverseSoul>())
             {
                 int Conjurist = tooltips.FindIndex(t => t.Text.Contains("[i:FargowiltasSouls/ConjuristsSoul]"));

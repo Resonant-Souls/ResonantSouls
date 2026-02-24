@@ -8,10 +8,7 @@ namespace ResonantSouls.Core
     {
         public static void Add(string internalName, int id)
         {
-            if (ResonantSouls.Instance == null)
-            {
-                ResonantSouls.Instance = ModContent.GetInstance<ResonantSouls>();
-            }
+            ResonantSouls.Instance ??= ModContent.GetInstance<ResonantSouls>();
             CaughtNPCItem item = new(internalName, id);
             ResonantSouls.Instance.AddContent(item);
             FieldInfo info = typeof(CaughtNPCItem).GetField("CaughtTownies", Utilities.UniversalBindingFlags);
