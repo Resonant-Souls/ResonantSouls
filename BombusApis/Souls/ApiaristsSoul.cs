@@ -1,3 +1,4 @@
+using BombusApisBee;
 using BombusApisBee.BeeDamageClass;
 using BombusApisBee.Items.Accessories.BeeKeeperDamageClass;
 using BombusApisBee.Items.Weapons.BeeKeeperDamageClass;
@@ -71,15 +72,14 @@ namespace ResonantSouls.BombusApis.Souls
         public override void PostUpdate(Player player)
         {
             FargoSoulsPlayer modPlayer = player.FargoSouls();
-            BeeDamagePlayer beePlayer = player.GetModPlayer<BeeDamagePlayer>();
+
+            BeeDamagePlayer beePlayer = player.Hymenoptra();
 
             player.GetDamage<HymenoptraDamageClass>() += 0.25f;
             player.GetCritChance<HymenoptraDamageClass>() += 0.10f;
             player.GetAttackSpeed<HymenoptraDamageClass>() += 0.15f;
 
             beePlayer.BeeResourceMax2 += modPlayer.Eternity ? 999 : 200;
-            // TODO: Make it regen a lot faster
-            //    beePlayer.BeeResourceRegenTimer += modPlayer.Eternity ? 30 : 15;
 
             necklace?.UpdateAccessory(player, true);
             manipulator?.UpdateAccessory(player, true);

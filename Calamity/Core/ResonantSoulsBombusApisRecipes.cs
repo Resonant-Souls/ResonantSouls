@@ -9,7 +9,7 @@ namespace ResonantSouls.Calamity.Core
     [ExtendsFromMod(ModCompatibility.CalamityMod.Name, ModCompatibility.FargowiltasCrossmod.Name)]
     public class ResonantSoulsCalamityRecipes : ModSystem
     {
-        public override void PostSetupRecipes()
+        public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {

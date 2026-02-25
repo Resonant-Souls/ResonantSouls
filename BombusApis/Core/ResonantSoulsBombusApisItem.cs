@@ -1,4 +1,6 @@
+using FargowiltasSouls.Content.Items;
 using ResonantSouls.BombusApis.Souls;
+using ResonantSouls.Content.Items.Accessories.Souls;
 
 namespace ResonantSouls.BombusApis.Core
 {
@@ -18,11 +20,20 @@ namespace ResonantSouls.BombusApis.Core
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            // How Fargo's DLC does it.
-            if (item.type == ModContent.ItemType<UniverseSoul>())
+            if (item.type == ModContent.ItemType<MicroverseSoul>() && !item.social)
             {
-                int Conjurist = tooltips.FindIndex(t => t.Text.Contains("[i:FargowiltasSouls/ConjuristsSoul]"));
-                tooltips[Conjurist].Text = tooltips[Conjurist].Text.Replace("[i:FargowiltasSouls/ConjuristsSoul]", "[i:FargowiltasSouls/ConjuristsSoul]" + "[i:ResonantSouls/ApiaristsSoul]");
+                int Forces = tooltips.FindIndex(line => line.Name == "Forces");
+                tooltips[Forces].Text = "[i:ResonantSouls/PollinationForce]" + tooltips[Forces].Text;
+            }
+
+            // How Fargo's DLC does it.
+            if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
+            {
+                if (SoulsItem.IsNotRuminating(item))
+                {
+                    int Conjurist = tooltips.FindIndex(t => t.Text.Contains("[i:FargowiltasSouls/ConjuristsSoul]"));
+                    tooltips[Conjurist].Text = tooltips[Conjurist].Text.Replace("[i:FargowiltasSouls/ConjuristsSoul]", "[i:FargowiltasSouls/ConjuristsSoul]" + "[i:ResonantSouls/ApiaristsSoul]");
+                }
             }
         }
     }

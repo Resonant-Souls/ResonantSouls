@@ -1,5 +1,6 @@
 using FargowiltasSouls.Content.Items.Materials;
 using Terraria.DataStructures;
+using Terraria.Localization;
 
 namespace ResonantSouls.Content.Items.Accessories.Souls
 {
@@ -9,6 +10,8 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
         public static readonly List<int> Forces = [ ];
         public override void Load()
         {
+            base.Load();
+            
             ModContent.TryFind(ModCompatibility.ResonantSouls.Name, "PollinationForce", out ModItem PollinationForce);
             if (ModCompatibility.BombusApisBee.Loaded && PollinationForce != null) Forces.Add(PollinationForce.Type);
 
@@ -38,6 +41,12 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
             recipe.AddIngredient<AbomEnergy>(10)
             .AddTile<CrucibleCosmosSheet>()
             .Register();
+        }
+        public override void SafeModifyTooltips(List<TooltipLine> tooltips)
+        {
+            base.SafeModifyTooltips(tooltips);
+            int tooltip0 = tooltips.FindIndex(t => t.Name == "Tooltip0");
+            tooltips.Insert(tooltip0 + 2, new TooltipLine(Mod, "Forces", " " + Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Forces")));
         }
     }
 }

@@ -59,21 +59,27 @@ WaspEnchant: {
 }
 
 ApiaristsSoul: {
-	DisplayName: Apiarists Soul
-	Tooltip: ""
+	DisplayName: Apiarist's Soul
+	Tooltip:
+		'''
+		25% increased hymenoptra damage and 10% increased hymenoptra critical chance
+		15% increased hymenoptra attack speed and 100% faster honey regeneration
+		'''
 }
 
 PollinationForce: {
 	Tooltip: ""
-	DisplayName: Pollination Force
+	DisplayName: Force of Pollination
 }
 
 TraitorBee: {
 	DisplayName: Traitor Bee
-	Tooltip: ""
+	Tooltip: Ya like jazz?
 }
 
 MicroverseSoul: {
 	Tooltip: ""
-	DisplayName: Microverse Soul
+	DisplayName: Soul of the Microverse
+	MasterPlayer: Automatically target enemies with your clicks and increase click radius
+	Forces: Grants combined and empowered versions of all force effects
 }

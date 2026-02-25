@@ -9,7 +9,7 @@ namespace ResonantSouls.BombusApis.Core
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ResonantSoulsBombusApisRecipes : ModSystem
     {
-        public override void PostSetupRecipes()
+        public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {

@@ -18,7 +18,6 @@ global using FargowiltasSouls.Content.Items.Accessories.Souls;
 global using FargowiltasSouls.Core;
 global using FargowiltasSouls;
 global using FargowiltasSouls.Core.ModPlayers;
-
 // Look I know it's a lot of globals. I don't care.
 
 

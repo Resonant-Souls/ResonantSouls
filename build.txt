@@ -3,7 +3,6 @@ author = Ropro0923 & the Resonant Souls Development Team
 version = 0.1
 homepage = https://discord.gg/sCQ2s4rqDF
 modReferences = FargowiltasSouls, Fargowiltas, FargoSeeds, Luminance, 
-sortAfter = BombusApisBee
 weakReferences = SpiritMod, BombusApisBee, ClickerClass, FargoClickers, CalamityMod, FargowiltasCrossmod
 hideCode = true
 hideResources = false

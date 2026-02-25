@@ -1,14 +1,21 @@
+using ResonantSouls.Content.Items.Accessories.Souls;
+
 namespace ResonantSouls.Core
 {
     public class ResonantSoulsRecipes : ModSystem
     {
-        public override void PostSetupRecipes()
+        public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe recipe = Main.recipe[i];
 
-                if (recipe.HasResult<UniverseSoul>())
+                if (recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<MicroverseSoul>())
+                {
+                    recipe.AddIngredient(ModContent.ItemType<MicroverseSoul>());
+                }
+
+                if (recipe.HasResult<UniverseSoul>() || recipe.HasResult<EternitySoul>())
                 {
                     List<Item> notSoul = recipe.requiredItem.Where(item => item.ModItem is not BaseSoul).ToList();
 

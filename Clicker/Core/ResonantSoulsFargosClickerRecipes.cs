@@ -1,7 +1,4 @@
-using BombusApisBee.Items.Armor.BeeKeeperDamageClass;
 using FargoClickers.Content.Items.Accessories;
-using ResonantSouls.BombusApis.Souls;
-using Terraria.Localization;
 
 namespace ResonantSouls.Clicker.Core
 {
@@ -10,7 +7,7 @@ namespace ResonantSouls.Clicker.Core
     [ExtendsFromMod(ModCompatibility.FargoClickers.Name, ModCompatibility.ClickerClass.Name)]
     public class ResonantSoulsFargosClickerRecipes : ModSystem
     {
-        public override void PostSetupRecipes()
+        public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
