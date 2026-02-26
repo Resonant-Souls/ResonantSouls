@@ -1,7 +1,7 @@
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using ResonantSouls.Content.Items.Accessories.Souls;
-    
+
 namespace ResonantSouls.Calamity.Core
 {
 

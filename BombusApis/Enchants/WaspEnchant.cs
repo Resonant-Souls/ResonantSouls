@@ -9,8 +9,13 @@ namespace ResonantSouls.BombusApis.Enchants
     public class WaspEnchant : BaseEnchant
     {
         public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.Enchantments;
-        public override string Texture => Debug.Placeholder;
-        public override Color nameColor => Color.White;
+        public override string Texture => this.BombusTexture();
+        public override Color nameColor => new(185, 107, 23);
+        public override void SetDefaults()
+        {
+            Item.height = 32;
+            Item.width = 36;
+        }
         public override void AddRecipes()
         {
             CreateRecipe()

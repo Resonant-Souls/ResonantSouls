@@ -1,10 +1,11 @@
 using System.Reflection;
 using Fargowiltas.Content.Items.CaughtNPCs;
 using Luminance.Common.Utilities;
+using ResonantSouls.Core.GlobalItems;
 
 namespace ResonantSouls.Core
 {
-    public class ResonantSoulsUtilities
+    public static class ResonantSoulsUtilities
     {
         public static void Add(string internalName, int id)
         {
@@ -16,5 +17,6 @@ namespace ResonantSouls.Core
             list.Add(id, item.Type);
             info.SetValue(info, list);
         }
+        public static ResonantDeveloper ResonantDeveloper(this Item item) => item.GetGlobalItem<ResonantDeveloper>();
     }
 }

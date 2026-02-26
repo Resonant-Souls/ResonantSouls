@@ -15,7 +15,7 @@ namespace ResonantSouls.Core
                     recipe.AddIngredient(ModContent.ItemType<MicroverseSoul>());
                 }
 
-                if (recipe.HasResult<UniverseSoul>() || recipe.HasResult<EternitySoul>())
+                if (recipe.createItem.ModItem is BaseSoul)
                 {
                     List<Item> notSoul = recipe.requiredItem.Where(item => item.ModItem is not BaseSoul).ToList();
 

@@ -7,11 +7,11 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
     public class MicroverseSoul : BaseSoul
     {
         public override string Texture => "ResonantSouls/Assets/Textures/Content/Items/Accessories/Souls/MicroverseSoul";
-        public static readonly List<int> Forces = [ ];
+        public static readonly List<int> Forces = [];
         public override void Load()
         {
             base.Load();
-            
+
             ModContent.TryFind(ModCompatibility.ResonantSouls.Name, "PollinationForce", out ModItem PollinationForce);
             if (ModCompatibility.BombusApisBee.Loaded && PollinationForce != null) Forces.Add(PollinationForce.Type);
 

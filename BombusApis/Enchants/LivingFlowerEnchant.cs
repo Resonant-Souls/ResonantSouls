@@ -9,8 +9,13 @@ namespace ResonantSouls.BombusApis.Enchants
     public class LivingFlowerEnchant : BaseEnchant
     {
         public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.Enchantments;
-        public override string Texture => Debug.Placeholder;
-        public override Color nameColor => Color.White;
+        public override string Texture => this.BombusTexture();
+        public override Color nameColor => new(184, 139, 96);
+        public override void SetDefaults()
+        {
+            Item.height = 42;
+            Item.width = 42;
+        }
         public override void AddRecipes()
         {
             CreateRecipe()

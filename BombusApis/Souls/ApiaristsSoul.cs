@@ -24,7 +24,7 @@ namespace ResonantSouls.BombusApis.Souls
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddEffect<ApiaristSoulThing>(Item);
+            player.AddEffect<ApiaristEffect>(Item);
         }
         public override void AddRecipes()
         {
@@ -55,7 +55,7 @@ namespace ResonantSouls.BombusApis.Souls
     }
     [JITWhenModsEnabled(ModCompatibility.BombusApisBee.Name)]
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
-    public class ApiaristSoulThing : AccessoryEffect
+    public class ApiaristEffect : AccessoryEffect
     {
         public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.Enchantments;
         private static ModItem necklace;
@@ -89,7 +89,7 @@ namespace ResonantSouls.BombusApis.Souls
             FargoSoulsPlayer modPlayer = Player.FargoSouls();
             BeeDamagePlayer beePlayer = Player.Hymenoptra();
 
-            if (Player.HasEffect<ApiaristSoulThing>())
+            if (Player.HasEffect<ApiaristEffect>())
             {
                 beePlayer.BeeResourceMax2 += modPlayer.Eternity ? 999 : 200;
 

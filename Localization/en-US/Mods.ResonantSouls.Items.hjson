@@ -69,15 +69,15 @@ ApiaristsSoul: {
 
 PollinationForce: {
 	Tooltip:
-	'''
-	[i:ResonantSouls/BeekeeperEnchant]
-	[i:ResonantSouls/BeeSniperEnchant]
-	[i:ResonantSouls/HoneycombCrusaderEnchant]
-	[i:ResonantSouls/HoneyphyteEnchant]
-	[i:ResonantSouls/LivingFlowerEnchant]
-	[i:ResonantSouls/SkeletalBeeEnchant]
-	[i:ResonantSouls/WaspEnchant]
-	'''
+		'''
+		[i:ResonantSouls/BeekeeperEnchant]
+		[i:ResonantSouls/BeeSniperEnchant]
+		[i:ResonantSouls/HoneycombCrusaderEnchant]
+		[i:ResonantSouls/HoneyphyteEnchant]
+		[i:ResonantSouls/LivingFlowerEnchant]
+		[i:ResonantSouls/SkeletalBeeEnchant]
+		[i:ResonantSouls/WaspEnchant]
+		'''
 	DisplayName: Force of Pollination
 }
 
@@ -96,4 +96,9 @@ MicroverseSoul: {
 Developer: {
 	Dedicated: Dedicated to
 	Ropro0923: Ropro0923
+}
+
+AstraMark: {
+	DisplayName: Mark of Astra
+	Tooltip: ""
 }

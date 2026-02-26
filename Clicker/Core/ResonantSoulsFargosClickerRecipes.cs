@@ -30,4 +30,4 @@ namespace ResonantSouls.Clicker.Core
             FargoItemSets.DuplicatableItems[ModContent.ItemType<ForceOfMatrix>()] = DupeType.Dupable;
         }
     }
-}   
+}

@@ -32,3 +32,13 @@ ResonantSoulsBombusApisConfig: {
 	Headers.LoadedContent: Loaded Content
 	DisplayName: Bombus Apis
 }
+
+ResonantSoulsFargosClickerConfig: {
+	DisplayName: Resonant Souls Fargos Clicker Config
+	Headers.LoadedContent: Loaded Content Header
+
+	ClickerCompat: {
+		Label: Clicker Compat
+		Tooltip: ""
+	}
+}

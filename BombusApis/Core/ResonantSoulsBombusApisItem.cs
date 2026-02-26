@@ -17,7 +17,7 @@ namespace ResonantSouls.BombusApis.Core
             {
                 if (Universe)
                 {
-                    player.AddEffect<ApiaristSoulThing>(item);
+                    player.AddEffect<ApiaristEffect>(item);
                 }
             }
         }

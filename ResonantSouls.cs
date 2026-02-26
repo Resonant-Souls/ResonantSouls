@@ -18,6 +18,7 @@ global using FargowiltasSouls.Content.Items.Accessories.Souls;
 global using FargowiltasSouls.Core;
 global using FargowiltasSouls;
 global using FargowiltasSouls.Core.ModPlayers;
+global using FargowiltasSouls.Content.Items;
 // Look I know it's a lot of globals. I don't care.
 
 
@@ -25,6 +26,7 @@ namespace ResonantSouls
 {
     public class ResonantSouls : Mod
     {
+        public const bool astraMark = false;
         internal static ResonantSouls Instance;
         public override void Load()
         {
