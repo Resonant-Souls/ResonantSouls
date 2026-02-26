@@ -8,4 +8,4 @@ hideCode = true
 hideResources = false
 includePDB = false
 includeSource = true
-buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, .git\*, *.dll, *.sln, *.gitignore, *.gitattributes, Properties\*
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, .git\*, *.dll, *.sln, *.gitignore, *.gitattributes, Properties\*, TODO.md

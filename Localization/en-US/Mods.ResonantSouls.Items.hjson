@@ -63,12 +63,21 @@ ApiaristsSoul: {
 	Tooltip:
 		'''
 		25% increased hymenoptra damage and 10% increased hymenoptra critical chance
-		15% increased hymenoptra attack speed and 100% faster honey regeneration
+		15% increased hymenoptra attack speed and tripled honey regeneration amount
 		'''
 }
 
 PollinationForce: {
-	Tooltip: ""
+	Tooltip:
+	'''
+	[i:ResonantSouls/BeekeeperEnchant]
+	[i:ResonantSouls/BeeSniperEnchant]
+	[i:ResonantSouls/HoneycombCrusaderEnchant]
+	[i:ResonantSouls/HoneyphyteEnchant]
+	[i:ResonantSouls/LivingFlowerEnchant]
+	[i:ResonantSouls/SkeletalBeeEnchant]
+	[i:ResonantSouls/WaspEnchant]
+	'''
 	DisplayName: Force of Pollination
 }
 
@@ -82,4 +91,9 @@ MicroverseSoul: {
 	DisplayName: Soul of the Microverse
 	MasterPlayer: Automatically target enemies with your clicks and increase click radius
 	Forces: Grants combined and empowered versions of all force effects
+}
+
+Developer: {
+	Dedicated: Dedicated to
+	Ropro0923: Ropro0923
 }

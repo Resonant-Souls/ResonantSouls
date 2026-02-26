@@ -1,10 +1,9 @@
+
 using BombusApisBee;
 using BombusApisBee.BeeDamageClass;
 using BombusApisBee.Items.Accessories.BeeKeeperDamageClass;
 using BombusApisBee.Items.Weapons.BeeKeeperDamageClass;
-using FargowiltasSouls;
 using FargowiltasSouls.Content.Items.Materials;
-using FargowiltasSouls.Core.ModPlayers;
 using ResonantSouls.BombusApis.Core;
 using Terraria.DataStructures;
 
@@ -15,7 +14,7 @@ namespace ResonantSouls.BombusApis.Souls
     public class ApiaristsSoul : BaseSoul
     {
         public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.Enchantments;
-        public override string Texture => "ResonantSouls/BombusApis/Assets/Sprites/ApiaristsSoul";
+        public override string Texture => this.BombusTexture();
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -58,6 +57,7 @@ namespace ResonantSouls.BombusApis.Souls
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ApiaristSoulThing : AccessoryEffect
     {
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.Enchantments;
         private static ModItem necklace;
         private static ModItem manipulator;
         public override void SetStaticDefaults()
@@ -71,18 +71,37 @@ namespace ResonantSouls.BombusApis.Souls
         public override int ToggleItemType => ModContent.ItemType<ApiaristsSoul>();
         public override void PostUpdate(Player player)
         {
-            FargoSoulsPlayer modPlayer = player.FargoSouls();
-
-            BeeDamagePlayer beePlayer = player.Hymenoptra();
-
             player.GetDamage<HymenoptraDamageClass>() += 0.25f;
             player.GetCritChance<HymenoptraDamageClass>() += 0.10f;
             player.GetAttackSpeed<HymenoptraDamageClass>() += 0.15f;
 
-            beePlayer.BeeResourceMax2 += modPlayer.Eternity ? 999 : 200;
-
             necklace?.UpdateAccessory(player, true);
             manipulator?.UpdateAccessory(player, true);
+        }
+    }
+    [JITWhenModsEnabled(ModCompatibility.BombusApisBee.Name)]
+    [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
+    public class ApiaristSoulPlayer : ModPlayer
+    {
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.Enchantments;
+        public override void UpdateEquips()
+        {
+            FargoSoulsPlayer modPlayer = Player.FargoSouls();
+            BeeDamagePlayer beePlayer = Player.Hymenoptra();
+
+            if (Player.HasEffect<ApiaristSoulThing>())
+            {
+                beePlayer.BeeResourceMax2 += modPlayer.Eternity ? 999 : 200;
+
+                if (modPlayer.Eternity)
+                {
+                    beePlayer.BeeResourceCurrent = beePlayer.BeeResourceMax2;
+                }
+                else
+                {
+                    beePlayer.BeeResourceIncrease *= 3;
+                }
+            }
         }
     }
 }

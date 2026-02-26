@@ -28,5 +28,10 @@ namespace ResonantSouls.Core
                 }
             }
         }
+        public override void PostSetupRecipes()
+        {
+            // TODO: Make this automatic
+            FargoSoulsSets.Items.MaterialOfImportantItem[ModContent.ItemType<MicroverseSoul>()] = ModContent.ItemType<EternitySoul>();
+        }
     }
 }

@@ -13,26 +13,33 @@ namespace ResonantSouls.BombusApis.Core
         {
             bool Universe = item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
 
-            if (Universe)
+            if (ResonantSoulsBombusApisConfig.Instance.Enchantments)
             {
-                player.AddEffect<ApiaristSoulThing>(item);
+                if (Universe)
+                {
+                    player.AddEffect<ApiaristSoulThing>(item);
+                }
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.type == ModContent.ItemType<MicroverseSoul>() && !item.social)
+            if (ResonantSoulsBombusApisConfig.Instance.Enchantments)
             {
-                int Forces = tooltips.FindIndex(line => line.Name == "Forces");
-                tooltips[Forces].Text = "[i:ResonantSouls/PollinationForce]" + tooltips[Forces].Text;
-            }
-
-            // How Fargo's DLC does it.
-            if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
-            {
-                if (SoulsItem.IsNotRuminating(item))
+                if (item.type == ModContent.ItemType<MicroverseSoul>() && !item.social)
                 {
-                    int Conjurist = tooltips.FindIndex(t => t.Text.Contains("[i:FargowiltasSouls/ConjuristsSoul]"));
-                    tooltips[Conjurist].Text = tooltips[Conjurist].Text.Replace("[i:FargowiltasSouls/ConjuristsSoul]", "[i:FargowiltasSouls/ConjuristsSoul]" + "[i:ResonantSouls/ApiaristsSoul]");
+                    int Forces = tooltips.FindIndex(line => line.Name == "Forces");
+                    tooltips[Forces].Text = "[i:ResonantSouls/PollinationForce]" + tooltips[Forces].Text;
+                }
+
+
+                // How Fargo's DLC does it.
+                if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
+                {
+                    if (SoulsItem.IsNotRuminating(item))
+                    {
+                        int Conjurist = tooltips.FindIndex(t => t.Text.Contains("[i:FargowiltasSouls/ConjuristsSoul]"));
+                        tooltips[Conjurist].Text = tooltips[Conjurist].Text.Replace("[i:FargowiltasSouls/ConjuristsSoul]", "[i:FargowiltasSouls/ConjuristsSoul]" + "[i:ResonantSouls/ApiaristsSoul]");
+                    }
                 }
             }
         }
