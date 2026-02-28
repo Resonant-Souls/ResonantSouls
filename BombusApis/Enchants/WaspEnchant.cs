@@ -13,8 +13,9 @@ namespace ResonantSouls.BombusApis.Enchants
         public override Color nameColor => new(185, 107, 23);
         public override void SetDefaults()
         {
-            Item.height = 32;
+            base.SetDefaults();
             Item.width = 36;
+            Item.height = 32;
         }
         public override void AddRecipes()
         {

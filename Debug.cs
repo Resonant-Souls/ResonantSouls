@@ -4,6 +4,7 @@ namespace ResonantSouls
     {
         internal static string Placeholder = "FargowiltasSouls/Content/Items/Placeholder";
     }
+    
     public class DebugItem : GlobalItem
     {
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

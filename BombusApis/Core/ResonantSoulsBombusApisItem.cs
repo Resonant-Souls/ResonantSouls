@@ -31,7 +31,6 @@ namespace ResonantSouls.BombusApis.Core
                     tooltips[Forces].Text = "[i:ResonantSouls/PollinationForce]" + tooltips[Forces].Text;
                 }
 
-
                 // How Fargo's DLC does it.
                 if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
                 {

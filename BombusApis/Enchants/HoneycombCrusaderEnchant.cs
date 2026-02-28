@@ -10,8 +10,14 @@ namespace ResonantSouls.BombusApis.Enchants
     public class HoneycombCrusaderEnchant : BaseEnchant
     {
         public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.Enchantments;
-        public override string Texture => Debug.Placeholder;
-        public override Color nameColor => Color.White;
+        public override string Texture => this.BombusTexture();
+        public override Color nameColor => new(180, 180, 204);
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            Item.width = 44;
+            Item.height = 42;
+        }
         public override void AddRecipes()
         {
             CreateRecipe()
