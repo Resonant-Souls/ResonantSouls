@@ -1,3 +1,5 @@
+using FargowiltasSouls.Content.Items;
+
 namespace ResonantSouls.Content.Items.Accessories.Developer.AstraMark
 {
     public class AstraMark : SoulsItem

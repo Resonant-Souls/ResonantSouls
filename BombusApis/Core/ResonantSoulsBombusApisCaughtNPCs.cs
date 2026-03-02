@@ -7,7 +7,7 @@ namespace ResonantSouls.BombusApis.Core
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ResonantSoulsBombusApisCaughtNPCs : ModSystem
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.QualityOfLife;
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false;
         public override void Load()
         {
             ResonantSoulsUtilities.Add("TraitorBee", ModContent.NPCType<TheTraitorBee>());

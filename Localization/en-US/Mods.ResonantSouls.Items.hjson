@@ -88,9 +88,14 @@ TraitorBee: {
 
 MicroverseSoul: {
 	Tooltip: ""
+	RuminateTooltip: ""
 	DisplayName: Soul of the Microverse
-	MasterPlayer: Automatically target enemies with your clicks and increase click radius
 	Forces: Grants combined and empowered versions of all force effects
+
+	Effects: {
+		Clicker: "[i:FargoClickers/ForceOfMatrix] Effect"
+		Bombus: "[i:ResonantSouls/PollinationForce] Effect"
+	}
 }
 
 Developer: {
@@ -101,4 +106,17 @@ Developer: {
 AstraMark: {
 	DisplayName: Mark of Astra
 	Tooltip: ""
+}
+
+AddedEffects: {
+	ClickerUniverse:
+		'''
+		[i:ClickerClass/AimbotModule] Automatically target enemies with your clicks and increase click radius
+		[i:ClickerClass/AimbotModule] Effect
+		'''
+	BombusUniverse:
+		'''
+		[i:BombusApisBee/HymenoptrianNecklace] Effect
+		[i:BombusApisBee/HymenoptrianNecklace] Effect
+		'''
 }

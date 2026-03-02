@@ -8,7 +8,7 @@ namespace ResonantSouls.BombusApis.Core
     public class ResonantSoulsBombusApisConfig : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
-        public static ResonantSoulsBombusApisConfig Instance;
+        public static ResonantSoulsBombusApisConfig? Instance;
         public override void OnChanged() => Instance = this;
         public override void OnLoaded() => Instance = this;
 

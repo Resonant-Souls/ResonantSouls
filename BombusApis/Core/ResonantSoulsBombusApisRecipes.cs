@@ -1,4 +1,6 @@
 using BombusApisBee.Items.Armor.BeeKeeperDamageClass;
+using FargowiltasSouls;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ResonantSouls.BombusApis.Souls;
 using Terraria.Localization;
 
@@ -14,7 +16,7 @@ namespace ResonantSouls.BombusApis.Core
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe recipe = Main.recipe[i];
-                if (ResonantSoulsBombusApisConfig.Instance.Enchantments)
+                if (ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false)
                 {
                     if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<ApiaristsSoul>()) recipe.AddIngredient<ApiaristsSoul>();
                 }
@@ -23,7 +25,7 @@ namespace ResonantSouls.BombusApis.Core
         public override void PostSetupRecipes()
         {
             // TODO: Make this automatic
-            if (ResonantSoulsBombusApisConfig.Instance.Enchantments)
+            if (ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false)
             {
                 FargoSoulsSets.Items.MaterialOfImportantItem[ModContent.ItemType<ApiaristsSoul>()] = ModContent.ItemType<UniverseSoul>();
             }
@@ -32,7 +34,7 @@ namespace ResonantSouls.BombusApis.Core
         {
             RecipeGroup group;
 
-            if (ResonantSoulsBombusApisConfig.Instance.Enchantments)
+            if (ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false)
             {
                 group = new RecipeGroup(() => Language.GetTextValue("Mods.BombusApisBee.Items.HoneyphyteMask.DisplayName"), ModContent.ItemType<HoneyphyteHeadgear>(), ModContent.ItemType<HoneyphyteMask>());
                 RecipeGroup.RegisterGroup("ResonantSouls:AnyHoneyphyteMask", group);

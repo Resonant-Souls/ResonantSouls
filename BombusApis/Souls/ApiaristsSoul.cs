@@ -3,9 +3,16 @@ using BombusApisBee;
 using BombusApisBee.BeeDamageClass;
 using BombusApisBee.Items.Accessories.BeeKeeperDamageClass;
 using BombusApisBee.Items.Weapons.BeeKeeperDamageClass;
+using Fargowiltas.Content.Items.Tiles;
+using FargowiltasSouls;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using FargowiltasSouls.Core.ModPlayers;
+using FargowiltasSouls.Core.Toggler;
 using ResonantSouls.BombusApis.Core;
 using Terraria.DataStructures;
+using Terraria.ID;
 
 namespace ResonantSouls.BombusApis.Souls
 {
@@ -13,7 +20,7 @@ namespace ResonantSouls.BombusApis.Souls
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ApiaristsSoul : BaseSoul
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.Enchantments;
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false;
         public override string Texture => this.BombusTexture();
         public override void SetStaticDefaults()
         {
@@ -57,9 +64,9 @@ namespace ResonantSouls.BombusApis.Souls
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ApiaristEffect : AccessoryEffect
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.Enchantments;
-        private static ModItem necklace;
-        private static ModItem manipulator;
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false;
+        private static ModItem? necklace;
+        private static ModItem? manipulator;
         public override void SetStaticDefaults()
         {
             ModCompatibility.BombusApisBee.Mod.TryFind("HymenoptrianNecklace", out ModItem n);
@@ -67,7 +74,7 @@ namespace ResonantSouls.BombusApis.Souls
             necklace = n;
             manipulator = m;
         }
-        public override Header ToggleHeader => null;
+        public override Header? ToggleHeader => null;
         public override int ToggleItemType => ModContent.ItemType<ApiaristsSoul>();
         public override void PostUpdate(Player player)
         {
@@ -83,7 +90,7 @@ namespace ResonantSouls.BombusApis.Souls
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ApiaristSoulPlayer : ModPlayer
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance.Enchantments;
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false;
         public override void UpdateEquips()
         {
             FargoSoulsPlayer modPlayer = Player.FargoSouls();

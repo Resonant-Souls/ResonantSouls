@@ -8,7 +8,7 @@ namespace ResonantSouls.Clicker.Core
     public class ResonantSoulsFargosClickerConfig : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
-        public static ResonantSoulsFargosClickerConfig Instance;
+        public static ResonantSoulsFargosClickerConfig? Instance;
         public override void OnChanged() => Instance = this;
         public override void OnLoaded() => Instance = this;
 

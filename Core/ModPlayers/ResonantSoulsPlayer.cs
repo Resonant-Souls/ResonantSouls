@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria.Localization;
 
 namespace ResonantSouls.Core.ModPlayers
@@ -6,7 +7,7 @@ namespace ResonantSouls.Core.ModPlayers
     {
         public override void OnEnterWorld()
         {
-            if (ResonantSoulsClientConfig.Instance.WarningNotification)
+            if (ResonantSoulsClientConfig.Instance?.WarningNotification ?? false)
             {
                 Main.NewText(Language.GetTextValue($"Mods.{Mod.Name}.Message.WarningNotification"), Color.Red);
             }

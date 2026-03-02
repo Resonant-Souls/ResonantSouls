@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using ResonantSouls.Content.Items.Accessories.Developer.AstraMark;
 using Terraria.Localization;
 

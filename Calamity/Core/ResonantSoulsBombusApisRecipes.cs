@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Fargowiltas.Content.Items.Tiles;
 using ResonantSouls.Content.Items.Accessories.Souls;
 
 namespace ResonantSouls.Calamity.Core

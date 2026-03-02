@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using ResonantSouls.Content.Tiles;
+using Terraria.ID;
 
 namespace ResonantSouls.Content.Items.Placeables.Paintings
 {

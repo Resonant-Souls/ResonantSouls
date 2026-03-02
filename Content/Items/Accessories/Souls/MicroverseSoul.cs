@@ -1,5 +1,10 @@
+using System.Collections.Generic;
+using Fargowiltas.Content.Items.Tiles;
+using FargowiltasSouls.Content.Items;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.Localization;
 
 namespace ResonantSouls.Content.Items.Accessories.Souls
@@ -29,6 +34,8 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
             base.SetDefaults();
             Item.width = 84;
             Item.height = 120;
+
+            // This item doesn't have a tooltip if it's not an expert item
             Item.expert = true;
         }
         public override void AddRecipes()
@@ -46,7 +53,11 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
         {
             base.SafeModifyTooltips(tooltips);
             int tooltip0 = tooltips.FindIndex(t => t.Name == "Tooltip0");
-            tooltips.Insert(tooltip0 + 2, new TooltipLine(Mod, "Forces", " " + Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Forces")));
+
+            if (IsNotRuminating(Item))
+            {
+                tooltips.Insert(tooltip0 + 2, new TooltipLine(Mod, "Forces", " " + Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Forces")));
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 using FargowiltasSouls.Content.Items.Summons;
+using Microsoft.Xna.Framework;
 using Terraria.Localization;
 
 namespace ResonantSouls.Content.Items.Consumables.Summons

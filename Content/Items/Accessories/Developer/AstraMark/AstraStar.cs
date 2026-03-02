@@ -1,3 +1,5 @@
+using FargowiltasSouls;
+
 namespace ResonantSouls.Content.Items.Accessories.Developer.AstraMark
 {
     public class AstraStar : ModProjectile

@@ -1,5 +1,7 @@
 using FargoClickers.Content.Items.Accessories;
 using Fargowiltas.Common.Systems.Collections;
+using FargowiltasSouls;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ResonantSouls.Content.Items.Accessories.Souls;
 
 namespace ResonantSouls.Clicker.Core
@@ -9,14 +11,15 @@ namespace ResonantSouls.Clicker.Core
     [ExtendsFromMod(ModCompatibility.FargoClickers.Name, ModCompatibility.ClickerClass.Name)]
     public class ResonantSoulsFargosClickerRecipes : ModSystem
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsFargosClickerConfig.Instance.ClickerCompat;
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsFargosClickerConfig.Instance?.ClickerCompat ?? false;
         public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe recipe = Main.recipe[i];
 
-                if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<MasterPlayerSoul>()) recipe.AddIngredient<MasterPlayerSoul>();
+                if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<MasterPlayerSoul>())
+                    recipe.AddIngredient<MasterPlayerSoul>();
             }
         }
         public override void PostSetupRecipes()

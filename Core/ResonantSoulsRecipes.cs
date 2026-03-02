@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
+using FargowiltasSouls;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ResonantSouls.Content.Items.Accessories.Souls;
 
 namespace ResonantSouls.Core
