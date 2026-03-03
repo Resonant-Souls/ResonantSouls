@@ -87,14 +87,14 @@ TraitorBee: {
 }
 
 MicroverseSoul: {
-	Tooltip: ""
-	RuminateTooltip: ""
+	Tooltip: "'Become the master of the microverse'"
+	RuminateTooltip: "'Become the master of the microverse'"
 	DisplayName: Soul of the Microverse
 	Forces: Grants combined and empowered versions of all force effects
 
 	Effects: {
-		Clicker: "[i:FargoClickers/ForceOfMatrix] Effect"
-		Bombus: "[i:ResonantSouls/PollinationForce] Effect"
+		ForceOfMatrix: "[i:FargoClickers/ForceOfMatrix] Effect"
+		PollinationForce: "[i:ResonantSouls/PollinationForce] Effect"
 	}
 }
 

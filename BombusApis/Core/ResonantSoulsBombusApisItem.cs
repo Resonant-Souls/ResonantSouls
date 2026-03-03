@@ -4,17 +4,14 @@ using FargowiltasSouls.Content.Items;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using ResonantSouls.BombusApis.Souls;
-using ResonantSouls.Content.Items.Accessories.Souls;
 using Terraria.Localization;
 
 namespace ResonantSouls.BombusApis.Core
 {
-
     [JITWhenModsEnabled(ModCompatibility.BombusApisBee.Name)]
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ResonantSoulsBombusApisItem : GlobalItem
     {
-
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
             bool Universe = item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
@@ -29,38 +26,22 @@ namespace ResonantSouls.BombusApis.Core
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            int tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
-
-            if (ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false)
+            int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
+            string key = "Mods.ResonantSouls.Items.";
+            if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
             {
-                if (item.type == ModContent.ItemType<MicroverseSoul>() && !item.social)
+                if (SoulsItem.IsNotRuminating(item))
                 {
-                    if (SoulsItem.IsNotRuminating(item))
-                    {
-                        int Forces = tooltips.FindIndex(line => line.Name == "Forces");
-                        tooltips[Forces].Text = "[i:ResonantSouls/PollinationForce]" + tooltips[Forces].Text;
-                    }
-                    else
-                    {
-                        TooltipLine clickerLine = new(Mod, "BombusEffect", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.Bombus"));
-                        tooltips.Insert(tooltips.Count - 1, clickerLine);
-                    }
+                    const string conjurists = "[i:FargowiltasSouls/ConjuristsSoul]";
+                    int extraeff = tooltips.FindIndex(t => t.Text.Contains(conjurists));
+                    tooltips[extraeff].Text = tooltips[extraeff].Text.Replace(conjurists, conjurists + "[i:ResonantSouls/ApiaristsSoul]");
                 }
-
-                // How Fargo's DLC does it.
-                if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
+                else
                 {
-                    if (SoulsItem.IsNotRuminating(item))
-                    {
-                        const string ConjuristsSoul = "[i:FargowiltasSouls/ConjuristsSoul]";
-                        int Conjurist = tooltips.FindIndex(t => t.Text.Contains(ConjuristsSoul));
-                        tooltips[Conjurist].Text = tooltips[Conjurist].Text.Replace(ConjuristsSoul, ConjuristsSoul + "[i:ResonantSouls/ApiaristsSoul]");
-                    }
-                    else
-                    {
-                        TooltipLine clickerLine = new(Mod, "ClickerEffect", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.Bombus"));
-                        tooltips.Insert(tooltips.Count - 1, clickerLine);
-                    }
+                    // How Fargo's DLC does it
+                    var lines = tooltips[Tooltip0].Text.Split("\n").ToList();
+                    lines.Insert(lines.Count - 1, Language.GetTextValue(key + "AddedEffects.BombusUniverse"));
+                    tooltips[Tooltip0].Text = string.Join("\n", lines);
                 }
             }
         }

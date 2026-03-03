@@ -32,34 +32,22 @@ namespace ResonantSouls.Clicker.Core
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.type == ModContent.ItemType<MicroverseSoul>() && !item.social)
-            {
-                if (SoulsItem.IsNotRuminating(item))
-                {
-                    int Forces = tooltips.FindIndex(line => line.Name == "Forces");
-                    tooltips[Forces].Text = "[i:FargoClickers/ForceOfMatrix]" + tooltips[Forces].Text;
-                }
-                else
-                {
-                    TooltipLine clickerLine = new(Mod, "ClickerEffect", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.Clicker"));
-                    tooltips.Insert(tooltips.Count - 1, clickerLine);
-                }
-            }
-
-            // How Fargo's DLC does it.
-
+            int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
+            string key = "Mods.ResonantSouls.Items.";
             if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
             {
                 if (SoulsItem.IsNotRuminating(item))
                 {
-                    const string ConjuristsSoul = "[i:FargowiltasSouls/ConjuristsSoul]";
-                    int Conjurist = tooltips.FindIndex(t => t.Text.Contains(ConjuristsSoul));
-                    tooltips[Conjurist].Text = tooltips[Conjurist].Text.Replace(ConjuristsSoul, ConjuristsSoul + "[i:FargoClickers/MasterPlayerSoul]");
+                    const string conjurists = "[i:FargowiltasSouls/ConjuristsSoul]";
+                    int extraeff = tooltips.FindIndex(t => t.Text.Contains(conjurists));
+                    tooltips[extraeff].Text = tooltips[extraeff].Text.Replace(conjurists, conjurists + "[i:FargoClickers/MasterPlayerSoul]");
                 }
                 else
                 {
-                    TooltipLine masterPlayer = new(Mod, "masterPlayer", Language.GetTextValue("Mods.ResonantSouls.Items.AddedEffects.ClickerUniverse"));
-                    tooltips.Insert(tooltips.Count - 1, masterPlayer);
+                    // How Fargo's DLC does it
+                    var lines = tooltips[Tooltip0].Text.Split("\n").ToList();
+                    lines.Insert(lines.Count - 1, Language.GetTextValue(key + "AddedEffects.ClickerUniverse"));
+                    tooltips[Tooltip0].Text = string.Join("\n", lines);
                 }
             }
         }

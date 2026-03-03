@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
 using Fargowiltas.Content.Items.Tiles;
-using FargowiltasSouls.Content.Items;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using Terraria.DataStructures;
@@ -12,16 +12,14 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
     public class MicroverseSoul : BaseSoul
     {
         public override string Texture => "ResonantSouls/Assets/Textures/Content/Items/Accessories/Souls/MicroverseSoul";
-        public static readonly List<int> Forces = [];
+        public static readonly List<ModItem> Forces = [];
         public override void Load()
         {
-            base.Load();
-
             ModContent.TryFind(ModCompatibility.ResonantSouls.Name, "PollinationForce", out ModItem PollinationForce);
-            if (ModCompatibility.BombusApisBee.Loaded && PollinationForce != null) Forces.Add(PollinationForce.Type);
+            if (ModCompatibility.BombusApisBee.Loaded && PollinationForce != null) Forces.Add(PollinationForce);
 
             ModContent.TryFind(ModCompatibility.FargoClickers.Name, "ForceOfMatrix", out ModItem ForceOfMatrix);
-            if (ModCompatibility.FargoClickers.Loaded && ForceOfMatrix != null) Forces.Add(ForceOfMatrix.Type);
+            if (ModCompatibility.FargoClickers.Loaded && ForceOfMatrix != null) Forces.Add(ForceOfMatrix);
         }
         public override void SetStaticDefaults()
         {
@@ -34,29 +32,30 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
             base.SetDefaults();
             Item.width = 84;
             Item.height = 120;
-
-            // This item doesn't have a tooltip if it's not an expert item
-            Item.expert = true;
         }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-
-            foreach (int force in Forces)
-                recipe.AddIngredient(force);
-
+            Forces.ForEach(force => recipe.AddIngredient(force));
             recipe.AddIngredient<AbomEnergy>(10)
             .AddTile<CrucibleCosmosSheet>()
             .Register();
         }
+        static string Icon(ModItem item)
+        {
+            return $"[i:{item.Mod.Name}/{item.Name}]";
+        }
         public override void SafeModifyTooltips(List<TooltipLine> tooltips)
         {
-            base.SafeModifyTooltips(tooltips);
-            int tooltip0 = tooltips.FindIndex(t => t.Name == "Tooltip0");
+            int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
 
             if (IsNotRuminating(Item))
             {
-                tooltips.Insert(tooltip0 + 2, new TooltipLine(Mod, "Forces", " " + Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Forces")));
+                tooltips.Insert(Tooltip0, new TooltipLine(Mod, "Forces", string.Concat(Forces.Select(Icon)) + " " + Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Forces")));
+            }
+            else
+            {
+                Forces.ForEach(force => tooltips.Insert(Tooltip0 + Forces.IndexOf(force), new TooltipLine(Mod, force.Name, Language.GetTextValue($"Mods.ResonantSouls.Items.MicroverseSoul.Effects.{force.Name}"))));
             }
         }
     }
