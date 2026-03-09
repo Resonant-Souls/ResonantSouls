@@ -21,7 +21,7 @@ namespace ResonantSouls.BombusApis.Souls
     public class ApiaristsSoul : BaseSoul
     {
         public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false;
-        public override string Texture => this.BombusTexture();
+        public override string Texture => ResonantSoulsBombusApisSystems.BombusTexture(this);
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

@@ -44,7 +44,7 @@
 		</Reference>
 
 		<Reference Include="FargoClickers">
-			<HintPath>..\ModAssemblies\FargoClickers_v1.0.5.dll</HintPath>
+			<HintPath>..\ModAssemblies\FargoClickers_v1.0.6.dll</HintPath>
 		</Reference>
 
 		<Reference Include="ClickerClass">

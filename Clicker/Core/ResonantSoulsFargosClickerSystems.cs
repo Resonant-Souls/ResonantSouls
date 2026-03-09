@@ -1,6 +1,6 @@
 using FargoClickers.Content.Items.Accessories;
 using Fargowiltas.Common.Systems.Collections;
-using FargowiltasSouls;
+using FargowiltasSouls.Common.Collections;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ResonantSouls.Content.Items.Accessories.Souls;
 
@@ -9,9 +9,13 @@ namespace ResonantSouls.Clicker.Core
 
     [JITWhenModsEnabled(ModCompatibility.FargoClickers.Name, ModCompatibility.ClickerClass.Name)]
     [ExtendsFromMod(ModCompatibility.FargoClickers.Name, ModCompatibility.ClickerClass.Name)]
-    public class ResonantSoulsFargosClickerRecipes : ModSystem
+    public class ResonantSoulsFargosClickerSystems : ModSystem
     {
         public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsFargosClickerConfig.Instance?.ClickerCompat ?? false;
+        public override void PostSetupContent()
+        {
+            ModCompatibility.FargoClickers.Mod.Call("CSESupport");
+        }
         public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
@@ -25,9 +29,8 @@ namespace ResonantSouls.Clicker.Core
         public override void PostSetupRecipes()
         {
             // TODO: Make this automatic
-            FargoSoulsSets.Items.MaterialOfImportantItem[ModContent.ItemType<MasterPlayerSoul>()] = ModContent.ItemType<UniverseSoul>();
-            FargoSoulsSets.Items.MaterialOfImportantItem[ModContent.ItemType<ForceOfMatrix>()] = ModContent.ItemType<MicroverseSoul>();
-
+            SoulsItemSets.MaterialOfImportantItem[ModContent.ItemType<MasterPlayerSoul>()] = ModContent.ItemType<UniverseSoul>();
+            SoulsItemSets.MaterialOfImportantItem[ModContent.ItemType<ForceOfMatrix>()] = ModContent.ItemType<MicroverseSoul>();
             // TODO: It's because it's named ForceOfMatrix instead of MatrixForce. It needs to end in Force to automatically be dupable.
             FargoItemSets.DuplicatableItems[ModContent.ItemType<MasterPlayerSoul>()] = DupeType.Dupable;
             FargoItemSets.DuplicatableItems[ModContent.ItemType<ForceOfMatrix>()] = DupeType.Dupable;

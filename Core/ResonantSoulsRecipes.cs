@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using FargowiltasSouls;
+using FargowiltasSouls.Common.Collections;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ResonantSouls.Content.Items.Accessories.Souls;
 
@@ -18,7 +18,6 @@ namespace ResonantSouls.Core
                 {
                     recipe.AddIngredient(ModContent.ItemType<MicroverseSoul>());
                 }
-
                 if (recipe.createItem.ModItem is BaseSoul)
                 {
                     List<Item> notSoul = recipe.requiredItem.Where(item => item.ModItem is not BaseSoul).ToList();
@@ -35,7 +34,7 @@ namespace ResonantSouls.Core
         public override void PostSetupRecipes()
         {
             // TODO: Make this automatic
-            FargoSoulsSets.Items.MaterialOfImportantItem[ModContent.ItemType<MicroverseSoul>()] = ModContent.ItemType<EternitySoul>();
+            SoulsItemSets.MaterialOfImportantItem[ModContent.ItemType<MicroverseSoul>()] = ModContent.ItemType<EternitySoul>();
         }
     }
 }

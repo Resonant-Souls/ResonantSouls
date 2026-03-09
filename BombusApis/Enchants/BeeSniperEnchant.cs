@@ -12,7 +12,7 @@ namespace ResonantSouls.BombusApis.Enchants
     public class BeeSniperEnchant : BaseEnchant
     {
         public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false;
-        public override string Texture => this.BombusTexture();
+        public override string Texture => ResonantSoulsBombusApisSystems.BombusTexture(this);
         public override Color nameColor => new(121, 135, 170);
         public override void SetDefaults()
         {

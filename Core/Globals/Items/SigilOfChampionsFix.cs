@@ -1,14 +1,11 @@
 using FargowiltasSouls.Content.Items.Summons;
 using FargowiltasSouls.Core.Globals;
 
-namespace ResonantSouls.Common
+namespace ResonantSouls.Core.Globals.Items
 {
     public class SigilOfChampionsFix : GlobalItem
     {
-        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
-        {
-            return entity.ModItem is SigilOfChampions;
-        }
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.ModItem is SigilOfChampions;
         public override bool CanUseItem(Item item, Player player)
         {
             for (int i = 0; i < Main.maxNPCs; i++)

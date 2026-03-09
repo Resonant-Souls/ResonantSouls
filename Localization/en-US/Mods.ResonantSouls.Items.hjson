@@ -103,11 +103,6 @@ Developer: {
 	Ropro0923: Ropro0923
 }
 
-AstraMark: {
-	DisplayName: Mark of Astra
-	Tooltip: ""
-}
-
 AddedEffects: {
 	ClickerUniverse:
 		'''

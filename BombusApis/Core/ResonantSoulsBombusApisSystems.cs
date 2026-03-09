@@ -1,16 +1,28 @@
+using BombusApisbee.NPCs;
 using BombusApisBee.Items.Armor.BeeKeeperDamageClass;
-using FargowiltasSouls;
+using FargowiltasSouls.Common.Collections;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ResonantSouls.BombusApis.Souls;
+using ResonantSouls.Common.Utilities;
 using Terraria.Localization;
 
 namespace ResonantSouls.BombusApis.Core
 {
-
     [JITWhenModsEnabled(ModCompatibility.BombusApisBee.Name)]
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
-    public class ResonantSoulsBombusApisRecipes : ModSystem
+    public class ResonantSoulsBombusApisSystems : ModSystem
     {
+        internal static string BombusTexture(ModType type)
+        {
+            return $"ResonantSouls/BombusApis/Assets/Sprites/{type.Name}";
+        }
+        public override void Load()
+        {
+            if (ResonantSoulsBombusApisConfig.Instance?.QualityOfLife ?? false)
+            {
+                ResonantSoulsUtilities.Add("TraitorBee", ModContent.NPCType<TheTraitorBee>());
+            }
+        }
         public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
@@ -27,7 +39,7 @@ namespace ResonantSouls.BombusApis.Core
             // TODO: Make this automatic
             if (ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false)
             {
-                FargoSoulsSets.Items.MaterialOfImportantItem[ModContent.ItemType<ApiaristsSoul>()] = ModContent.ItemType<UniverseSoul>();
+                SoulsItemSets.MaterialOfImportantItem[ModContent.ItemType<ApiaristsSoul>()] = ModContent.ItemType<UniverseSoul>();
             }
         }
         public override void AddRecipeGroups()

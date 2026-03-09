@@ -1,12 +1,15 @@
 global using Terraria;
 global using Terraria.ModLoader;
 global using ResonantSouls.Core;
+global using LumUtils = Luminance.Common.Utilities.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria.ID;
+using System.Collections.Generic;
 
 namespace ResonantSouls
 {
     public class ResonantSouls : Mod
     {
-        public const bool astraMark = false;
         internal static ResonantSouls? Instance;
         public override void Load()
         {
@@ -18,4 +21,31 @@ namespace ResonantSouls
             Instance = null;
         }
     }
+    #region Debug
+    public class Debug : ModSystem
+    {
+        internal static string Placeholder = "FargowiltasSouls/Content/Items/Placeholder";
+    }
+    public class DebugItem : GlobalItem
+    {
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            TooltipLine Value = new(Mod, "Value", "Value: " + item.value.ToString())
+            {
+                OverrideColor = Color.Green
+            };
+            tooltips.Add(Value);
+            TooltipLine Rare = new(Mod, "Rarity", "Rarity: " + item.rare.ToString())
+            {
+                OverrideColor = Color.Cyan
+            };
+            tooltips.Add(Rare);
+            TooltipLine Name = new(Mod, "Name", "Name: " + ItemID.Search.GetName(item.type))
+            {
+                OverrideColor = Color.Red
+            };
+            tooltips.Add(Name);
+        }
+    }
+    #endregion Debug
 }

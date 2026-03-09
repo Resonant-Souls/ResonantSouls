@@ -3,6 +3,7 @@ using System.Linq;
 using Fargowiltas.Content.Items.Tiles;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
+using FargowiltasSouls.Content.Rarities;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Localization;
@@ -31,6 +32,7 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
         {
             base.SetDefaults();
             Item.width = 84;
+            Item.rare = ModContent.RarityType<AbominableRarity>();
             Item.height = 120;
         }
         public override void AddRecipes()
@@ -41,21 +43,27 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
             .AddTile<CrucibleCosmosSheet>()
             .Register();
         }
-        static string Icon(ModItem item)
-        {
-            return $"[i:{item.Mod.Name}/{item.Name}]";
-        }
         public override void SafeModifyTooltips(List<TooltipLine> tooltips)
         {
             int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
 
             if (IsNotRuminating(Item))
             {
-                tooltips.Insert(Tooltip0, new TooltipLine(Mod, "Forces", string.Concat(Forces.Select(Icon)) + " " + Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Forces")));
+                tooltips.Insert(Tooltip0, new TooltipLine(Mod, "Forces", string.Concat(
+                    (ModCompatibility.BombusApisBee.Loaded ? "[i:ResonantSouls/PollinationForce]" : "") +
+                    (ModCompatibility.FargoClickers.Loaded ? "[i:FargoClickers/ForceOfMatrix]" : "") +
+                    " " + Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Forces"))));
             }
             else
             {
-                Forces.ForEach(force => tooltips.Insert(Tooltip0 + Forces.IndexOf(force), new TooltipLine(Mod, force.Name, Language.GetTextValue($"Mods.ResonantSouls.Items.MicroverseSoul.Effects.{force.Name}"))));
+                if (ModCompatibility.FargoClickers.Loaded)
+                {
+                    tooltips.Insert(Tooltip0, new TooltipLine(Mod, "ForceOfMatrix", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.ForceOfMatrix")));
+                }
+                if (ModCompatibility.BombusApisBee.Loaded)
+                {
+                    tooltips.Insert(Tooltip0, new TooltipLine(Mod, "PollinationForce", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.PollinationForce")));
+                }
             }
         }
     }

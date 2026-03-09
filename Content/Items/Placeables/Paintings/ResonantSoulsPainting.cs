@@ -59,7 +59,7 @@ namespace ResonantSouls.Content.Items.Placeables.Paintings
                     tooltip += ", ";
             }
 
-            TooltipLine line = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip1");
+            TooltipLine? line = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip1");
             if (line != null)
                 line.Text = tooltip;
         }
@@ -72,23 +72,18 @@ namespace ResonantSouls.Content.Items.Placeables.Paintings
             "Mr. Puzzles",
             "Akira",
             "StarlightCat",
-            "Advantaje",
-            "WardrobeHummus",
             "Ma3allim",
             "DanHameln",
             "cheesenuggets",
             "Soltan",
             "magegor11",
             "Vergenum",
-            "aizen522",
-            "Tyr",
-            "and Yob",
+            "and aizen522",
         ];
 
         internal static IList<string> Teams =
         [
             "And special thanks to the Infernal Eclipse of Ragnarok team",
-            "the Community Souls Expansion team",
             "the Fargos team",
             "and to everyone who plays this mod!",
         ];
