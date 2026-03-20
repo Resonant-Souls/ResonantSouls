@@ -10,10 +10,11 @@ namespace ResonantSouls
         public override void OnChanged() => Instance = this;
         public override void OnLoaded() => Instance = this;
 
-
         [Header("Miscellaneous")]
 
         [DefaultValue(true)]
-        public bool WarningNotification { get; set; }
+        public bool WarnNotif { get; set; }
+
+        public static bool WarningNotification => Instance?.WarnNotif ?? false;
     }
 }

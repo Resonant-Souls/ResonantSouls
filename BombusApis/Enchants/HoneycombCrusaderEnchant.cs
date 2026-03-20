@@ -4,7 +4,7 @@ using BombusApisBee.Items.Weapons.BeeKeeperDamageClass;
 using Fargowiltas.Content.Items.Tiles;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using Microsoft.Xna.Framework;
-using ResonantSouls.BombusApis.Core;
+using ResonantSouls.Common.Utilities;
 
 namespace ResonantSouls.BombusApis.Enchants
 {
@@ -12,8 +12,8 @@ namespace ResonantSouls.BombusApis.Enchants
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class HoneycombCrusaderEnchant : BaseEnchant
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false;
-        public override string Texture => ResonantSoulsBombusApisSystems.BombusTexture(this);
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Enchantments;
+        public override string Texture => this.BombusTexture();
         public override Color nameColor => new(180, 180, 204);
         public override void SetDefaults()
         {
@@ -24,7 +24,7 @@ namespace ResonantSouls.BombusApis.Enchants
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<HoneycombCrusaderEnchant>())
+            .AddIngredient(ModContent.ItemType<HoneycombCrusaderHelmet>())
             .AddIngredient(ModContent.ItemType<HoneycombCrusaderPlatemail>())
             .AddIngredient(ModContent.ItemType<HoneycombCrusaderGreaves>())
             .AddIngredient(ModContent.ItemType<CystComb>())

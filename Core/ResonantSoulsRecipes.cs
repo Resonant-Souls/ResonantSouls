@@ -2,22 +2,31 @@ using System.Collections.Generic;
 using System.Linq;
 using FargowiltasSouls.Common.Collections;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
+using ResonantSouls.Common.Utilities;
 using ResonantSouls.Content.Items.Accessories.Souls;
 
 namespace ResonantSouls.Core
 {
     public class ResonantSoulsRecipes : ModSystem
     {
+        public override void AddRecipes()
+        {
+            for (int i = 0; i < Recipe.numRecipes; i++)
+            {
+                Recipe recipe = Main.recipe[i];
+
+                if (recipe.HasResult(ModContent.ItemType<EternitySoul>()))
+                {
+                    recipe.SafeAddToRecipe(ModContent.ItemType<MicroverseSoul>());
+                }
+            }
+        }
         public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe recipe = Main.recipe[i];
 
-                if (recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<MicroverseSoul>())
-                {
-                    recipe.AddIngredient(ModContent.ItemType<MicroverseSoul>());
-                }
                 if (recipe.createItem.ModItem is BaseSoul)
                 {
                     List<Item> notSoul = recipe.requiredItem.Where(item => item.ModItem is not BaseSoul).ToList();
@@ -30,11 +39,6 @@ namespace ResonantSouls.Core
                     }
                 }
             }
-        }
-        public override void PostSetupRecipes()
-        {
-            // TODO: Make this automatic
-            SoulsItemSets.MaterialOfImportantItem[ModContent.ItemType<MicroverseSoul>()] = ModContent.ItemType<EternitySoul>();
         }
     }
 }

@@ -7,11 +7,12 @@ namespace ResonantSouls.Core.Globals.Items
 {
     public class ResonantDeveloper : GlobalItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => false;
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) => devItems.ContainsKey(entity.type) && entity.active;
         public override bool InstancePerEntity => true;
         public Dictionary<int, string> devItems = new()
         {
-        //    [ModContent.ItemType<AstraMark>()] = "Ropro0923",
+            //    [ModContent.ItemType<AstraMark>()] = "Ropro0923",
         };
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

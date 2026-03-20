@@ -13,7 +13,7 @@ namespace ResonantSouls.Clicker.Core
     [ExtendsFromMod(ModCompatibility.FargoClickers.Name, ModCompatibility.ClickerClass.Name)]
     public class FargoClickersGlobalItem : GlobalItem
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsFargosClickerConfig.Instance?.ClickerCompat ?? false;
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsFargosClickerConfig.ClickerCompat;
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
             bool Microverse = item.type == ModContent.ItemType<MicroverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
@@ -33,7 +33,7 @@ namespace ResonantSouls.Clicker.Core
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
-            string key = "Mods.ResonantSouls.Items.";
+            const string key = "Mods.ResonantSouls.Items.";
             if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
             {
                 if (SoulsItem.IsNotRuminating(item))

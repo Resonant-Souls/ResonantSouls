@@ -24,7 +24,7 @@ namespace ResonantSouls
     #region Debug
     public class Debug : ModSystem
     {
-        internal static string Placeholder = "FargowiltasSouls/Content/Items/Placeholder";
+        internal const string Placeholder = "FargowiltasSouls/Content/Items/Placeholder";
     }
     public class DebugItem : GlobalItem
     {

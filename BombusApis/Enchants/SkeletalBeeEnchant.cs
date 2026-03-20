@@ -4,7 +4,7 @@ using BombusApisBee.Items.Weapons.BeeKeeperDamageClass;
 using Fargowiltas.Content.Items.Tiles;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using Microsoft.Xna.Framework;
-using ResonantSouls.BombusApis.Core;
+using ResonantSouls.Common.Utilities;
 
 namespace ResonantSouls.BombusApis.Enchants
 {
@@ -12,8 +12,8 @@ namespace ResonantSouls.BombusApis.Enchants
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class SkeletalBeeEnchant : BaseEnchant
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false;
-        public override string Texture => ResonantSoulsBombusApisSystems.BombusTexture(this);
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Enchantments;
+        public override string Texture => this.BombusTexture();
         public override Color nameColor => new(164, 85, 78);
         public override void SetDefaults()
         {

@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
-namespace ResonantSouls.BombusApis.Core
+namespace ResonantSouls.BombusApis
 {
     [JITWhenModsEnabled(ModCompatibility.BombusApisBee.Name)]
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
@@ -16,18 +16,24 @@ namespace ResonantSouls.BombusApis.Core
 
         [ReloadRequired]
         [DefaultValue(true)]
-        public bool Enchantments { get; set; }
+        public bool Enchants { get; set; }
 
         [ReloadRequired]
         [DefaultValue(true)]
-        public bool EternityModeAccessories { get; set; }
+        public bool EModeAcc { get; set; }
 
         [ReloadRequired]
         [DefaultValue(true)]
-        public bool Energizers { get; set; }
+        public bool Energizer { get; set; }
 
         [ReloadRequired]
         [DefaultValue(true)]
-        public bool QualityOfLife { get; set; }
+        public bool QoL { get; set; }
+
+
+        public static bool Enchantments => Instance?.Enchants ?? false;
+        public static bool EternityModeAccessories => Instance?.EModeAcc ?? false;
+        public static bool Energizers => Instance?.Energizer ?? false;
+        public static bool QualityOfLife => Instance?.QoL ?? false;
     }
 }

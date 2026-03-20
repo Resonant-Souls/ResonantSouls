@@ -10,7 +10,7 @@ using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.ModPlayers;
 using FargowiltasSouls.Core.Toggler;
-using ResonantSouls.BombusApis.Core;
+using ResonantSouls.Common.Utilities;
 using Terraria.DataStructures;
 using Terraria.ID;
 
@@ -20,8 +20,8 @@ namespace ResonantSouls.BombusApis.Souls
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ApiaristsSoul : BaseSoul
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false;
-        public override string Texture => ResonantSoulsBombusApisSystems.BombusTexture(this);
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Enchantments;
+        public override string Texture => this.BombusTexture();
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -64,15 +64,13 @@ namespace ResonantSouls.BombusApis.Souls
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ApiaristEffect : AccessoryEffect
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false;
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Enchantments;
         private static ModItem? necklace;
         private static ModItem? manipulator;
         public override void SetStaticDefaults()
         {
-            ModCompatibility.BombusApisBee.Mod.TryFind("HymenoptrianNecklace", out ModItem n);
-            ModCompatibility.BombusApisBee.Mod.TryFind("HoneyManipulator", out ModItem m);
-            necklace = n;
-            manipulator = m;
+            ModCompatibility.BombusApisBee.Mod.TryFind("HymenoptrianNecklace", out necklace);
+            ModCompatibility.BombusApisBee.Mod.TryFind("HoneyManipulator", out manipulator);
         }
         public override Header? ToggleHeader => null;
         public override int ToggleItemType => ModContent.ItemType<ApiaristsSoul>();
@@ -90,7 +88,7 @@ namespace ResonantSouls.BombusApis.Souls
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ApiaristSoulPlayer : ModPlayer
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false;
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Enchantments;
         public override void UpdateEquips()
         {
             FargoSoulsPlayer modPlayer = Player.FargoSouls();

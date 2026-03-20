@@ -2,43 +2,43 @@ ResonantSoulsClientConfig: {
 	DisplayName: Client Config
 	Headers.Miscellaneous: Miscellaneous
 
-	WarningNotification: {
+	WarnNotif: {
 		Label: Warning Notification
 		Tooltip: Turns on and off the annoying text on join
 	}
 }
 
 ResonantSoulsBombusApisConfig: {
-	QualityOfLife: {
+	QoL: {
 		Tooltip: Determines whether Bombus Apis' quality of life changes will be loaded
 		Label: Quality Of Life
 	}
 
-	Energizers: {
+	Energizer: {
 		Tooltip: Determines whether Bombus Apis' energizers will be loaded
 		Label: Energizers
 	}
 
-	EternityModeAccessories: {
+	EModeAcc: {
 		Tooltip: Determines whether Bombus Apis' eternity mode accessories will be loaded
 		Label: Eternity Mode Accessories
 	}
 
-	Enchantments: {
+	Enchants: {
 		Tooltip: Determines whether Bombus Apis' enchantments will be loaded
 		Label: Enchantments
 	}
 
 	Headers.LoadedContent: Loaded Content
-	DisplayName: Bombus Apis
+	DisplayName: Bombus Apis Config
 }
 
 ResonantSoulsFargosClickerConfig: {
-	DisplayName: Resonant Souls Fargos Clicker Config
+	DisplayName: Fargo's Mod Clickers Config
 	Headers.LoadedContent: Loaded Content Header
 
-	ClickerCompat: {
-		Label: Clicker Compat
-		Tooltip: ""
+	Compat: {
+		Label: Fargo's Mod Clickers Compatibility
+		Tooltip: Toggles whether Fargo's Mod Clickers compatibility changes are enabled
 	}
 }

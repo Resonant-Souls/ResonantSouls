@@ -16,6 +16,7 @@ namespace ResonantSouls.Clicker
 
         [ReloadRequired]
         [DefaultValue(true)]
-        public bool ClickerCompat { get; set; }
+        public bool Compat { get; set; }
+        public static bool ClickerCompat => Instance?.Compat ?? false;
     }
 }

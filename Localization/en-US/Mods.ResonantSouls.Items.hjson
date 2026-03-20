@@ -83,7 +83,7 @@ PollinationForce: {
 
 TraitorBee: {
 	DisplayName: Traitor Bee
-	Tooltip: Ya like jazz?
+	Tooltip: "'Ya like jazz?'"
 }
 
 MicroverseSoul: {

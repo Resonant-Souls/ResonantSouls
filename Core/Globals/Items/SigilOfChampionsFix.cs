@@ -1,3 +1,4 @@
+using System.Linq;
 using FargowiltasSouls.Content.Items.Summons;
 using FargowiltasSouls.Core.Globals;
 
@@ -8,12 +9,14 @@ namespace ResonantSouls.Core.Globals.Items
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.ModItem is SigilOfChampions;
         public override bool CanUseItem(Item item, Player player)
         {
-            for (int i = 0; i < Main.maxNPCs; i++)
+            //    return Main.npc.Any(npc => npc.whoAmI == EModeGlobalNPC.championBoss && npc.active && npc is not null);
+
+            foreach (NPC npc in Main.ActiveNPCs)
             {
-                if (Main.npc[i].active && i == EModeGlobalNPC.championBoss)
+                if (npc.whoAmI == EModeGlobalNPC.championBoss)
                     return false;
             }
-            return base.CanUseItem(item, player);
+            return true;
         }
     }
 }

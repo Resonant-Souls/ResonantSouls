@@ -7,7 +7,7 @@ namespace ResonantSouls.Core.ModPlayers
     {
         public override void OnEnterWorld()
         {
-            if (ResonantSoulsClientConfig.Instance?.WarningNotification ?? false)
+            if (ResonantSoulsClientConfig.WarningNotification)
             {
                 Main.NewText(Language.GetTextValue($"Mods.{Mod.Name}.Message.WarningNotification"), Color.Red);
             }

@@ -16,7 +16,7 @@ namespace ResonantSouls.BombusApis.Core
         {
             bool Universe = item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
 
-            if (ResonantSoulsBombusApisConfig.Instance?.Enchantments ?? false)
+            if (ResonantSoulsBombusApisConfig.Enchantments)
             {
                 if (Universe)
                 {
@@ -27,7 +27,7 @@ namespace ResonantSouls.BombusApis.Core
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
-            string key = "Mods.ResonantSouls.Items.";
+            const string key = "Mods.ResonantSouls.Items.";
             if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
             {
                 if (SoulsItem.IsNotRuminating(item))

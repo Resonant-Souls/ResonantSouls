@@ -11,12 +11,12 @@ namespace ResonantSouls.Clicker.Core
     [ExtendsFromMod(ModCompatibility.FargoClickers.Name, ModCompatibility.ClickerClass.Name)]
     public class ResonantSoulsFargosClickerSystems : ModSystem
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsFargosClickerConfig.Instance?.ClickerCompat ?? false;
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsFargosClickerConfig.ClickerCompat;
         public override void PostSetupContent()
         {
             ModCompatibility.FargoClickers.Mod.Call("CSESupport");
         }
-        public override void PostAddRecipes()
+        public override void AddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
@@ -25,15 +25,6 @@ namespace ResonantSouls.Clicker.Core
                 if (recipe.HasResult<UniverseSoul>() && !recipe.HasIngredient<MasterPlayerSoul>())
                     recipe.AddIngredient<MasterPlayerSoul>();
             }
-        }
-        public override void PostSetupRecipes()
-        {
-            // TODO: Make this automatic
-            SoulsItemSets.MaterialOfImportantItem[ModContent.ItemType<MasterPlayerSoul>()] = ModContent.ItemType<UniverseSoul>();
-            SoulsItemSets.MaterialOfImportantItem[ModContent.ItemType<ForceOfMatrix>()] = ModContent.ItemType<MicroverseSoul>();
-            // TODO: It's because it's named ForceOfMatrix instead of MatrixForce. It needs to end in Force to automatically be dupable.
-            FargoItemSets.DuplicatableItems[ModContent.ItemType<MasterPlayerSoul>()] = DupeType.Dupable;
-            FargoItemSets.DuplicatableItems[ModContent.ItemType<ForceOfMatrix>()] = DupeType.Dupable;
         }
     }
 }

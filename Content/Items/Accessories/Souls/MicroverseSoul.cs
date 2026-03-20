@@ -4,6 +4,8 @@ using Fargowiltas.Content.Items.Tiles;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Content.Rarities;
+using ResonantSouls.BombusApis;
+using ResonantSouls.Clicker;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Localization;
@@ -16,11 +18,10 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
         public static readonly List<ModItem> Forces = [];
         public override void Load()
         {
-            ModContent.TryFind(ModCompatibility.ResonantSouls.Name, "PollinationForce", out ModItem PollinationForce);
-            if (ModCompatibility.BombusApisBee.Loaded && PollinationForce != null) Forces.Add(PollinationForce);
-
-            ModContent.TryFind(ModCompatibility.FargoClickers.Name, "ForceOfMatrix", out ModItem ForceOfMatrix);
-            if (ModCompatibility.FargoClickers.Loaded && ForceOfMatrix != null) Forces.Add(ForceOfMatrix);
+            if (ModCompatibility.BombusApisBee.Loaded && ModContent.TryFind(ModCompatibility.ResonantSouls.Name, "PollinationForce", out ModItem PollinationForce))
+                Forces.Add(PollinationForce);
+            if (ModCompatibility.FargoClickers.Loaded && ModCompatibility.ClickerClass.Loaded && ModContent.TryFind(ModCompatibility.FargoClickers.Name, "ForceOfMatrix", out ModItem ForceOfMatrix))
+                Forces.Add(ForceOfMatrix);
         }
         public override void SetStaticDefaults()
         {
@@ -46,21 +47,23 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
         public override void SafeModifyTooltips(List<TooltipLine> tooltips)
         {
             int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
+            bool Click = ModCompatibility.FargoClickers.Loaded && ResonantSoulsFargosClickerConfig.ClickerCompat;
+            bool Bee = ModCompatibility.BombusApisBee.Loaded && ResonantSoulsBombusApisConfig.Enchantments;
 
             if (IsNotRuminating(Item))
             {
                 tooltips.Insert(Tooltip0, new TooltipLine(Mod, "Forces", string.Concat(
-                    (ModCompatibility.BombusApisBee.Loaded ? "[i:ResonantSouls/PollinationForce]" : "") +
-                    (ModCompatibility.FargoClickers.Loaded ? "[i:FargoClickers/ForceOfMatrix]" : "") +
+                    (Bee ? "[i:ResonantSouls/PollinationForce]" : "") +
+                    (Click ? "[i:FargoClickers/ForceOfMatrix]" : "") +
                     " " + Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Forces"))));
             }
             else
             {
-                if (ModCompatibility.FargoClickers.Loaded)
+                if (Click)
                 {
                     tooltips.Insert(Tooltip0, new TooltipLine(Mod, "ForceOfMatrix", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.ForceOfMatrix")));
                 }
-                if (ModCompatibility.BombusApisBee.Loaded)
+                if (Bee)
                 {
                     tooltips.Insert(Tooltip0, new TooltipLine(Mod, "PollinationForce", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.PollinationForce")));
                 }
