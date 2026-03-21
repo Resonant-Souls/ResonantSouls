@@ -3,7 +3,7 @@ ResonantSoulsPainting: {
 	Tooltip:
 		'''
 		Special thanks all of our contributors and to the people who inspired us!
-		Hold SHIFT to view the full credits
+		Hold LeftShift to view the full credits
 		'''
 }
 
@@ -77,6 +77,7 @@ PollinationForce: {
 		[i:ResonantSouls/LivingFlowerEnchant]
 		[i:ResonantSouls/SkeletalBeeEnchant]
 		[i:ResonantSouls/WaspEnchant]
+		'Smells like sweet flowers'
 		'''
 	DisplayName: Force of Pollination
 }
@@ -87,8 +88,8 @@ TraitorBee: {
 }
 
 MicroverseSoul: {
-	Tooltip: "'Become the master of the microverse'"
-	RuminateTooltip: "'Become the master of the microverse'"
+	Tooltip: "'The master of the microverse'"
+	RuminateTooltip: "'The master of the microverse'"
 	DisplayName: Soul of the Microverse
 	Forces: Grants combined and empowered versions of all force effects
 

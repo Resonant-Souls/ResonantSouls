@@ -19,7 +19,7 @@ namespace ResonantSouls.Clicker.Core
             bool Microverse = item.type == ModContent.ItemType<MicroverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
             bool Universe = item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
 
-            if (Microverse)
+            if (Microverse && ModCompatibility.AnyMicroverse)
             {
                 ForceOfMatrix.UpdateForceOfMatrix(player, item);
             }

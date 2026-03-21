@@ -14,11 +14,12 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
 {
     public class MicroverseSoul : BaseSoul
     {
+        public override bool IsLoadingEnabled(Mod mod) => ModCompatibility.AnyMicroverse;
         public override string Texture => "ResonantSouls/Assets/Textures/Content/Items/Accessories/Souls/MicroverseSoul";
         public static readonly List<ModItem> Forces = [];
         public override void Load()
         {
-            if (ModCompatibility.BombusApisBee.Loaded && ModContent.TryFind(ModCompatibility.ResonantSouls.Name, "PollinationForce", out ModItem PollinationForce))
+            if (ModCompatibility.BombusApisBee.Loaded && ModContent.TryFind(Mod.Name, "PollinationForce", out ModItem PollinationForce))
                 Forces.Add(PollinationForce);
             if (ModCompatibility.FargoClickers.Loaded && ModCompatibility.ClickerClass.Loaded && ModContent.TryFind(ModCompatibility.FargoClickers.Name, "ForceOfMatrix", out ModItem ForceOfMatrix))
                 Forces.Add(ForceOfMatrix);

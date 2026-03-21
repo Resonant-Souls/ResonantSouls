@@ -21,15 +21,15 @@ namespace ResonantSouls
             Instance = null;
         }
     }
-    #region Debug
-    public class Debug : ModSystem
-    {
-        internal const string Placeholder = "FargowiltasSouls/Content/Items/Placeholder";
-    }
+
     public class DebugItem : GlobalItem
     {
+        internal const string Placeholder = "FargowiltasSouls/Content/Items/Placeholder";
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+            if (!ResonantSoulsClientConfig.Debug)
+                return;
+
             TooltipLine Value = new(Mod, "Value", "Value: " + item.value.ToString())
             {
                 OverrideColor = Color.Green
@@ -47,5 +47,4 @@ namespace ResonantSouls
             tooltips.Add(Name);
         }
     }
-    #endregion Debug
 }

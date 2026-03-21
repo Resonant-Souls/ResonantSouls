@@ -7,7 +7,7 @@ namespace ResonantSouls.Core.Globals.Items
 {
     public class ResonantDeveloper : GlobalItem
     {
-        public override bool IsLoadingEnabled(Mod mod) => false;
+        public override bool IsLoadingEnabled(Mod mod) => devItems.Count > 0;
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) => devItems.ContainsKey(entity.type) && entity.active;
         public override bool InstancePerEntity => true;
         public Dictionary<int, string> devItems = new()

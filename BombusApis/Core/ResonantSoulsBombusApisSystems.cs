@@ -1,6 +1,5 @@
 using BombusApisbee.NPCs;
 using BombusApisBee.Items.Armor.BeeKeeperDamageClass;
-using FargowiltasSouls.Common.Collections;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ResonantSouls.BombusApis.Souls;
 using ResonantSouls.Common.Utilities;

@@ -6,6 +6,11 @@ ResonantSoulsClientConfig: {
 		Label: Warning Notification
 		Tooltip: Turns on and off the annoying text on join
 	}
+
+	Debugging: {
+		Tooltip: ""
+		Label: Debugging
+	}
 }
 
 ResonantSoulsBombusApisConfig: {

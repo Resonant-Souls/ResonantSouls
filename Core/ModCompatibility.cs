@@ -1,18 +1,24 @@
+using System.Collections.Generic;
+
 namespace ResonantSouls.Core
 {
     public static class ModCompatibility
     {
-        public static class ResonantSouls
-        {
-            // Me when I'm lazy
-            public const string Name = "ResonantSouls";
-            public static bool Loaded => ModLoader.HasMod(Name);
-            public static Mod Mod => ModLoader.GetMod(Name);
-        }
+        public static List<bool> LoadedMicroverseMods =
+        [
+            BombusApisBee.Loaded,
+            FargoClickers.Loaded,
+        ];
+        public static List<bool> LoadedChampionMods =
+        [
+            BombusApisBee.Loaded,
+            FargoClickers.Loaded,
+        ];
+        public static bool AnyMicroverse => LoadedMicroverseMods.Contains(true);
+        public static bool AnyChampion => LoadedChampionMods.Contains(true);
         public static class Fargowiltas
         {
             public const string Name = "Fargowiltas";
-            public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.GetMod(Name);
         }
         public static class FargowiltasCrossmod
@@ -28,16 +34,9 @@ namespace ResonantSouls.Core
             public static Mod Mod => ModLoader.GetMod(Name);
         }
 
-        public static class FargoSeeds
-        {
-            public const string Name = "FargoSeeds";
-            public static bool Loaded => ModLoader.HasMod(Name);
-            public static Mod Mod => ModLoader.GetMod(Name);
-        }
         public static class FargowiltasSouls
         {
             public const string Name = "FargowiltasSouls";
-            public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.GetMod(Name);
         }
         public static class Luminance
@@ -49,30 +48,6 @@ namespace ResonantSouls.Core
         public static class Daybreak
         {
             public const string Name = "Daybreak";
-            public static bool Loaded => ModLoader.HasMod(Name);
-            public static Mod Mod => ModLoader.GetMod(Name);
-        }
-        public static class SpiritMod
-        {
-            public const string Name = "SpiritMod";
-            public static bool Loaded => ModLoader.HasMod(Name);
-            public static Mod Mod => ModLoader.GetMod(Name);
-        }
-        public static class SpiritReforged
-        {
-            public const string Name = "SpiritReforged";
-            public static bool Loaded => ModLoader.HasMod(Name);
-            public static Mod Mod => ModLoader.GetMod(Name);
-        }
-        public static class ThrowerUnification
-        {
-            public const string Name = "ThrowerUnification";
-            public static bool Loaded => ModLoader.HasMod(Name);
-            public static Mod Mod => ModLoader.GetMod(Name);
-        }
-        public static class Redemption
-        {
-            public const string Name = "Redemption";
             public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.GetMod(Name);
         }
@@ -91,6 +66,12 @@ namespace ResonantSouls.Core
         public static class FargoClickers
         {
             public const string Name = "FargoClickers";
+            public static bool Loaded => ModLoader.HasMod(Name);
+            public static Mod Mod => ModLoader.GetMod(Name);
+        }
+        public static class OrchidMod
+        {
+            public const string Name = "OrchidMod";
             public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.GetMod(Name);
         }

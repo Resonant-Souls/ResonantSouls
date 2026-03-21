@@ -14,7 +14,11 @@ namespace ResonantSouls
 
         [DefaultValue(true)]
         public bool WarnNotif { get; set; }
+        [DefaultValue(true)]
+        public bool Debugging { get; set; }
 
         public static bool WarningNotification => Instance?.WarnNotif ?? false;
+        public static bool Debug => Instance?.Debugging ?? false;
+
     }
 }

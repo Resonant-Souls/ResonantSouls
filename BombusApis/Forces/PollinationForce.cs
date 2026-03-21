@@ -1,8 +1,7 @@
 ﻿using FargowiltasSouls.Content.Items.Accessories.Forces;
 using ResonantSouls.BombusApis.Enchants;
 using Fargowiltas.Content.Items.Tiles;
-using ResonantSouls.Common.Utilities;
-
+ 
 namespace ResonantSouls.BombusApis.Forces
 {
     [JITWhenModsEnabled(ModCompatibility.BombusApisBee.Name)]
@@ -10,7 +9,7 @@ namespace ResonantSouls.BombusApis.Forces
     public class PollinationForce : BaseForce
     {
         public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Enchantments;
-        public override string Texture => Debug.Placeholder;
+        public override string Texture => DebugItem.Placeholder;
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
