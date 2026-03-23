@@ -16,25 +16,22 @@ namespace ResonantSouls.BombusApis.Core
         {
             bool Universe = item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
 
-            if (ResonantSoulsBombusApisConfig.Enchantments)
+            if (Universe)
             {
-                if (Universe)
-                {
-                    player.AddEffect<ApiaristEffect>(item);
-                }
+                player.AddEffect<ApiaristEffect>(item);
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
-            const string key = "Mods.ResonantSouls.Items.";
+            int Tooltip = tooltips.FindLastIndex(t => t.Name.StartsWith("Tooltip") && t.Mod == "Terraria"); const string key = "Mods.ResonantSouls.Items.";
             if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
             {
                 if (SoulsItem.IsNotRuminating(item))
                 {
                     const string conjurists = "[i:FargowiltasSouls/ConjuristsSoul]";
                     int extraeff = tooltips.FindIndex(t => t.Text.Contains(conjurists));
-                    tooltips[extraeff].Text = tooltips[extraeff].Text.Replace(conjurists, conjurists + "[i:ResonantSouls/ApiaristsSoul]");
+                    tooltips[extraeff].Text = tooltips[Tooltip0].Text.Replace(conjurists, conjurists + "[i:ResonantSouls/ApiaristsSoul]");
                 }
                 else
                 {

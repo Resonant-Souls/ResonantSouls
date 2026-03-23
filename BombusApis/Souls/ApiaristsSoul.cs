@@ -20,7 +20,6 @@ namespace ResonantSouls.BombusApis.Souls
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ApiaristsSoul : BaseSoul
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Enchantments;
         public override string Texture => this.BombusTexture();
         public override void SetStaticDefaults()
         {
@@ -32,6 +31,9 @@ namespace ResonantSouls.BombusApis.Souls
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.AddEffect<ApiaristEffect>(Item);
+            player.GetDamage<HymenoptraDamageClass>() += 1.25f;
+            player.GetCritChance<HymenoptraDamageClass>() += 0.10f;
+            player.GetAttackSpeed<HymenoptraDamageClass>() += 0.15f;
         }
         public override void AddRecipes()
         {
@@ -64,7 +66,6 @@ namespace ResonantSouls.BombusApis.Souls
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ApiaristEffect : AccessoryEffect
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Enchantments;
         private static ModItem? necklace;
         private static ModItem? manipulator;
         public override void SetStaticDefaults()
@@ -76,10 +77,6 @@ namespace ResonantSouls.BombusApis.Souls
         public override int ToggleItemType => ModContent.ItemType<ApiaristsSoul>();
         public override void PostUpdate(Player player)
         {
-            player.GetDamage<HymenoptraDamageClass>() += 0.25f;
-            player.GetCritChance<HymenoptraDamageClass>() += 0.10f;
-            player.GetAttackSpeed<HymenoptraDamageClass>() += 0.15f;
-
             necklace?.UpdateAccessory(player, true);
             manipulator?.UpdateAccessory(player, true);
         }
@@ -88,7 +85,6 @@ namespace ResonantSouls.BombusApis.Souls
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ApiaristSoulPlayer : ModPlayer
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Enchantments;
         public override void UpdateEquips()
         {
             FargoSoulsPlayer modPlayer = Player.FargoSouls();

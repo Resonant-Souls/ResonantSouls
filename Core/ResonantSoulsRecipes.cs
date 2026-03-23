@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
+using ResonantSouls.Common.Systems;
 using ResonantSouls.Common.Utilities;
 using ResonantSouls.Content.Items.Accessories.Souls;
 
@@ -14,7 +15,7 @@ namespace ResonantSouls.Core
             {
                 Recipe recipe = Main.recipe[i];
 
-                if (recipe.HasResult(ModContent.ItemType<EternitySoul>()) && ModCompatibility.AnyMicroverse)
+                if (recipe.HasResult(ModContent.ItemType<EternitySoul>()))
                 {
                     recipe.SafeAddToRecipe(ModContent.ItemType<MicroverseSoul>());
                 }
@@ -28,14 +29,7 @@ namespace ResonantSouls.Core
 
                 if (recipe.createItem.ModItem is BaseSoul)
                 {
-                    List<Item> notSoul = recipe.requiredItem.Where(item => item.ModItem is not BaseSoul).ToList();
-
-                    foreach (var item in notSoul)
-                    {
-                        int count = item.stack;
-                        recipe.RemoveIngredient(item);
-                        recipe.AddIngredient(item.type, count);
-                    }
+                    recipe.ShiftRecipeItems();
                 }
             }
         }

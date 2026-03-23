@@ -24,11 +24,6 @@ ResonantSoulsBombusApisConfig: {
 		Label: Energizers
 	}
 
-	EModeAcc: {
-		Tooltip: Determines whether Bombus Apis' eternity mode accessories will be loaded
-		Label: Eternity Mode Accessories
-	}
-
 	Enchants: {
 		Tooltip: Determines whether Bombus Apis' enchantments will be loaded
 		Label: Enchantments
@@ -46,4 +41,24 @@ ResonantSoulsFargosClickerConfig: {
 		Label: Fargo's Mod Clickers Compatibility
 		Tooltip: Toggles whether Fargo's Mod Clickers compatibility changes are enabled
 	}
+}
+
+ResonantSoulsOrchidConfig: {
+	QoL: {
+		Tooltip: Determines whether whether Orchid's quality of life changes will be loaded
+		Label: Quality Of Life
+	}
+
+	Energizer: {
+		Tooltip: Determines whether whether Orchid's energizers will be loaded
+		Label: Energizers
+	}
+
+	Enchants: {
+		Tooltip: Determines whether Orchid's enchantments will be loaded
+		Label: Enchantments
+	}
+
+	Headers.LoadedContent: Loaded Content
+	DisplayName: Resonant Souls Orchid Config
 }

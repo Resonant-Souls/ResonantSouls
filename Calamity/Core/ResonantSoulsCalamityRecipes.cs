@@ -18,12 +18,10 @@ namespace ResonantSouls.Calamity.Core
             {
                 Recipe recipe = Main.recipe[i];
 
-                List<int> Tier2Souls = [];
-                
-                if (ModCompatibility.AnyMicroverse)
-                {
-                    Tier2Souls.Add(ModContent.ItemType<MicroverseSoul>());
-                }
+                List<int> Tier2Souls =
+                [
+                    ModContent.ItemType<MicroverseSoul>()
+                ];
 
                 if (Tier2Souls.Contains(recipe.createItem.type) && !recipe.HasIngredient(ModContent.ItemType<AshesofAnnihilation>()))
                 {

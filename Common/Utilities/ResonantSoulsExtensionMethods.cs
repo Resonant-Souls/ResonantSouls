@@ -23,8 +23,15 @@ namespace ResonantSouls.Common.Utilities
             {
                 recipe.AddIngredient(ingredient, ingredientCount);
             }
-
+        }
+        public static void SafeAddRecipeGroup(this Recipe recipe, string recipeGroup)
+        {
+            if (!recipe.HasRecipeGroup(recipeGroup))
+            {
+                recipe.AddRecipeGroup(recipeGroup);
+            }
         }
         public static int IndexOf(this Array array, object? value) => Array.IndexOf(array, value);
+    //    public static Array AddArray(this Array array, Array arrayToAdd) => ResonantSoulsUtilities.MergeTwoArrays(array, arrayToAdd);
     }
 }

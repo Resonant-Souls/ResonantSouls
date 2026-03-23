@@ -12,7 +12,6 @@ namespace ResonantSouls.BombusApis.Enchants
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class SkeletalBeeEnchant : BaseEnchant
     {
-        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsBombusApisConfig.Enchantments;
         public override string Texture => this.BombusTexture();
         public override Color nameColor => new(164, 85, 78);
         public override void SetDefaults()

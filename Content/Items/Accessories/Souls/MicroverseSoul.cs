@@ -14,7 +14,6 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
 {
     public class MicroverseSoul : BaseSoul
     {
-        public override bool IsLoadingEnabled(Mod mod) => ModCompatibility.AnyMicroverse;
         public override string Texture => "ResonantSouls/Assets/Textures/Content/Items/Accessories/Souls/MicroverseSoul";
         public static readonly List<ModItem> Forces = [];
         public override void Load()
@@ -48,8 +47,8 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
         public override void SafeModifyTooltips(List<TooltipLine> tooltips)
         {
             int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
-            bool Click = ModCompatibility.FargoClickers.Loaded && ResonantSoulsFargosClickerConfig.ClickerCompat;
-            bool Bee = ModCompatibility.BombusApisBee.Loaded && ResonantSoulsBombusApisConfig.Enchantments;
+            bool Click = ModCompatibility.FargoClickers.Loaded && ModCompatibility.ClickerClass.Loaded && ResonantSoulsFargosClickerConfig.ClickerCompat;
+            bool Bee = ModCompatibility.BombusApisBee.Loaded;
 
             if (IsNotRuminating(Item))
             {

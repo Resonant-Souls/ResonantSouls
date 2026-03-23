@@ -115,4 +115,22 @@ AddedEffects: {
 		[i:BombusApisBee/HymenoptrianNecklace] Effect
 		[i:BombusApisBee/HymenoptrianNecklace] Effect
 		'''
+	GuardianUniverse:
+		'''
+		[Orchid Item] Effect
+		[Orchid Item] Effect
+		'''
 }
+
+GuardiansSoul: {
+	Tooltip:
+		'''
+		26% increased opposing damage and 13% increased opposing critical chance
+		12% increased melee attack speed and increased block and parry timing
+		'''
+	DisplayName: Guardians Soul
+}
+
+IncreaseGuardsAndSlams: Increases maximum guards and slams by {0}
+IncreaseGuards: Increases maximum guards by {0}
+IncreaseSlams: Increases maximum slams by {0}

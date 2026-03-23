@@ -4,18 +4,6 @@ namespace ResonantSouls.Core
 {
     public static class ModCompatibility
     {
-        public static List<bool> LoadedMicroverseMods =
-        [
-            BombusApisBee.Loaded,
-            FargoClickers.Loaded,
-        ];
-        public static List<bool> LoadedChampionMods =
-        [
-            BombusApisBee.Loaded,
-            FargoClickers.Loaded,
-        ];
-        public static bool AnyMicroverse => LoadedMicroverseMods.Contains(true);
-        public static bool AnyChampion => LoadedChampionMods.Contains(true);
         public static class Fargowiltas
         {
             public const string Name = "Fargowiltas";
@@ -72,6 +60,12 @@ namespace ResonantSouls.Core
         public static class OrchidMod
         {
             public const string Name = "OrchidMod";
+            public static bool Loaded => ModLoader.HasMod(Name);
+            public static Mod Mod => ModLoader.GetMod(Name);
+        }
+        public static class ThoriumMod
+        {
+            public const string Name = "ThoriumMod";
             public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.GetMod(Name);
         }

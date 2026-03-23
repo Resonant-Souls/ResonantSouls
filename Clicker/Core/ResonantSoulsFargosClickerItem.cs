@@ -19,7 +19,7 @@ namespace ResonantSouls.Clicker.Core
             bool Microverse = item.type == ModContent.ItemType<MicroverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
             bool Universe = item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
 
-            if (Microverse && ModCompatibility.AnyMicroverse)
+            if (Microverse)
             {
                 ForceOfMatrix.UpdateForceOfMatrix(player, item);
             }
@@ -33,6 +33,7 @@ namespace ResonantSouls.Clicker.Core
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
+            int Tooltip = tooltips.FindLastIndex(t => t.Name.StartsWith("Tooltip") && t.Mod == "Terraria");
             const string key = "Mods.ResonantSouls.Items.";
             if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
             {
