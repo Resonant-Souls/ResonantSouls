@@ -21,13 +21,13 @@ namespace ResonantSouls.OrchidMod.Core
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
             bool Universe = item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
-            OrchidGuardian mp = player.GetModPlayer<OrchidGuardian>();
+            OrchidGuardian mp = ResonantSoulsOrchidSystems.GuardianPlayer(player);
 
             if (Universe)
             {
                 player.AddEffect<GuardianEffect>(item);
             }
-            else if (item.type == ModContent.ItemType<StyxCrown>())
+            if (item.type == ModContent.ItemType<StyxCrown>())
             {
                 mp.GuardianGuardMax += 3;
                 mp.GuardianSlamMax += 3;
@@ -69,20 +69,24 @@ namespace ResonantSouls.OrchidMod.Core
 
             var lines = tooltips[Tooltip].Text.Split("\n").ToList();
 
-            if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
+            if (item.type == ModContent.ItemType<UniverseSoul>())
             {
-                if (SoulsItem.IsNotRuminating(item))
+                if (!item.social)
                 {
-                    const string conjurists = "[i:FargowiltasSouls/ConjuristsSoul]";
-                    int extraeff = tooltips.FindIndex(t => t.Text.Contains(conjurists));
-                    tooltips[extraeff].Text = tooltips[extraeff].Text.Replace(conjurists, conjurists + "[i:ResonantSouls/GuardiansSoul]");
+                    if (SoulsItem.IsNotRuminating(item))
+                    {
+                        const string conjurists = "[i:FargowiltasSouls/ConjuristsSoul]";
+                        int extraeff = tooltips.FindIndex(t => t.Text.Contains(conjurists));
+                        tooltips[extraeff].Text = tooltips[extraeff].Text.Replace(conjurists, conjurists + "[i:ResonantSouls/GuardiansSoul]");
+                    }
+                    else
+                    {
+                        var linesU = tooltips[Tooltip0].Text.Split("\n").ToList();
+                        linesU.Insert(linesU.Count - 1, Language.GetTextValue(key + "AddedEffects.GuardianUniverse"));
+                        tooltips[Tooltip0].Text = string.Join("\n", linesU);
+                    }
                 }
-                else
-                {
-                    var linesU = tooltips[Tooltip0].Text.Split("\n").ToList();
-                    linesU.Insert(linesU.Count - 1, Language.GetTextValue(key + "AddedEffects.GuardianUniverse"));
-                    tooltips[Tooltip0].Text = string.Join("\n", linesU);
-                }
+
             }
             else if (item.type == ModContent.ItemType<EternalFlame>())
             {
@@ -119,7 +123,6 @@ namespace ResonantSouls.OrchidMod.Core
                 lines.Insert(lines.Count, Language.GetTextValue(key + "IncreaseGuardsAndSlams", 2));
                 tooltips[Tooltip].Text = string.Join("\n", lines);
             }
-
         }
     }
 }

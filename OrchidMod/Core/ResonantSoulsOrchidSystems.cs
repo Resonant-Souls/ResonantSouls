@@ -1,6 +1,5 @@
-using System;
-using Fargowiltas.Common.Systems.Collections;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
+using OrchidMod;
 using OrchidMod.Content.Guardian.Armors.Misc;
 using OrchidMod.Content.Guardian.Weapons.Gauntlets;
 using OrchidMod.Content.Guardian.Weapons.Quarterstaves;
@@ -11,11 +10,9 @@ using OrchidMod.Content.Guardian.Weapons.Warhammers;
 using OrchidMod.Content.Shapeshifter.Weapons.Predator;
 using OrchidMod.Content.Shapeshifter.Weapons.Sage;
 using OrchidMod.Content.Shapeshifter.Weapons.Warden;
-using ReLogic.Reflection;
 using ResonantSouls.Common.Systems;
 using ResonantSouls.Common.Utilities;
 using ResonantSouls.OrchidMod.Souls;
-using Terraria.ID;
 
 namespace ResonantSouls.OrchidMod.Core
 {
@@ -23,6 +20,7 @@ namespace ResonantSouls.OrchidMod.Core
     [ExtendsFromMod(ModCompatibility.OrchidMod.Name)]
     public class ResonantSoulsOrchidSystems : ModSystem
     {
+        public static OrchidGuardian GuardianPlayer(Player player) => player.GetModPlayer<OrchidGuardian>();
         public override void AddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
@@ -37,7 +35,7 @@ namespace ResonantSouls.OrchidMod.Core
         }
         public override void PostSetupContent()
         {
-            ResonantSoulsUtilities.SetSacrifice(types:[
+            ResonantSoulsUtilities.SetSacrifice(types: [
                 ModContent.ItemType<GoblinRune>(),
                 ModContent.ItemType<RuneRune>(),
                 ModContent.ItemType<PredatorGoblin>(),

@@ -1,10 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
 using Fargowiltas.Content.Items.Tiles;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Content.Rarities;
-using ResonantSouls.BombusApis;
 using ResonantSouls.Clicker;
 using Terraria.DataStructures;
 using Terraria.ID;
