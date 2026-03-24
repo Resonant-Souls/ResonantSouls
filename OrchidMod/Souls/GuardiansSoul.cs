@@ -5,6 +5,8 @@ using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using OrchidMod;
+using OrchidMod.Common;
+using OrchidMod.Common.Attributes;
 using OrchidMod.Content.Guardian;
 using OrchidMod.Content.Guardian.Accessories;
 using OrchidMod.Content.Guardian.Weapons.Gauntlets;
@@ -14,12 +16,14 @@ using OrchidMod.Content.Guardian.Weapons.Standards;
 using OrchidMod.Content.Guardian.Weapons.Warhammers;
 using ResonantSouls.Common.Utilities;
 using Terraria.DataStructures;
+using ResonantSouls.OrchidMod.Core;
 using Terraria.ID;
 
 namespace ResonantSouls.OrchidMod.Souls
 {
     [JITWhenModsEnabled(ModCompatibility.OrchidMod.Name)]
     [ExtendsFromMod(ModCompatibility.OrchidMod.Name)]
+    [ClassTag(ClassTags.Guardian)]
     public class GuardiansSoul : BaseSoul
     {
         public override string Texture => this.OrchidTexture();
@@ -37,10 +41,16 @@ namespace ResonantSouls.OrchidMod.Souls
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            OrchidGuardian modPlayer = ResonantSoulsOrchidSystems.GuardianPlayer(player);
+
             player.AddEffect<GuardianEffect>(Item);
             player.GetDamage<GuardianDamageClass>() += 0.26f;
             player.GetCritChance<GuardianDamageClass>() += 0.13f;
             player.GetAttackSpeed<MeleeDamageClass>() += 0.12f;
+
+            ModContent.GetInstance<SturdySlab>().UpdateAccessory(player, hideVisual);
+            ModContent.GetInstance<TempleSpike>().UpdateAccessory(player, hideVisual);
+            modPlayer.GuardianSpikeTemple = true;
         }
         public override void AddRecipes()
         {
@@ -68,18 +78,18 @@ namespace ResonantSouls.OrchidMod.Souls
                 .AddIngredient(ModContent.ItemType<AbomEnergy>(), 10)
                 .AddTile<LuminiteOmniforgeTile>()
                 .Register();
-
         }
     }
     [JITWhenModsEnabled(ModCompatibility.OrchidMod.Name)]
     [ExtendsFromMod(ModCompatibility.OrchidMod.Name)]
+    [ClassTag(ClassTags.Guardian)]
     public class GuardianEffect : AccessoryEffect
     {
         public override Header? ToggleHeader => null;
         public override int ToggleItemType => ModContent.ItemType<GuardiansSoul>();
         public override void PostUpdate(Player player)
         {
-            OrchidGuardian mp = player.GetModPlayer<OrchidGuardian>();
+            OrchidGuardian mp = ResonantSoulsOrchidSystems.GuardianPlayer(player);
             mp.GuardianGuardRecharge *= 1.75f;
             mp.GuardianSlamRecharge *= 3.4f;
             mp.GuardianRegenThreshold *= 1.25f;

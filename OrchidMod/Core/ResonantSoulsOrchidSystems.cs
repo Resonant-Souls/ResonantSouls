@@ -1,4 +1,5 @@
 using FargowiltasSouls.Content.Items.Accessories.Souls;
+using OrchidMod;
 using OrchidMod.Content.Guardian.Armors.Misc;
 using OrchidMod.Content.Guardian.Weapons.Gauntlets;
 using OrchidMod.Content.Guardian.Weapons.Quarterstaves;
@@ -19,6 +20,7 @@ namespace ResonantSouls.OrchidMod.Core
     [ExtendsFromMod(ModCompatibility.OrchidMod.Name)]
     public class ResonantSoulsOrchidSystems : ModSystem
     {
+        public static OrchidGuardian GuardianPlayer(Player player) => player.GetModPlayer<OrchidGuardian>();
         public override void AddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)

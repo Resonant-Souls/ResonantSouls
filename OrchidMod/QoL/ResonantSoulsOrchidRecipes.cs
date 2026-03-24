@@ -40,28 +40,30 @@ namespace ResonantSouls.OrchidMod.QoL
     {
         static OrchidServerConfig OrchidServerConfig => ModContent.GetInstance<OrchidServerConfig>();
         static bool Shapeshifter => OrchidServerConfig.EnableContentShapeshifter;
+        Recipe? recipe;
+        RecipeGroup? recipeGroup;
         public override void AddRecipes()
         {
             if (FargoServerConfig.Instance.ContainerRecipes)
             {
-                AddCrateRecipes(Shapeshifter);
-                AddBossBagRecipes(Shapeshifter);
+                AddCrateRecipes();
+                AddBossBagRecipes();
             }
             if (FargoServerConfig.Instance.BannerRecipes)
             {
-                AddBannerRecipes(Shapeshifter);
+                AddBannerRecipes();
             }
             if (FargoServerConfig.Instance.MiscRecipes)
             {
-                AddMiscRecipes(Shapeshifter);
-                AddBossTrophyRecipes(Shapeshifter);
-                AddConversionRecipes(Shapeshifter);
+                AddMiscRecipes();
+                AddBossTrophyRecipes();
+                AddConversionRecipes();
             }
-            ModifyRecipeGroups(Shapeshifter);
-            AddTravellingMerchantNPCRecipes(Shapeshifter);
-            AddFargosRecipes(Shapeshifter);
+            ModifyRecipeGroups();
+            AddTravellingMerchantNPCRecipes();
+            AddFargosRecipes();
         }
-        static void AddCrateRecipes(bool Shapeshifter)
+        static void AddCrateRecipes()
         {
             if (Shapeshifter)
                 CreateCrateRecipe(ModContent.ItemType<WardenSnail>(), ResonantSoulsRecipeSystem.AnyWoodCrate, 5);
@@ -103,7 +105,7 @@ namespace ResonantSouls.OrchidMod.QoL
             CreateCrateRecipe(ModContent.ItemType<CrimsonQuarterstaff>(), ResonantSoulsRecipeSystem.AnyCrimsonCrate, 3);
 
         }
-        static void AddBossBagRecipes(bool Shapeshifter)
+        static void AddBossBagRecipes()
         {
             if (Shapeshifter)
             {
@@ -127,7 +129,7 @@ namespace ResonantSouls.OrchidMod.QoL
                 CreateTreasureGroupRecipe(ModCompatibility.ThoriumMod.Mod.Find<ModItem>("CountBag").Type, ModContent.ItemType<ThoriumViscountQuarterstaff>());
             }
         }
-        static void AddBossTrophyRecipes(bool Shapeshifter)
+        static void AddBossTrophyRecipes()
         {
             CreateTreasureGroupRecipe(ItemID.EyeofCthulhuTrophy, ModContent.ItemType<SquareMinecart>(), ModContent.ItemType<PrototypeSecrecy>());
 
@@ -142,7 +144,7 @@ namespace ResonantSouls.OrchidMod.QoL
             CreateTreasureGroupRecipe(ItemID.PumpkingTrophy, ModContent.ItemType<PumpkingWarhammer>());
 
         }
-        static void AddBannerRecipes(bool Shapeshifter)
+        static void AddBannerRecipes()
         {
             AddBannerToItemRecipe(ItemID.ElfCopterBanner, ModContent.ItemType<RCRemote>());
 
@@ -186,10 +188,8 @@ namespace ResonantSouls.OrchidMod.QoL
                 AddBannerGroupToItemRecipe(ResonantSoulsRecipeSystem.AnyBatBanner, ModContent.ItemType<SageBat>());
             }
         }
-        static void AddMiscRecipes(bool Shapeshifter)
+        void AddMiscRecipes()
         {
-            Recipe recipe;
-
             recipe = Recipe.Create(ModContent.ItemType<PresentQuarterstaff>());
             recipe.AddIngredient(ItemID.Present, 10);
             recipe.AddTile(TileID.Solidifier);
@@ -210,10 +210,8 @@ namespace ResonantSouls.OrchidMod.QoL
             recipe.AddTile(TileID.Solidifier);
             recipe.Register();
         }
-        static void ModifyRecipeGroups(bool Shapeshifter)
+        void ModifyRecipeGroups()
         {
-            RecipeGroup recipeGroup;
-
             recipeGroup = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["FargowiltasSouls:AnyCobaltHead"]];
             recipeGroup.ValidItems.Add(ModContent.ItemType<GuardianCobaltHead>());
 
@@ -255,22 +253,17 @@ namespace ResonantSouls.OrchidMod.QoL
         }
         public override void AddRecipeGroups()
         {
-            RecipeGroup group;
+            recipeGroup = new RecipeGroup(() => RecipeSystem.ItemXOrY(ItemID.CrystalNinjaHelmet, ModContent.ItemType<GuardianCrystalNinjaHelm>()), ItemID.CrystalNinjaHelmet, ModContent.ItemType<GuardianCrystalNinjaHelm>());
+            RecipeGroup.RegisterGroup("ResonantSouls:AnyCrystalNinjaHelm", recipeGroup);
 
-            group = new RecipeGroup(() => RecipeSystem.ItemXOrY(ItemID.CrystalNinjaHelmet, ModContent.ItemType<GuardianCrystalNinjaHelm>()), ItemID.CrystalNinjaHelmet, ModContent.ItemType<GuardianCrystalNinjaHelm>());
-            RecipeGroup.RegisterGroup("ResonantSouls:AnyCrystalNinjaHelm", group);
-
-            group = new RecipeGroup(() => Language.GetTextValue("Mods.ResonantSouls.RecipeGroups.SturdySlab"), ModContent.ItemType<SturdySlab>(), ModContent.ItemType<ParryingMailFeral>(), ModContent.ItemType<ParryingMailFeral>(), ModContent.ItemType<ParryingMailMech>(), ModContent.ItemType<ParryingMailNinja>());
-            RecipeGroup.RegisterGroup("ResonantSouls:AnySturdySlab", group);
+            recipeGroup = new RecipeGroup(() => Language.GetTextValue("Mods.ResonantSouls.RecipeGroups.SturdySlab"), ModContent.ItemType<SturdySlab>(), ModContent.ItemType<ParryingMailFeral>(), ModContent.ItemType<ParryingMailFeral>(), ModContent.ItemType<ParryingMailMech>(), ModContent.ItemType<ParryingMailNinja>());
+            RecipeGroup.RegisterGroup("ResonantSouls:AnySturdySlab", recipeGroup);
             
             group = new RecipeGroup(() => RecipeSystem.ItemXOrY(ModContent.ItemType<EmpressPlateChest>(), ModContent.ItemType<GuardianEmpressChestAlt>()), ModContent.ItemType<EmpressPlateChest>(), ModContent.ItemType<GuardianEmpressChestAlt>());
             RecipeGroup.RegisterGroup("ResonantSouls:AnyEmpressChest", group);
-
         }
-        static void AddTravellingMerchantNPCRecipes(bool Shapeshifter)
+        void AddTravellingMerchantNPCRecipes()
         {
-            Recipe recipe;
-
             if (Shapeshifter)
             {
                 recipe = Recipe.Create(ModContent.ItemType<HarnessYouxia>());
@@ -306,12 +299,12 @@ namespace ResonantSouls.OrchidMod.QoL
             recipe.DisableDecraft();
             recipe.Register();
         }
-        static void AddConversionRecipes(bool Shapeshifter)
+        static void AddConversionRecipes()
         {
             AddConvertRecipe(ModContent.ItemType<CorruptionQuarterstaff>(), ModContent.ItemType<CrimsonQuarterstaff>());
             AddConvertRecipe(ModContent.ItemType<TerrifyingMonsterFang>(), ModContent.ItemType<ColossalWormTooth>());
         }
-        static void AddFargosRecipes(bool Shapeshifter)
+        static void AddFargosRecipes()
         {
             Recipe recipe;
 

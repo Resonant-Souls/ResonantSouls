@@ -39,6 +39,6 @@ namespace ResonantSouls.Common.Utilities
             }
         }
         public static int IndexOf(this Array array, object? value) => Array.IndexOf(array, value);
-    //    public static Array AddArray(this Array array, Array arrayToAdd) => ResonantSoulsUtilities.MergeTwoArrays(array, arrayToAdd);
+        //    public static Array AddArray(this Array array, Array arrayToAdd) => ResonantSoulsUtilities.MergeTwoArrays(array, arrayToAdd);
     }
 }
