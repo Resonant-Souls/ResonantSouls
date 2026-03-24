@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace ResonantSouls.Core
 {
     public static class ModCompatibility

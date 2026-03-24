@@ -12,6 +12,8 @@ using OrchidMod.Content.Guardian.Weapons.Quarterstaves;
 using OrchidMod.Content.Guardian.Weapons.Shields;
 using OrchidMod.Content.Guardian.Weapons.Standards;
 using OrchidMod.Content.Guardian.Weapons.Warhammers;
+using ResonantSouls.Common.Utilities;
+using Terraria.DataStructures;
 using Terraria.ID;
 
 namespace ResonantSouls.OrchidMod.Souls
@@ -20,18 +22,18 @@ namespace ResonantSouls.OrchidMod.Souls
     [ExtendsFromMod(ModCompatibility.OrchidMod.Name)]
     public class GuardiansSoul : BaseSoul
     {
-        public override string Texture => DebugItem.Placeholder;
+        public override string Texture => this.OrchidTexture();
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            //    Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 6));
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 12));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
         public override void SetDefaults()
         {
             base.SetDefaults();
-            Item.width = 22;
-            Item.height = 24;
+            Item.width = Item.height = 50;
+        //      Item.height = 24;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

@@ -96,6 +96,7 @@ MicroverseSoul: {
 	Effects: {
 		ForceOfMatrix: "[i:FargoClickers/ForceOfMatrix] Effect"
 		PollinationForce: "[i:ResonantSouls/PollinationForce] Effect"
+		BloomForce: "[i:ResonantSouls/BloomForce] Effect"
 	}
 }
 
@@ -128,9 +129,49 @@ GuardiansSoul: {
 		26% increased opposing damage and 13% increased opposing critical chance
 		12% increased melee attack speed and increased block and parry timing
 		'''
-	DisplayName: Guardians Soul
+	DisplayName: Guardian's Soul
 }
 
 IncreaseGuardsAndSlams: Increases maximum guards and slams by {0}
 IncreaseGuards: Increases maximum guards by {0}
 IncreaseSlams: Increases maximum slams by {0}
+
+BambooEnchant: {
+	DisplayName: Bamboo Enchant
+	Tooltip: ""
+}
+
+DawnlightEnchant: {
+	DisplayName: Dawnlight Enchant
+	Tooltip: ""
+}
+
+HorizonEnchant: {
+	DisplayName: Horizon Enchant
+	Tooltip: ""
+}
+
+MeteorWardenEnchant: {
+	DisplayName: Meteor Warden Enchant
+	Tooltip: ""
+}
+
+PyreEnchant: {
+	DisplayName: Pyre Enchant
+	Tooltip: ""
+}
+
+SoaringEnchant: {
+	DisplayName: Soaring Enchant
+	Tooltip: ""
+}
+
+BloomForce: {
+	DisplayName: Bloom Force
+	Tooltip: ""
+}
+
+BloomingPathsSoul: {
+	DisplayName: Blooming Paths Soul
+	Tooltip: ""
+}

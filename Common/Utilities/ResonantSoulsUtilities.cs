@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Fargowiltas.Common.Systems.Collections;
@@ -17,21 +18,26 @@ namespace ResonantSouls.Common.Utilities
             list?.Add(id, item.Type);
             info?.SetValue(info, list);
         }
-        internal static void SetSacrifice(int count = 1 ,params int[] types)
+        internal static void SetSacrifice(params int[] types)
         {
-            foreach (int type in types)
+            for (int i = 0; i < types.Length - 1; i += 2)
             {
+                int type = types[i];
+                int count = types[i + 1];
+
                 FargoItemSets.SacrificeCountDefault[type] = count;
             }
         }
-        internal static void SetHardmodeSacrifice(int count = 1, params int[] types)
+        internal static void SetHardmodeSacrifice(params int[] types)
         {
-            foreach (int type in types)
+            for (int i = 0; i < types.Length - 1; i += 2)
             {
+                int type = types[i];
+                int count = types[i + 1];
+
                 FargoItemSets.SacrificeCountDefault[type] = count;
                 FargoItemSets.HardmodeSacrifice[type] = true;
             }
         }
-
     }
 }

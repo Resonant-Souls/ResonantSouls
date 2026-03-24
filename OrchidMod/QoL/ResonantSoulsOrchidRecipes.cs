@@ -29,13 +29,14 @@ using OrchidMod.Content.Guardian.Misc;
 using FargowiltasSouls.Content.Items.Armor.Eridanus;
 using FargowiltasSouls.Content.Items.Armor.Gaia;
 using FargowiltasSouls.Content.Items.Dyes;
+using OrchidMod.Content.Guardian.Armors.Empress;
 
 
 namespace ResonantSouls.OrchidMod.QoL
 {
     [JITWhenModsEnabled(ModCompatibility.OrchidMod.Name)]
     [ExtendsFromMod(ModCompatibility.OrchidMod.Name)]
-    public class ResonantSoulsOrchidQoLRecipes : ModSystem
+    public class ResonantSoulsOrchidRecipes : ModSystem
     {
         static OrchidServerConfig OrchidServerConfig => ModContent.GetInstance<OrchidServerConfig>();
         static bool Shapeshifter => OrchidServerConfig.EnableContentShapeshifter;
@@ -261,6 +262,9 @@ namespace ResonantSouls.OrchidMod.QoL
 
             group = new RecipeGroup(() => Language.GetTextValue("Mods.ResonantSouls.RecipeGroups.SturdySlab"), ModContent.ItemType<SturdySlab>(), ModContent.ItemType<ParryingMailFeral>(), ModContent.ItemType<ParryingMailFeral>(), ModContent.ItemType<ParryingMailMech>(), ModContent.ItemType<ParryingMailNinja>());
             RecipeGroup.RegisterGroup("ResonantSouls:AnySturdySlab", group);
+            
+            group = new RecipeGroup(() => RecipeSystem.ItemXOrY(ModContent.ItemType<EmpressPlateChest>(), ModContent.ItemType<GuardianEmpressChestAlt>()), ModContent.ItemType<EmpressPlateChest>(), ModContent.ItemType<GuardianEmpressChestAlt>());
+            RecipeGroup.RegisterGroup("ResonantSouls:AnyEmpressChest", group);
 
         }
         static void AddTravellingMerchantNPCRecipes(bool Shapeshifter)

@@ -1,5 +1,3 @@
-using System;
-using Fargowiltas.Common.Systems.Collections;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using OrchidMod.Content.Guardian.Armors.Misc;
 using OrchidMod.Content.Guardian.Weapons.Gauntlets;
@@ -11,11 +9,9 @@ using OrchidMod.Content.Guardian.Weapons.Warhammers;
 using OrchidMod.Content.Shapeshifter.Weapons.Predator;
 using OrchidMod.Content.Shapeshifter.Weapons.Sage;
 using OrchidMod.Content.Shapeshifter.Weapons.Warden;
-using ReLogic.Reflection;
 using ResonantSouls.Common.Systems;
 using ResonantSouls.Common.Utilities;
 using ResonantSouls.OrchidMod.Souls;
-using Terraria.ID;
 
 namespace ResonantSouls.OrchidMod.Core
 {
@@ -37,28 +33,28 @@ namespace ResonantSouls.OrchidMod.Core
         }
         public override void PostSetupContent()
         {
-            ResonantSoulsUtilities.SetSacrifice(types:[
-                ModContent.ItemType<GoblinRune>(),
-                ModContent.ItemType<RuneRune>(),
-                ModContent.ItemType<PredatorGoblin>(),
-                ModContent.ItemType<SageBat>(),
-                ModContent.ItemType<WardenSpider>(),
-                ModContent.ItemType<CorruptionQuarterstaff>(),
-                ModContent.ItemType<CrimsonQuarterstaff>(),
-                ModContent.ItemType<BeeRune>(),
-                ModContent.ItemType<CorruptionWarhammer>(),
-                ModContent.ItemType<CrimsonWarhammer>(),
-                ModContent.ItemType<DemoniteShield>(),
-                ModContent.ItemType<CrimtaneShield>()
-            ]);
+            ResonantSoulsUtilities.SetSacrifice(
+                ModContent.ItemType<GoblinRune>(), 1,
+                ModContent.ItemType<RuneRune>(), 1,
+                ModContent.ItemType<PredatorGoblin>(), 1,
+                ModContent.ItemType<SageBat>(), 1,
+                ModContent.ItemType<WardenSpider>(), 1,
+                ModContent.ItemType<CorruptionQuarterstaff>(), 1,
+                ModContent.ItemType<CrimsonQuarterstaff>(), 1,
+                ModContent.ItemType<BeeRune>(), 1,
+                ModContent.ItemType<CorruptionWarhammer>(), 1,
+                ModContent.ItemType<CrimsonWarhammer>(), 1,
+                ModContent.ItemType<DemoniteShield>(), 1,
+                ModContent.ItemType<CrimtaneShield>(), 1
+            );
 
-            ResonantSoulsUtilities.SetHardmodeSacrifice(types: [
-                ModContent.ItemType<PaladinGauntlet>(),
-                ModContent.ItemType<PlanteraStandard>(),
-                ModContent.ItemType<TempleWarhammer>(),
-                ModContent.ItemType<CrystalGauntlet>(),
-                ModContent.ItemType<GuardianCrystalNinjaHelm>()
-            ]);
+            ResonantSoulsUtilities.SetHardmodeSacrifice(
+                ModContent.ItemType<PaladinGauntlet>(), 1,
+                ModContent.ItemType<PlanteraStandard>(), 1,
+                ModContent.ItemType<TempleWarhammer>(), 1,
+                ModContent.ItemType<CrystalGauntlet>(), 1,
+                ModContent.ItemType<GuardianCrystalNinjaHelm>(), 1
+            );
         }
     }
 }

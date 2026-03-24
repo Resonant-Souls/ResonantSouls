@@ -13,6 +13,13 @@ namespace ResonantSouls.Common.Utilities
                 if (recipe.HasResult(mainItem) && !recipe.HasIngredient(ingredient)) recipe.AddIngredient(ingredient, ingredientCount);
             }
         */
+        internal static string OrchidTexture(this ModType type) => $"ResonantSouls/OrchidMod/Assets/Sprites/{type.Name}";
+        /*
+            public static void SafeAddToRecipe(this Recipe recipe, int mainItem, int ingredient, int ingredientCount = 1)
+            {
+                if (recipe.HasResult(mainItem) && !recipe.HasIngredient(ingredient)) recipe.AddIngredient(ingredient, ingredientCount);
+            }
+        */
         public static void SafeAddToRecipe(this Recipe recipe, int ingredient, int ingredientCount = 1)
         {
             if (recipe.TryGetIngredient(ingredient, out Item item))

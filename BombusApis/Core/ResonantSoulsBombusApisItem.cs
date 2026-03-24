@@ -24,7 +24,8 @@ namespace ResonantSouls.BombusApis.Core
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
-            int Tooltip = tooltips.FindLastIndex(t => t.Name.StartsWith("Tooltip") && t.Mod == "Terraria"); const string key = "Mods.ResonantSouls.Items.";
+            int Tooltip = tooltips.FindLastIndex(t => t.Name.StartsWith("Tooltip") && t.Mod == "Terraria"); 
+            const string key = "Mods.ResonantSouls.Items.";
             if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
             {
                 if (SoulsItem.IsNotRuminating(item))

@@ -27,7 +27,7 @@ namespace ResonantSouls.OrchidMod.Core
             {
                 player.AddEffect<GuardianEffect>(item);
             }
-            else if (item.type == ModContent.ItemType<StyxCrown>())
+            if (item.type == ModContent.ItemType<StyxCrown>())
             {
                 mp.GuardianGuardMax += 3;
                 mp.GuardianSlamMax += 3;
@@ -119,7 +119,6 @@ namespace ResonantSouls.OrchidMod.Core
                 lines.Insert(lines.Count, Language.GetTextValue(key + "IncreaseGuardsAndSlams", 2));
                 tooltips[Tooltip].Text = string.Join("\n", lines);
             }
-
         }
     }
 }
