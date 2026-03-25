@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Fargowiltas.Content.Items.Tiles;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
@@ -28,11 +29,11 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
         // The lone and level sands stretch far away.
         // - Cheesenuggets
         public override string Texture => "ResonantSouls/Assets/Textures/Content/Items/Accessories/Souls/MicroverseSoul";
-        public static readonly List<ModItem> Forces = [ ];
+        public static readonly List<ModItem> Forces = [];
         public static bool Click => ModCompatibility.FargoClickers.Loaded && ModCompatibility.ClickerClass.Loaded && ResonantSoulsFargosClickerConfig.ClickerCompat;
         public static bool Bee => ModCompatibility.BombusApisBee.Loaded;
         public static bool Bloom => ModCompatibility.OrchidMod.Loaded;
-        public static void AddForce(bool ModLoaded, string ModName, string Forcename)
+        public static void AddForce(bool ModLoaded, string Forcename, string ModName = "ResonantSouls")
         {
             if (ModLoaded && ModContent.TryFind(ModName, Forcename, out ModItem force))
                 Forces.Add(force);
@@ -42,9 +43,9 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
             base.SetStaticDefaults();
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 40));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
-            AddForce(Bee, Mod.Name, "PollinationForce");
-            AddForce(Click, ModCompatibility.FargoClickers.Name, "ForceOfMatrix");
-            AddForce(Bloom, Mod.Name, "BloomForce");
+            AddForce(Bee, "PollinationForce");
+            AddForce(Click, "ForceOfMatrix", ModCompatibility.FargoClickers.Name);
+            AddForce(Bloom, "BloomForce");
         }
         public override void SetDefaults()
         {

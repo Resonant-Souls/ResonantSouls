@@ -111,7 +111,7 @@ AddedEffects: {
 		[i:ClickerClass/AimbotModule] Automatically target enemies with your clicks and increase click radius
 		[i:ClickerClass/AimbotModule] Effect
 		'''
-	BombusUniverse:
+	ApiaristUniverse:
 		'''
 		[i:BombusApisBee/HymenoptrianNecklace] Effect
 		[i:BombusApisBee/HymenoptrianNecklace] Effect

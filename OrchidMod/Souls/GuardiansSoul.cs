@@ -37,7 +37,7 @@ namespace ResonantSouls.OrchidMod.Souls
         {
             base.SetDefaults();
             Item.width = Item.height = 50;
-        //      Item.height = 24;
+            //      Item.height = 24;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

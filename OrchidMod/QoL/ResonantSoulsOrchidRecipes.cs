@@ -258,9 +258,9 @@ namespace ResonantSouls.OrchidMod.QoL
 
             recipeGroup = new RecipeGroup(() => Language.GetTextValue("Mods.ResonantSouls.RecipeGroups.SturdySlab"), ModContent.ItemType<SturdySlab>(), ModContent.ItemType<ParryingMailFeral>(), ModContent.ItemType<ParryingMailFeral>(), ModContent.ItemType<ParryingMailMech>(), ModContent.ItemType<ParryingMailNinja>());
             RecipeGroup.RegisterGroup("ResonantSouls:AnySturdySlab", recipeGroup);
-            
-            group = new RecipeGroup(() => RecipeSystem.ItemXOrY(ModContent.ItemType<EmpressPlateChest>(), ModContent.ItemType<GuardianEmpressChestAlt>()), ModContent.ItemType<EmpressPlateChest>(), ModContent.ItemType<GuardianEmpressChestAlt>());
-            RecipeGroup.RegisterGroup("ResonantSouls:AnyEmpressChest", group);
+
+            recipeGroup = new RecipeGroup(() => RecipeSystem.ItemXOrY(ModContent.ItemType<EmpressPlateChest>(), ModContent.ItemType<GuardianEmpressChestAlt>()), ModContent.ItemType<EmpressPlateChest>(), ModContent.ItemType<GuardianEmpressChestAlt>());
+            RecipeGroup.RegisterGroup("ResonantSouls:AnyEmpressChest", recipeGroup);
         }
         void AddTravellingMerchantNPCRecipes()
         {

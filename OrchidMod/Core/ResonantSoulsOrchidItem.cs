@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FargowiltasSouls.Content.Items;
@@ -9,6 +10,7 @@ using FargowiltasSouls.Content.Items.Armor.Nekomi;
 using FargowiltasSouls.Content.Items.Armor.Styx;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using OrchidMod;
+using OrchidMod.Common;
 using ResonantSouls.OrchidMod.Souls;
 using Terraria.Localization;
 
@@ -61,68 +63,92 @@ namespace ResonantSouls.OrchidMod.Core
                 mp.GuardianSlamMax += 2;
             }
         }
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            int Tooltip = tooltips.FindLastIndex(t => t.Name.StartsWith("Tooltip") && t.Mod == "Terraria");
-            const string key = "Mods.ResonantSouls.Items.";
+            int LastTooltip = tooltips.FindLastIndex(t => t.Name.StartsWith("Tooltip") && t.Mod == "Terraria");
             int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
-
-            var lines = tooltips[Tooltip].Text.Split("\n").ToList();
+            const string key = "Mods.ResonantSouls.Items.";
 
             if (item.type == ModContent.ItemType<UniverseSoul>())
             {
-                if (!item.social)
+                if (SoulsItem.IsNotRuminating(item))
                 {
-                    if (SoulsItem.IsNotRuminating(item))
+                    if (!item.social)
                     {
                         const string conjurists = "[i:FargowiltasSouls/ConjuristsSoul]";
                         int extraeff = tooltips.FindIndex(t => t.Text.Contains(conjurists));
                         tooltips[extraeff].Text = tooltips[extraeff].Text.Replace(conjurists, conjurists + "[i:ResonantSouls/GuardiansSoul]");
                     }
-                    else
-                    {
-                        var linesU = tooltips[Tooltip0].Text.Split("\n").ToList();
-                        linesU.Insert(linesU.Count - 1, Language.GetTextValue(key + "AddedEffects.GuardianUniverse"));
-                        tooltips[Tooltip0].Text = string.Join("\n", linesU);
-                    }
                 }
-
+                else
+                {
+                    var lines = tooltips[Tooltip0].Text.Split("\n").ToList();
+                    lines.Insert(lines.Count - 1, Language.GetTextValue(key + "AddedEffects.GuardianUniverse"));
+                    tooltips[Tooltip0].Text = string.Join("\n", lines);
+                }
             }
             else if (item.type == ModContent.ItemType<EternalFlame>())
             {
+                var lines = tooltips[LastTooltip].Text.Split("\n").ToList();
                 lines.Insert(lines.Count, Language.GetTextValue(key + "IncreaseGuardsAndSlams", 6));
-                tooltips[Tooltip].Text = string.Join("\n", lines);
+                tooltips[LastTooltip].Text = string.Join("\n", lines);
             }
             else if (item.type == ModContent.ItemType<StyxCrown>())
             {
+                var lines = tooltips[LastTooltip].Text.Split("\n").ToList();
                 lines.Insert(lines.Count, Language.GetTextValue(key + "IncreaseGuardsAndSlams", 3));
-                tooltips[Tooltip].Text = string.Join("\n", lines);
+                tooltips[LastTooltip].Text = string.Join("\n", lines);
             }
             else if (item.type == ModContent.ItemType<NekomiHood>())
             {
+                var lines = tooltips[LastTooltip].Text.Split("\n").ToList();
                 lines.Insert(lines.Count, Language.GetTextValue(key + "IncreaseGuards", 1));
-                tooltips[Tooltip].Text = string.Join("\n", lines);
+                tooltips[LastTooltip].Text = string.Join("\n", lines);
             }
             else if (item.type == ModContent.ItemType<NekomiHoodie>())
             {
+                var lines = tooltips[LastTooltip].Text.Split("\n").ToList();
                 lines.Insert(lines.Count, Language.GetTextValue(key + "IncreaseSlams", 1));
-                tooltips[Tooltip].Text = string.Join("\n", lines);
+                tooltips[LastTooltip].Text = string.Join("\n", lines);
             }
             else if (item.type == ModContent.ItemType<GaiaHelmet>())
             {
+                var lines = tooltips[LastTooltip].Text.Split("\n").ToList();
                 lines.Insert(lines.Count, Language.GetTextValue(key + "IncreaseGuardsAndSlams", 3));
-                tooltips[Tooltip].Text = string.Join("\n", lines);
+                tooltips[LastTooltip].Text = string.Join("\n", lines);
             }
             else if (item.type == ModContent.ItemType<GaiaPlate>())
             {
+                var lines = tooltips[LastTooltip].Text.Split("\n").ToList();
                 lines.Insert(lines.Count, Language.GetTextValue(key + "IncreaseGuardsAndSlams", 3));
-                tooltips[Tooltip].Text = string.Join("\n", lines);
+                tooltips[LastTooltip].Text = string.Join("\n", lines);
             }
             else if (item.type == ModContent.ItemType<EridanusLegwear>())
             {
+                var lines = tooltips[LastTooltip].Text.Split("\n").ToList();
                 lines.Insert(lines.Count, Language.GetTextValue(key + "IncreaseGuardsAndSlams", 2));
-                tooltips[Tooltip].Text = string.Join("\n", lines);
+                tooltips[LastTooltip].Text = string.Join("\n", lines);
             }
+            else if (item.type == ModContent.ItemType<GuardiansSoul>())
+            {
+                if (ModContent.GetInstance<OrchidClientConfig>().ShowClassTags)
+                {
+                    AddClassTagToTooltips(item, tooltips);
+                }
+            }
+        }
+        // From Orchid. Why make this private?
+        private void AddClassTagToTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            var index = tooltips.FindIndex(i => i.Mod.Equals("Terraria") && i.Name.Equals("ItemName"));
+
+            if (index < 0) return;
+
+            tooltips.Insert(index + 1, new TooltipLine(Mod, "ClassTag", Language.GetTextValue("Mods.OrchidMod.DamageClasses.Guardian"))
+            {
+                OverrideColor = OrchidColors.GuardianTag
+            });
         }
     }
 }

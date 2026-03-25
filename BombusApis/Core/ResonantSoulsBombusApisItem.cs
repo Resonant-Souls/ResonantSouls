@@ -24,24 +24,27 @@ namespace ResonantSouls.BombusApis.Core
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
-            int Tooltip = tooltips.FindLastIndex(t => t.Name.StartsWith("Tooltip") && t.Mod == "Terraria"); 
             const string key = "Mods.ResonantSouls.Items.";
-            if (item.type == ModContent.ItemType<UniverseSoul>() && !item.social)
+
+            if (item.type == ModContent.ItemType<UniverseSoul>())
             {
                 if (SoulsItem.IsNotRuminating(item))
                 {
-                    const string conjurists = "[i:FargowiltasSouls/ConjuristsSoul]";
-                    int extraeff = tooltips.FindIndex(t => t.Text.Contains(conjurists));
-                    tooltips[extraeff].Text = tooltips[Tooltip0].Text.Replace(conjurists, conjurists + "[i:ResonantSouls/ApiaristsSoul]");
+                    if (!item.social)
+                    {
+                        const string conjurists = "[i:FargowiltasSouls/ConjuristsSoul]";
+                        int extraeff = tooltips.FindIndex(t => t.Text.Contains(conjurists));
+                        tooltips[extraeff].Text = tooltips[extraeff].Text.Replace(conjurists, conjurists + "[i:ResonantSouls/ApiaristsSoul]");
+                    }
                 }
                 else
                 {
-                    // How Fargo's DLC does it
                     var lines = tooltips[Tooltip0].Text.Split("\n").ToList();
-                    lines.Insert(lines.Count - 1, Language.GetTextValue(key + "AddedEffects.BombusUniverse"));
+                    lines.Insert(lines.Count - 1, Language.GetTextValue(key + "AddedEffects.ApiaristUniverse"));
                     tooltips[Tooltip0].Text = string.Join("\n", lines);
                 }
             }
+
         }
     }
 }

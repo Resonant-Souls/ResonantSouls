@@ -26,7 +26,7 @@ namespace ResonantSouls.OrchidMod.Souls
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-        //    Main.RegisterItemAnimation(Item.type, new DrawAnimationRectangularV(6, 6, 8));
+            //    Main.RegisterItemAnimation(Item.type, new DrawAnimationRectangularV(6, 6, 8));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
         public override void SetDefaults()

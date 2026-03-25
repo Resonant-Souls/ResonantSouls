@@ -34,7 +34,7 @@ namespace ResonantSouls.OrchidMod.Forces
             Recipe recipe = CreateRecipe();
             foreach (int ench in Enchants[Type])
                 recipe.AddIngredient(ench);
-        //    recipe.AddIngredient<Eridanium>(5);
+            //    recipe.AddIngredient<Eridanium>(5);
             recipe.AddTile<LuminiteOmniforgeTile>();
             recipe.Register();
         }
