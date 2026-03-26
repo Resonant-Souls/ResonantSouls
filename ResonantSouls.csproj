@@ -8,7 +8,6 @@
 	   <LangVersion>latest</LangVersion>
 	 </PropertyGroup>
 
-
 	<ItemGroup>
 		<InternalsVisibleTo Include="SecretsOfTheSouls" />
 	</ItemGroup>
@@ -49,6 +48,10 @@
 
 		<Reference Include="OrchidMod">
 			<HintPath>..\ModAssemblies\OrchidMod_v1.5.1.3.dll</HintPath>
+		</Reference>
+
+		<Reference Include="Redemption">
+			<HintPath>..\ModAssemblies\Redemption_v0.8.0.4120.dll</HintPath>
 		</Reference>
 
 	</ItemGroup>

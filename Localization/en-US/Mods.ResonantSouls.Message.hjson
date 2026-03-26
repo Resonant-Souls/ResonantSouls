@@ -1,9 +1,12 @@
 WarningNotification:
 	'''
 	Hey there, here's a bit you should know before playing our mod, Resonant Souls!
-	This mod ONLY adds compatibility with FARGO'S.
+	This mod ONLY adds compatibility with Fargo's. Any compatibility between mods that this mod supports will not be added. Don't ask.
 	If there is a bug, balancing issue, or anything of the sort related to two mods, DO NOT report it in the discord server.
-	For example: If Homeward Journey and Spirit have an incompatibility, this mod will NOT fix it, that's up to the main devs.
-	However, if there is an issue with Fargos and Homeward journey, this mod WILL fix it.
+	For example: If Redemption and Spirit have an incompatibility, this mod will NOT fix it, that's up to the main devs.
+	Again, DO NOT go to the Resonant Souls Discord if there are any issues unless Resonant Souls is the mod that causes the problem
+	You can check to see if it is by disabling Resonant Souls to see if the issue occurs
+	However, this mod will fix issues with Fargo's Souls and the mods this mod supports
+	For instance, if Redemption and Fargo's Souls have an incompatibility, this mod will fix that.
 	After you have acknowledged this, there is a config you can turn off so you don't get this message anymore.
 	'''

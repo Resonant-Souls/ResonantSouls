@@ -16,7 +16,7 @@ namespace ResonantSouls.BombusApis.Core
     {
         public override void Load()
         {
-            ResonantSoulsUtilities.Add("TraitorBee", ModContent.NPCType<TheTraitorBee>());
+            ModCompatibility.Fargowiltas.Mod.Call("AddCaughtNPC", "TheTraitorBee", ModContent.NPCType<TheTraitorBee>(), Mod.Name);
         }
         public override void AddRecipes()
         {

@@ -31,6 +31,17 @@ namespace ResonantSouls.Common.Utilities
                 recipe.AddIngredient(ingredient, ingredientCount);
             }
         }
+        public static void SafeAddToRecipe<T>(this Recipe recipe, int ingredientCount = 1) where T : ModItem
+        {
+            if (recipe.TryGetIngredient(ModContent.ItemType<T>(), out Item item))
+            {
+                item.stack = ingredientCount;
+            }
+            else
+            {
+                recipe.AddIngredient(ModContent.ItemType<T>(), ingredientCount);
+            }
+        }
         public static void SafeAddRecipeGroup(this Recipe recipe, string recipeGroup)
         {
             if (!recipe.HasRecipeGroup(recipeGroup))

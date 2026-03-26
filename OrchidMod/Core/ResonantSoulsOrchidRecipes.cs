@@ -32,7 +32,7 @@ using FargowiltasSouls.Content.Items.Dyes;
 using OrchidMod.Content.Guardian.Armors.Empress;
 
 
-namespace ResonantSouls.OrchidMod.QoL
+namespace ResonantSouls.OrchidMod.Core
 {
     [JITWhenModsEnabled(ModCompatibility.OrchidMod.Name)]
     [ExtendsFromMod(ModCompatibility.OrchidMod.Name)]
@@ -122,11 +122,12 @@ namespace ResonantSouls.OrchidMod.QoL
 
             if (ModCompatibility.ThoriumMod.Loaded)
             {
-                CreateTreasureGroupRecipe(ModCompatibility.ThoriumMod.Mod.Find<ModItem>("ThunderBirdBag").Type, ModContent.ItemType<ThoriumGrandThunderBirdWarhammer>());
+                Mod tr = ModCompatibility.ThoriumMod.Mod;
+                CreateTreasureGroupRecipe(tr.Find<ModItem>("ThunderBirdBag").Type, ModContent.ItemType<ThoriumGrandThunderBirdWarhammer>());
 
-                CreateTreasureGroupRecipe(ModCompatibility.ThoriumMod.Mod.Find<ModItem>("ScouterBag").Type, ModContent.ItemType<ThoriumStarScouterStandard>());
+                CreateTreasureGroupRecipe(tr.Find<ModItem>("ScouterBag").Type, ModContent.ItemType<ThoriumStarScouterStandard>());
 
-                CreateTreasureGroupRecipe(ModCompatibility.ThoriumMod.Mod.Find<ModItem>("CountBag").Type, ModContent.ItemType<ThoriumViscountQuarterstaff>());
+                CreateTreasureGroupRecipe(tr.Find<ModItem>("CountBag").Type, ModContent.ItemType<ThoriumViscountQuarterstaff>());
             }
         }
         static void AddBossTrophyRecipes()
@@ -304,10 +305,8 @@ namespace ResonantSouls.OrchidMod.QoL
             AddConvertRecipe(ModContent.ItemType<CorruptionQuarterstaff>(), ModContent.ItemType<CrimsonQuarterstaff>());
             AddConvertRecipe(ModContent.ItemType<TerrifyingMonsterFang>(), ModContent.ItemType<ColossalWormTooth>());
         }
-        static void AddFargosRecipes()
+        void AddFargosRecipes()
         {
-            Recipe recipe;
-
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 recipe = Main.recipe[i];
@@ -316,31 +315,31 @@ namespace ResonantSouls.OrchidMod.QoL
                 {
                     recipe.SafeAddToRecipe(ModContent.ItemType<HorizonFragment>());
                 }
-                if (recipe.HasResult(ModContent.ItemType<EridanusHat>()))
+                else if (recipe.HasResult(ModContent.ItemType<EridanusHat>()))
                 {
                     recipe.SafeAddToRecipe(ModContent.ItemType<HorizonFragment>(), 5);
                 }
-                if (recipe.HasResult(ModContent.ItemType<EridanusBattleplate>()))
+                else if (recipe.HasResult(ModContent.ItemType<EridanusBattleplate>()))
                 {
                     recipe.SafeAddToRecipe(ModContent.ItemType<HorizonFragment>(), 5);
                 }
-                if (recipe.HasResult(ModContent.ItemType<EridanusLegwear>()))
+                else if (recipe.HasResult(ModContent.ItemType<EridanusLegwear>()))
                 {
                     recipe.SafeAddToRecipe(ModContent.ItemType<HorizonFragment>(), 5);
                 }
-                if (recipe.HasResult(ModContent.ItemType<GaiaHelmet>()))
+                else if (recipe.HasResult(ModContent.ItemType<GaiaHelmet>()))
                 {
                     recipe.SafeAddToRecipe(ModContent.ItemType<GuardianEmpressMaterial>(), 5);
                 }
-                if (recipe.HasResult(ModContent.ItemType<GaiaPlate>()))
+                else if (recipe.HasResult(ModContent.ItemType<GaiaPlate>()))
                 {
                     recipe.SafeAddToRecipe(ModContent.ItemType<GuardianEmpressMaterial>(), 8);
                 }
-                if (recipe.HasResult(ModContent.ItemType<GaiaGreaves>()))
+                else if (recipe.HasResult(ModContent.ItemType<GaiaGreaves>()))
                 {
                     recipe.SafeAddToRecipe(ModContent.ItemType<GuardianEmpressMaterial>(), 5);
                 }
-                if (recipe.HasResult(ModContent.ItemType<GaiaDye>()))
+                else if (recipe.HasResult(ModContent.ItemType<GaiaDye>()))
                 {
                     recipe.SafeAddToRecipe(ModContent.ItemType<GuardianEmpressMaterial>(), 1);
                 }
