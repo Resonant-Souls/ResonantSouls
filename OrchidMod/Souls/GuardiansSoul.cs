@@ -48,34 +48,34 @@ namespace ResonantSouls.OrchidMod.Souls
             player.GetCritChance<GuardianDamageClass>() += 0.13f;
             player.GetAttackSpeed<MeleeDamageClass>() += 0.12f;
 
-            ModContent.GetInstance<SturdySlab>().UpdateAccessory(player, hideVisual);
-            ModContent.GetInstance<TempleSpike>().UpdateAccessory(player, hideVisual);
+            GetInstance<SturdySlab>().UpdateAccessory(player, hideVisual);
+            GetInstance<TempleSpike>().UpdateAccessory(player, hideVisual);
             modPlayer.GuardianSpikeTemple = true;
         }
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<TempleSpike>())
+                .AddIngredient(ItemType<TempleSpike>())
                 .AddRecipeGroup("ResonantSouls:AnySturdySlab")
-                .AddIngredient(ModContent.ItemType<FlamingQuarterstaff>())
-                .AddIngredient(ModContent.ItemType<JungleWarhammer>())
-                .AddIngredient(ModContent.ItemType<BeeGauntlet>())
-                .AddIngredient(ModContent.ItemType<NightShield>())
-                .AddIngredient(ModContent.ItemType<ShardQuarterstaff>())
-                .AddIngredient(ModContent.ItemType<JungleWarhammer>())
-                .AddIngredient(ModContent.ItemType<SpectreShield>()) // Replace with with biome weapon when added
-                .AddIngredient(ModContent.ItemType<PlanteraStandard>()) // Replace with duke gauntlet when added
-                .AddIngredient(ModContent.ItemType<JungleWarhammer>())
+                .AddIngredient(ItemType<FlamingQuarterstaff>())
+                .AddIngredient(ItemType<JungleWarhammer>())
+                .AddIngredient(ItemType<BeeGauntlet>())
+                .AddIngredient(ItemType<NightShield>())
+                .AddIngredient(ItemType<ShardQuarterstaff>())
+                .AddIngredient(ItemType<JungleWarhammer>())
+                .AddIngredient(ItemType<SpectreShield>()) // Replace with with biome weapon when added
+                .AddIngredient(ItemType<PlanteraStandard>()) // Replace with duke gauntlet when added
+                .AddIngredient(ItemType<JungleWarhammer>())
                 .AddTile<LuminiteOmniforgeTile>()
                 .Register();
 
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<TempleSpike>())
+                .AddIngredient(ItemType<TempleSpike>())
                 .AddRecipeGroup("ResonantSouls:AnySturdySlab")
-                .AddIngredient(ModContent.ItemType<HeavyChain>())
-                .AddIngredient(ModContent.ItemType<SpectreShield>()) // Replace with with biome weapon when added
-                .AddIngredient(ModContent.ItemType<PlanteraStandard>()) // Replace with duke gauntlet when added
-                .AddIngredient(ModContent.ItemType<AbomEnergy>(), 10)
+                .AddIngredient(ItemType<HeavyChain>())
+                .AddIngredient(ItemType<SpectreShield>()) // Replace with with biome weapon when added
+                .AddIngredient(ItemType<PlanteraStandard>()) // Replace with duke gauntlet when added
+                .AddIngredient(ItemType<AbomEnergy>(), 10)
                 .AddTile<LuminiteOmniforgeTile>()
                 .Register();
         }
@@ -86,7 +86,7 @@ namespace ResonantSouls.OrchidMod.Souls
     public class GuardianEffect : AccessoryEffect
     {
         public override Header? ToggleHeader => null;
-        public override int ToggleItemType => ModContent.ItemType<GuardiansSoul>();
+        public override int ToggleItemType => ItemType<GuardiansSoul>();
         public override void PostUpdate(Player player)
         {
             OrchidGuardian mp = ResonantSoulsOrchidSystems.GuardianPlayer(player);

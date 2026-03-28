@@ -74,5 +74,10 @@ namespace ResonantSouls.Common.Systems
             RecipeHelper.CreateSimpleRecipe(itemID, otherItemID, TileID.DemonAltar, disableDecraft: true);
             RecipeHelper.CreateSimpleRecipe(otherItemID, itemID, TileID.DemonAltar, disableDecraft: true);
         }
+        internal static int SafeFind(string Mod, string Name)
+        {
+            TryFind(Mod, Name, out ModItem type);
+            return type?.Type ?? -1;
+        }
     }
 }

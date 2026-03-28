@@ -14,13 +14,13 @@ namespace ResonantSouls.BombusApis.Forces
             base.SetStaticDefaults();
             Enchants[Type] =
             [
-                ModContent.ItemType<BeekeeperEnchant>(),
-                ModContent.ItemType<HoneycombCrusaderEnchant>(),
-                ModContent.ItemType<HoneyphyteEnchant>(),
-                ModContent.ItemType<BeeSniperEnchant>(),
-                ModContent.ItemType<LivingFlowerEnchant>(),
-                ModContent.ItemType<SkeletalBeeEnchant>(),
-                ModContent.ItemType<WaspEnchant>()
+                ItemType<BeekeeperEnchant>(),
+                ItemType<HoneycombCrusaderEnchant>(),
+                ItemType<HoneyphyteEnchant>(),
+                ItemType<BeeSniperEnchant>(),
+                ItemType<LivingFlowerEnchant>(),
+                ItemType<SkeletalBeeEnchant>(),
+                ItemType<WaspEnchant>()
             ];
         }
 

@@ -38,26 +38,26 @@ namespace ResonantSouls.BombusApis.Souls
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<HymenoptrianNecklace>())
-            .AddIngredient(ModContent.ItemType<HoneyManipulator>())
-            .AddIngredient(ModContent.ItemType<BeeEmblem>())
-            .AddIngredient(ModContent.ItemType<Skelecomb>())
-            .AddIngredient(ModContent.ItemType<TheTraitorsSaxophone>())
-            .AddIngredient(ModContent.ItemType<Ambrosia>())
-            .AddIngredient(ModContent.ItemType<SpectralBeeTome>())
-            .AddIngredient(ModContent.ItemType<PumpkinetScepter>())
-            .AddIngredient(ModContent.ItemType<HoneyFlareCannon>())
-            .AddIngredient(ModContent.ItemType<HymenoptraFlasks>())
+            .AddIngredient(ItemType<HymenoptrianNecklace>())
+            .AddIngredient(ItemType<HoneyManipulator>())
+            .AddIngredient(ItemType<BeeEmblem>())
+            .AddIngredient(ItemType<Skelecomb>())
+            .AddIngredient(ItemType<TheTraitorsSaxophone>())
+            .AddIngredient(ItemType<Ambrosia>())
+            .AddIngredient(ItemType<SpectralBeeTome>())
+            .AddIngredient(ItemType<PumpkinetScepter>())
+            .AddIngredient(ItemType<HoneyFlareCannon>())
+            .AddIngredient(ItemType<HymenoptraFlasks>())
             .AddTile<LuminiteOmniforgeTile>()
             .Register();
 
 
             // Alt with no weapons
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<HymenoptrianNecklace>())
-            .AddIngredient(ModContent.ItemType<HoneyManipulator>())
-            .AddIngredient(ModContent.ItemType<BeeEmblem>())
-            .AddIngredient(ModContent.ItemType<AbomEnergy>(), 10)
+            .AddIngredient(ItemType<HymenoptrianNecklace>())
+            .AddIngredient(ItemType<HoneyManipulator>())
+            .AddIngredient(ItemType<BeeEmblem>())
+            .AddIngredient(ItemType<AbomEnergy>(), 10)
             .AddTile<LuminiteOmniforgeTile>()
             .Register();
         }
@@ -66,15 +66,11 @@ namespace ResonantSouls.BombusApis.Souls
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ApiaristEffect : AccessoryEffect
     {
-        private static ModItem? necklace;
-        private static ModItem? manipulator;
-        public override void SetStaticDefaults()
-        {
-            ModCompatibility.BombusApisBee.Mod.TryFind("HymenoptrianNecklace", out necklace);
-            ModCompatibility.BombusApisBee.Mod.TryFind("HoneyManipulator", out manipulator);
-        }
+        readonly static Mod ba = ModCompatibility.BombusApisBee.Mod;
+        private static ModItem? necklace = ba.Find<ModItem>("HymenoptrianNecklace");
+        private static ModItem? manipulator = ba.Find<ModItem>("HoneyManipulator");
         public override Header? ToggleHeader => null;
-        public override int ToggleItemType => ModContent.ItemType<ApiaristsSoul>();
+        public override int ToggleItemType => ItemType<ApiaristsSoul>();
         public override void PostUpdate(Player player)
         {
             necklace?.UpdateAccessory(player, true);
@@ -87,20 +83,20 @@ namespace ResonantSouls.BombusApis.Souls
     {
         public override void UpdateEquips()
         {
-            FargoSoulsPlayer modPlayer = Player.FargoSouls();
-            BeeDamagePlayer beePlayer = Player.Hymenoptra();
+            FargoSoulsPlayer mp = Player.FargoSouls();
+            BeeDamagePlayer bp = Player.Hymenoptra();
 
             if (Player.HasEffect<ApiaristEffect>())
             {
-                beePlayer.BeeResourceMax2 += modPlayer.Eternity ? 999 : 200;
+                bp.BeeResourceMax2 += mp.Eternity ? 999 : 200;
 
-                if (modPlayer.Eternity)
+                if (mp.Eternity)
                 {
-                    beePlayer.BeeResourceCurrent = beePlayer.BeeResourceMax2;
+                    bp.BeeResourceCurrent = bp.BeeResourceMax2;
                 }
                 else
                 {
-                    beePlayer.BeeResourceIncrease *= 3;
+                    bp.BeeResourceIncrease *= 3;
                 }
             }
         }

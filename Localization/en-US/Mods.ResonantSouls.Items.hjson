@@ -175,3 +175,8 @@ BloomingPathsSoul: {
 	DisplayName: Blooming Paths Soul
 	Tooltip: ""
 }
+
+Ozymandias: {
+	DisplayName: Ozymandias
+	Tooltip: Nothing beside remains...
+}

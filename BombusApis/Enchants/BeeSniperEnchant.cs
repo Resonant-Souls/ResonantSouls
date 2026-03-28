@@ -22,12 +22,12 @@ namespace ResonantSouls.BombusApis.Enchants
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<BeeSniperGoggles>())
-            .AddIngredient(ModContent.ItemType<BeeSniperArmor>())
-            .AddIngredient(ModContent.ItemType<BeeSniperLeggings>())
-            .AddIngredient(ModContent.ItemType<BeekeeperEnchant>())
-            .AddIngredient(ModContent.ItemType<TheStingerSlinger>())
-            .AddIngredient(ModContent.ItemType<TheStarSwarmer>())
+            .AddIngredient(ItemType<BeeSniperGoggles>())
+            .AddIngredient(ItemType<BeeSniperArmor>())
+            .AddIngredient(ItemType<BeeSniperLeggings>())
+            .AddIngredient(ItemType<BeekeeperEnchant>())
+            .AddIngredient(ItemType<TheStingerSlinger>())
+            .AddIngredient(ItemType<TheStarSwarmer>())
             .AddTile<EnchantedTreeSheet>()
             .Register();
         }

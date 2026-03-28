@@ -14,7 +14,7 @@ namespace ResonantSouls.BombusApis.Core
     {
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            bool Universe = item.type == ModContent.ItemType<UniverseSoul>() || item.type == ModContent.ItemType<EternitySoul>();
+            bool Universe = item.type == ItemType<UniverseSoul>() || item.type == ItemType<EternitySoul>();
 
             if (Universe)
             {
@@ -26,7 +26,7 @@ namespace ResonantSouls.BombusApis.Core
             int Tooltip0 = tooltips.FindIndex(line => line.Name == "Tooltip0");
             const string key = "Mods.ResonantSouls.Items.";
 
-            if (item.type == ModContent.ItemType<UniverseSoul>())
+            if (item.type == ItemType<UniverseSoul>())
             {
                 if (SoulsItem.IsNotRuminating(item))
                 {

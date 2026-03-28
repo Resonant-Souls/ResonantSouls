@@ -22,12 +22,12 @@ namespace ResonantSouls.BombusApis.Enchants
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<LivingFlowerCrown>())
-            .AddIngredient(ModContent.ItemType<LivingFlowerChestplate>())
-            .AddIngredient(ModContent.ItemType<LivingFlowerLeggings>())
-            .AddIngredient(ModContent.ItemType<BladeOfAculeus>())
-            .AddIngredient(ModContent.ItemType<Honeycomb>())
-            .AddIngredient(ModContent.ItemType<HoneyFlareGun>())
+            .AddIngredient(ItemType<LivingFlowerCrown>())
+            .AddIngredient(ItemType<LivingFlowerChestplate>())
+            .AddIngredient(ItemType<LivingFlowerLeggings>())
+            .AddIngredient(ItemType<BladeOfAculeus>())
+            .AddIngredient(ItemType<Honeycomb>())
+            .AddIngredient(ItemType<HoneyFlareGun>())
             .AddTile<EnchantedTreeSheet>()
             .Register();
         }

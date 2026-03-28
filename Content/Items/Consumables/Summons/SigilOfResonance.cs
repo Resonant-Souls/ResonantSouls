@@ -1,3 +1,4 @@
+using System;
 using FargowiltasSouls.Content.Items.Summons;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
@@ -16,13 +17,13 @@ namespace ResonantSouls.Content.Items.Consumables.Summons
             /*
             if (ModCompatibility.SpiritMod.Loaded)
             {
-                ModContent.TryFind(ModCompatibility.SpiritMod.Name, "BriarSurfaceBiome", out ModBiome briarBiome);
+                TryFind(ModCompatibility.SpiritMod.Name, "BriarSurfaceBiome", out ModBiome briarBiome);
                 if (player.InModBiome(briarBiome))
                 {
                     if (player.altFunctionUse == 2)
                         PrintChampMessage("Etheriality");
                     else
-                        FargoSoulsUtil.SpawnBossNetcoded(player, ModContent.Find<ModNPC>("EtherialityChampion").Type);
+                        FargoSoulsUtil.SpawnBossNetcoded(player, Find<ModNPC>("EtherialityChampion").Type);
                 }
                 return true;
             }

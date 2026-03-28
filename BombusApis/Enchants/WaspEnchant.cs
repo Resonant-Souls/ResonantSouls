@@ -22,12 +22,12 @@ namespace ResonantSouls.BombusApis.Enchants
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<WaspHead>())
-            .AddIngredient(ModContent.ItemType<WaspBreastplate>())
-            .AddIngredient(ModContent.ItemType<WaspGreaves>())
-            .AddIngredient(ModContent.ItemType<BrainyHoneycomb>())
-            .AddIngredient(ModContent.ItemType<EaterOfHoneycombs>())
-            .AddIngredient(ModContent.ItemType<NectarBolt>())
+            .AddIngredient(ItemType<WaspHead>())
+            .AddIngredient(ItemType<WaspBreastplate>())
+            .AddIngredient(ItemType<WaspGreaves>())
+            .AddIngredient(ItemType<BrainyHoneycomb>())
+            .AddIngredient(ItemType<EaterOfHoneycombs>())
+            .AddIngredient(ItemType<NectarBolt>())
             .AddTile<EnchantedTreeSheet>()
             .Register();
         }

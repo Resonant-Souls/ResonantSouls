@@ -23,12 +23,12 @@ namespace ResonantSouls.BombusApis.Enchants
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<HoneycombCrusaderHelmet>())
-            .AddIngredient(ModContent.ItemType<HoneycombCrusaderPlatemail>())
-            .AddIngredient(ModContent.ItemType<HoneycombCrusaderGreaves>())
-            .AddIngredient(ModContent.ItemType<CystComb>())
-            .AddIngredient(ModContent.ItemType<CursedHoneycomb>())
-            .AddIngredient(ModContent.ItemType<TriTipStinger>())
+            .AddIngredient(ItemType<HoneycombCrusaderHelmet>())
+            .AddIngredient(ItemType<HoneycombCrusaderPlatemail>())
+            .AddIngredient(ItemType<HoneycombCrusaderGreaves>())
+            .AddIngredient(ItemType<CystComb>())
+            .AddIngredient(ItemType<CursedHoneycomb>())
+            .AddIngredient(ItemType<TriTipStinger>())
             .AddTile<EnchantedTreeSheet>()
             .Register();
         }

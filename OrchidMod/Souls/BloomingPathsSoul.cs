@@ -21,7 +21,7 @@ namespace ResonantSouls.OrchidMod.Souls
         ];
         public static List<ModItem> Forces =
         [
-            ModContent.GetInstance<BloomForce>(),
+            GetInstance<BloomForce>(),
         ];
         public override void SetStaticDefaults()
         {
@@ -32,7 +32,7 @@ namespace ResonantSouls.OrchidMod.Souls
         public override void SetDefaults()
         {
             base.SetDefaults();
-            Item.rare = ModContent.RarityType<AbominableRarity>();
+            Item.rare = RarityType<AbominableRarity>();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

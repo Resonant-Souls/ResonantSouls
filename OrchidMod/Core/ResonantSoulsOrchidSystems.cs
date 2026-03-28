@@ -21,14 +21,15 @@ namespace ResonantSouls.OrchidMod.Core
     public class ResonantSoulsOrchidSystems : ModSystem
     {
         public static OrchidGuardian GuardianPlayer(Player player) => player.GetModPlayer<OrchidGuardian>();
+        Recipe? recipe;
         public override void AddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
-                Recipe recipe = Main.recipe[i];
-                if (recipe.HasResult(ModContent.ItemType<UniverseSoul>()))
+                recipe = Main.recipe[i];
+                if (recipe.HasResult(ItemType<UniverseSoul>()))
                 {
-                    recipe.SafeAddToRecipe(ModContent.ItemType<GuardiansSoul>());
+                    recipe.SafeAddToRecipe(ItemType<GuardiansSoul>());
                     recipe.ShiftRecipeItems();
                 }
             }
@@ -36,26 +37,26 @@ namespace ResonantSouls.OrchidMod.Core
         public override void PostSetupContent()
         {
             ResonantSoulsUtilities.SetSacrifice(
-                ModContent.ItemType<GoblinRune>(), 1,
-                ModContent.ItemType<RuneRune>(), 1,
-                ModContent.ItemType<PredatorGoblin>(), 1,
-                ModContent.ItemType<SageBat>(), 1,
-                ModContent.ItemType<WardenSpider>(), 1,
-                ModContent.ItemType<CorruptionQuarterstaff>(), 1,
-                ModContent.ItemType<CrimsonQuarterstaff>(), 1,
-                ModContent.ItemType<BeeRune>(), 1,
-                ModContent.ItemType<CorruptionWarhammer>(), 1,
-                ModContent.ItemType<CrimsonWarhammer>(), 1,
-                ModContent.ItemType<DemoniteShield>(), 1,
-                ModContent.ItemType<CrimtaneShield>(), 1
+                ItemType<GoblinRune>(), 1,
+                ItemType<RuneRune>(), 1,
+                ItemType<PredatorGoblin>(), 1,
+                ItemType<SageBat>(), 1,
+                ItemType<WardenSpider>(), 1,
+                ItemType<CorruptionQuarterstaff>(), 1,
+                ItemType<CrimsonQuarterstaff>(), 1,
+                ItemType<BeeRune>(), 1,
+                ItemType<CorruptionWarhammer>(), 1,
+                ItemType<CrimsonWarhammer>(), 1,
+                ItemType<DemoniteShield>(), 1,
+                ItemType<CrimtaneShield>(), 1
             );
 
             ResonantSoulsUtilities.SetHardmodeSacrifice(
-                ModContent.ItemType<PaladinGauntlet>(), 1,
-                ModContent.ItemType<PlanteraStandard>(), 1,
-                ModContent.ItemType<TempleWarhammer>(), 1,
-                ModContent.ItemType<CrystalGauntlet>(), 1,
-                ModContent.ItemType<GuardianCrystalNinjaHelm>(), 1
+                ItemType<PaladinGauntlet>(), 1,
+                ItemType<PlanteraStandard>(), 1,
+                ItemType<TempleWarhammer>(), 1,
+                ItemType<CrystalGauntlet>(), 1,
+                ItemType<GuardianCrystalNinjaHelm>(), 1
             );
         }
     }

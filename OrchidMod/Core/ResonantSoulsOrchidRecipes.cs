@@ -30,6 +30,7 @@ using FargowiltasSouls.Content.Items.Armor.Eridanus;
 using FargowiltasSouls.Content.Items.Armor.Gaia;
 using FargowiltasSouls.Content.Items.Dyes;
 using OrchidMod.Content.Guardian.Armors.Empress;
+using System.Collections.Generic;
 
 
 namespace ResonantSouls.OrchidMod.Core
@@ -38,16 +39,21 @@ namespace ResonantSouls.OrchidMod.Core
     [ExtendsFromMod(ModCompatibility.OrchidMod.Name)]
     public class ResonantSoulsOrchidRecipes : ModSystem
     {
-        static OrchidServerConfig OrchidServerConfig => ModContent.GetInstance<OrchidServerConfig>();
+        static OrchidServerConfig OrchidServerConfig => GetInstance<OrchidServerConfig>();
         static bool Shapeshifter => OrchidServerConfig.EnableContentShapeshifter;
         Recipe? recipe;
         RecipeGroup? recipeGroup;
+        // Treasure bags, grab bags (presents and such), crate, and biome key recipes are in FargoServerConfig.Instance.ContainerRecipes
+        // Banners are in FargoServerConfig.Instance.BannerRecipes (wow)
+        // Conversions, Statues, npc recipes, travelling merchant, skeleton merchant, and misc recipes are in FargoServerConfig.Instance.MiscRecipes
         public override void AddRecipes()
         {
             if (FargoServerConfig.Instance.ContainerRecipes)
             {
                 AddCrateRecipes();
                 AddBossBagRecipes();
+                AddGrabBagRecipes();
+                AddBossTrophyRecipes();
             }
             if (FargoServerConfig.Instance.BannerRecipes)
             {
@@ -56,157 +62,173 @@ namespace ResonantSouls.OrchidMod.Core
             if (FargoServerConfig.Instance.MiscRecipes)
             {
                 AddMiscRecipes();
-                AddBossTrophyRecipes();
                 AddConversionRecipes();
+                AddTravellingMerchantNPCRecipes();
             }
             ModifyRecipeGroups();
-            AddTravellingMerchantNPCRecipes();
             AddFargosRecipes();
         }
         static void AddCrateRecipes()
         {
             if (Shapeshifter)
-                CreateCrateRecipe(ModContent.ItemType<WardenSnail>(), ResonantSoulsRecipeSystem.AnyWoodCrate, 5);
-            CreateCrateRecipe(ModContent.ItemType<Quarterstaff>(), ResonantSoulsRecipeSystem.AnyWoodCrate, 5);
-            CreateCrateRecipe(ModContent.ItemType<GuideShield>(), ResonantSoulsRecipeSystem.AnyWoodCrate, 5);
+            {
+                CreateCrateRecipe(ItemType<WardenSnail>(), ResonantSoulsRecipeSystem.AnyWoodCrate, 5);
 
-            CreateCrateRecipe(ModContent.ItemType<Quarterstaff>(), ResonantSoulsRecipeSystem.AnyIronCrate, 5);
-            CreateCrateRecipe(ModContent.ItemType<GuideShield>(), ResonantSoulsRecipeSystem.AnyIronCrate, 5);
+                CreateCrateRecipe(ItemType<WardenTortoise>(), ResonantSoulsRecipeSystem.AnyJungleCrate, 5);
 
-            if (Shapeshifter)
-                CreateCrateRecipe(ModContent.ItemType<WardenTortoise>(), ResonantSoulsRecipeSystem.AnyJungleCrate, 5);
-            CreateCrateRecipe(ModContent.ItemType<JungleGauntlet>(), ResonantSoulsRecipeSystem.AnyJungleCrate, 3);
+                CreateCrateRecipe(ItemType<ShawlFeather>(), ResonantSoulsRecipeSystem.AnySkyCrate, 3);
 
-            if (Shapeshifter)
-                CreateCrateRecipe(ModContent.ItemType<ShawlFeather>(), ResonantSoulsRecipeSystem.AnySkyCrate, 3);
-            CreateCrateRecipe(ModContent.ItemType<SkywareShield>(), ResonantSoulsRecipeSystem.AnySkyCrate, 3);
+                CreateCrateRecipe(ItemType<WardenSalamortar>(), ResonantSoulsRecipeSystem.AnyLavaCrate, 3, extraItem: ItemID.GoldenKey);
 
-            if (Shapeshifter)
-                CreateCrateRecipe(ModContent.ItemType<WardenSalamortar>(), ResonantSoulsRecipeSystem.AnyLavaCrate, 3, extraItem: ItemID.GoldenKey);
-            CreateCrateRecipe(ModContent.ItemType<HellRune>(), ResonantSoulsRecipeSystem.AnyLavaCrate, 3, extraItem: ItemID.GoldenKey);
-            CreateCrateRecipe(ModContent.ItemType<NightShield>(), ResonantSoulsRecipeSystem.AnyLavaCrate, 3, extraItem: ItemID.GoldenKey);
+                CreateCrateRecipe(ItemType<PredatorIceFox>(), ResonantSoulsRecipeSystem.AnyFrozenCrate, 3);
 
-            if (Shapeshifter)
-                CreateCrateRecipe(ModContent.ItemType<PredatorIceFox>(), ResonantSoulsRecipeSystem.AnyFrozenCrate, 3);
-            CreateCrateRecipe(ModContent.ItemType<IceStandard>(), ResonantSoulsRecipeSystem.AnyFrozenCrate, 3);
+                CreateCrateRecipe(ItemType<PredatorUndine>(), ResonantSoulsRecipeSystem.AnyDungeonCrate, 3, extraItem: ItemID.GoldenKey);
+            }
 
-            if (Shapeshifter)
-                CreateCrateRecipe(ModContent.ItemType<PredatorUndine>(), ResonantSoulsRecipeSystem.AnyDungeonCrate, 3, extraItem: ItemID.GoldenKey);
+            CreateCrateRecipe(ItemType<Quarterstaff>(), ResonantSoulsRecipeSystem.AnyWoodCrate, 5);
+            CreateCrateRecipe(ItemType<GuideShield>(), ResonantSoulsRecipeSystem.AnyWoodCrate, 5);
 
-            CreateCrateRecipe(ModContent.ItemType<DungeonQuarterstaff>(), ResonantSoulsRecipeSystem.AnyDungeonCrate, 3, extraItem: ItemID.GoldenKey);
+            CreateCrateRecipe(ItemType<Quarterstaff>(), ResonantSoulsRecipeSystem.AnyIronCrate, 5);
+            CreateCrateRecipe(ItemType<GuideShield>(), ResonantSoulsRecipeSystem.AnyIronCrate, 5);
 
-            CreateCrateRecipe(ModContent.ItemType<EnchantedPavise>(), ResonantSoulsRecipeSystem.AnyGoldCrate, 2);
-            CreateCrateRecipe(ModContent.ItemType<EnchantedRune>(), ResonantSoulsRecipeSystem.AnyGoldCrate, 2);
+            CreateCrateRecipe(ItemType<JungleGauntlet>(), ResonantSoulsRecipeSystem.AnyJungleCrate, 3);
 
-            CreateCrateRecipe(ModContent.ItemType<DesertStandard>(), ResonantSoulsRecipeSystem.AnySandCrate, 3);
+            CreateCrateRecipe(ItemType<SkywareShield>(), ResonantSoulsRecipeSystem.AnySkyCrate, 3);
 
-            CreateCrateRecipe(ModContent.ItemType<CorruptionQuarterstaff>(), ResonantSoulsRecipeSystem.AnyCorruptCrate, 3);
+            CreateCrateRecipe(ItemType<HellRune>(), ResonantSoulsRecipeSystem.AnyLavaCrate, 3, extraItem: ItemID.GoldenKey);
+            CreateCrateRecipe(ItemType<NightShield>(), ResonantSoulsRecipeSystem.AnyLavaCrate, 3, extraItem: ItemID.GoldenKey);
 
-            CreateCrateRecipe(ModContent.ItemType<CrimsonQuarterstaff>(), ResonantSoulsRecipeSystem.AnyCrimsonCrate, 3);
+            CreateCrateRecipe(ItemType<IceStandard>(), ResonantSoulsRecipeSystem.AnyFrozenCrate, 3);
 
+            CreateCrateRecipe(ItemType<DungeonQuarterstaff>(), ResonantSoulsRecipeSystem.AnyDungeonCrate, 3, extraItem: ItemID.GoldenKey);
+
+            CreateCrateRecipe(ItemType<EnchantedPavise>(), ResonantSoulsRecipeSystem.AnyGoldCrate, 2);
+            CreateCrateRecipe(ItemType<EnchantedRune>(), ResonantSoulsRecipeSystem.AnyGoldCrate, 2);
+
+            CreateCrateRecipe(ItemType<DesertStandard>(), ResonantSoulsRecipeSystem.AnySandCrate, 3);
+
+            CreateCrateRecipe(ItemType<CorruptionQuarterstaff>(), ResonantSoulsRecipeSystem.AnyCorruptCrate, 3);
+
+            CreateCrateRecipe(ItemType<CrimsonQuarterstaff>(), ResonantSoulsRecipeSystem.AnyCrimsonCrate, 3);
         }
         static void AddBossBagRecipes()
         {
             if (Shapeshifter)
             {
-                CreateTreasureGroupRecipe(ItemID.KingSlimeBossBag, ModContent.ItemType<WardenSlime>());
+                CreateTreasureGroupRecipe(ItemID.KingSlimeBossBag, ItemType<WardenSlime>());
             }
 
-            CreateTreasureGroupRecipe(ItemID.QueenBeeBossBag, ModContent.ItemType<BeeRune>());
+            CreateTreasureGroupRecipe(ItemID.QueenBeeBossBag,
+                ItemType<BeeRune>()
+            );
 
-            CreateTreasureGroupRecipe(ItemID.PlanteraBossBag, ModContent.ItemType<PlanteraStandard>());
+            CreateTreasureGroupRecipe(ItemID.PlanteraBossBag,
+                ItemType<PlanteraStandard>()
+            );
 
-            CreateTreasureGroupRecipe(ItemID.GolemBossBag, ModContent.ItemType<TempleWarhammer>());
+            CreateTreasureGroupRecipe(ItemID.GolemBossBag,
+                ItemType<TempleWarhammer>()
+            );
 
-            CreateTreasureGroupRecipe(ItemID.MoonLordBossBag, ModContent.ItemType<MoonLordShield>(), ModContent.ItemType<MoonLordRune>());
+            CreateTreasureGroupRecipe(ItemID.MoonLordBossBag,
+                ItemType<MoonLordShield>(), ItemType<MoonLordRune>()
+            );
 
             if (ModCompatibility.ThoriumMod.Loaded)
             {
                 Mod tr = ModCompatibility.ThoriumMod.Mod;
-                CreateTreasureGroupRecipe(tr.Find<ModItem>("ThunderBirdBag").Type, ModContent.ItemType<ThoriumGrandThunderBirdWarhammer>());
 
-                CreateTreasureGroupRecipe(tr.Find<ModItem>("ScouterBag").Type, ModContent.ItemType<ThoriumStarScouterStandard>());
+                CreateTreasureGroupRecipe(tr.Find<ModItem>("ThunderBirdBag").Type,
+                    ItemType<ThoriumGrandThunderBirdWarhammer>()
+                );
 
-                CreateTreasureGroupRecipe(tr.Find<ModItem>("CountBag").Type, ModContent.ItemType<ThoriumViscountQuarterstaff>());
+                CreateTreasureGroupRecipe(tr.Find<ModItem>("ScouterBag").Type,
+                    ItemType<ThoriumStarScouterStandard>()
+                );
+
+                CreateTreasureGroupRecipe(tr.Find<ModItem>("CountBag").Type,
+                    ItemType<ThoriumViscountQuarterstaff>()
+                );
             }
         }
         static void AddBossTrophyRecipes()
         {
-            CreateTreasureGroupRecipe(ItemID.EyeofCthulhuTrophy, ModContent.ItemType<SquareMinecart>(), ModContent.ItemType<PrototypeSecrecy>());
+            CreateTreasureGroupRecipe(ItemID.EyeofCthulhuTrophy, ItemType<SquareMinecart>(), ItemType<PrototypeSecrecy>());
 
-            CreateTreasureGroupRecipe(ItemID.PlanteraTrophy, ModContent.ItemType<OrnateOrchid>());
+            CreateTreasureGroupRecipe(ItemID.PlanteraTrophy, ItemType<OrnateOrchid>());
 
-            CreateTreasureGroupRecipe(ItemID.EverscreamTrophy, ModContent.ItemType<FrostRune>());
+            CreateTreasureGroupRecipe(ItemID.EverscreamTrophy, ItemType<FrostRune>());
 
-            CreateTreasureGroupRecipe(ItemID.FlyingDutchmanTrophy, ModContent.ItemType<PirateStandard>(), ModContent.ItemType<PirateWarhammer>());
+            CreateTreasureGroupRecipe(ItemID.FlyingDutchmanTrophy, ItemType<PirateStandard>(), ItemType<PirateWarhammer>());
 
-            CreateTreasureGroupRecipe(ItemID.MartianSaucerTrophy, ModContent.ItemType<MartianWarhammer>());
+            CreateTreasureGroupRecipe(ItemID.MartianSaucerTrophy, ItemType<MartianWarhammer>());
 
-            CreateTreasureGroupRecipe(ItemID.PumpkingTrophy, ModContent.ItemType<PumpkingWarhammer>());
-
+            CreateTreasureGroupRecipe(ItemID.PumpkingTrophy, ItemType<PumpkingWarhammer>());
         }
         static void AddBannerRecipes()
         {
-            AddBannerToItemRecipe(ItemID.ElfCopterBanner, ModContent.ItemType<RCRemote>());
+            AddBannerToItemRecipe(ItemID.ElfCopterBanner, ItemType<RCRemote>());
 
-            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ModContent.ItemType<BadgeBattlesPast>());
+            AddBannerToItemRecipe(ItemID.AngryBonesBanner, ItemType<BadgeBattlesPast>());
 
-            AddBannerToItemRecipe(ItemID.DevourerBanner, ModContent.ItemType<ColossalWormTooth>());
+            AddBannerToItemRecipe(ItemID.DevourerBanner, ItemType<ColossalWormTooth>());
 
-            AddBannerToItemRecipe(ItemID.GoblinWarriorBanner, ModContent.ItemType<GoblinSpike>());
+            AddBannerToItemRecipe(ItemID.GoblinWarriorBanner, ItemType<GoblinSpike>());
 
-            AddBannerToItemRecipe(ItemID.GraniteFlyerBanner, ModContent.ItemType<SturdySlab>());
+            AddBannerToItemRecipe(ItemID.GraniteFlyerBanner, ItemType<SturdySlab>());
 
-            AddBannerToItemRecipe(ItemID.GraniteGolemBanner, ModContent.ItemType<SturdySlab>());
+            AddBannerToItemRecipe(ItemID.GraniteGolemBanner, ItemType<SturdySlab>());
 
-            AddBannerToItemRecipe(ItemID.FaceMonsterBanner, ModContent.ItemType<TerrifyingMonsterFang>());
+            AddBannerToItemRecipe(ItemID.FaceMonsterBanner, ItemType<TerrifyingMonsterFang>());
 
-            AddBannerToItemRecipe(ItemID.SporeSkeletonBanner, ModContent.ItemType<GlowingMushroomGauntlet>());
+            AddBannerToItemRecipe(ItemID.SporeSkeletonBanner, ItemType<GlowingMushroomGauntlet>());
 
-            AddBannerToItemRecipe(ItemID.PaladinBanner, ModContent.ItemType<PaladinGauntlet>());
+            AddBannerToItemRecipe(ItemID.PaladinBanner, ItemType<PaladinGauntlet>());
 
-            AddBannerToItemRecipe(ItemID.GoblinSorcererBanner, ModContent.ItemType<GoblinRune>());
+            AddBannerToItemRecipe(ItemID.GoblinSorcererBanner, ItemType<GoblinRune>());
 
-            AddBannerToItemRecipe(ItemID.RuneWizardBanner, ModContent.ItemType<RuneRune>());
+            AddBannerToItemRecipe(ItemID.RuneWizardBanner, ItemType<RuneRune>());
 
-            AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ModContent.ItemType<PirateStandard>());
-            AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ModContent.ItemType<PirateWarhammer>());
+            AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemType<PirateStandard>());
+            AddBannerToItemRecipe(ItemID.PirateCaptainBanner, ItemType<PirateWarhammer>());
 
             if (Shapeshifter)
             {
-                AddBannerToItemRecipe(ItemID.GoblinSorcererBanner, ModContent.ItemType<PredatorGoblin>());
+                AddBannerToItemRecipe(ItemID.GoblinSorcererBanner, ItemType<PredatorGoblin>());
 
-                AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ModContent.ItemType<DeepwaterLocket>());
+                AddBannerToItemRecipe(ItemID.SkeletonMageBanner, ItemType<DeepwaterLocket>());
 
-                AddBannerToItemRecipe(ItemID.GoblinThiefBanner, ModContent.ItemType<GoblinDagger>());
+                AddBannerToItemRecipe(ItemID.GoblinThiefBanner, ItemType<GoblinDagger>());
 
-                AddBannerToItemRecipe(ItemID.ManEaterBanner, ModContent.ItemType<PlantEnzymes>());
+                AddBannerToItemRecipe(ItemID.ManEaterBanner, ItemType<PlantEnzymes>());
 
-                AddBannerToItemRecipe(ItemID.SnatcherBanner, ModContent.ItemType<PlantEnzymes>());
+                AddBannerToItemRecipe(ItemID.SnatcherBanner, ItemType<PlantEnzymes>());
 
-                AddBannerToItemRecipe(ItemID.SpiderBanner, ModContent.ItemType<WardenSpider>());
+                AddBannerToItemRecipe(ItemID.SpiderBanner, ItemType<WardenSpider>());
 
-                AddBannerGroupToItemRecipe(ResonantSoulsRecipeSystem.AnyBatBanner, ModContent.ItemType<SageBat>());
+                AddBannerGroupToItemRecipe(ResonantSoulsRecipeSystem.AnyBatBanner, ItemType<SageBat>());
             }
         }
-        void AddMiscRecipes()
+        void AddGrabBagRecipes()
         {
-            recipe = Recipe.Create(ModContent.ItemType<PresentQuarterstaff>());
+            recipe = Recipe.Create(ItemType<PresentQuarterstaff>());
             recipe.AddIngredient(ItemID.Present, 10);
             recipe.AddTile(TileID.Solidifier);
             recipe.Register();
-
-            recipe = Recipe.Create(ModContent.ItemType<HellRune>());
+        }
+        void AddMiscRecipes()
+        {
+            recipe = Recipe.Create(ItemType<HellRune>());
             recipe.AddIngredient(ItemID.TreasureMagnet, 2);
             recipe.AddTile(TileID.Solidifier);
             recipe.Register();
 
-            recipe = Recipe.Create(ModContent.ItemType<NightShield>());
+            recipe = Recipe.Create(ItemType<NightShield>());
             recipe.AddIngredient(ItemID.TreasureMagnet, 2);
             recipe.AddTile(TileID.Solidifier);
             recipe.Register();
 
-            recipe = Recipe.Create(ModContent.ItemType<WardenSalamortar>());
+            recipe = Recipe.Create(ItemType<WardenSalamortar>());
             recipe.AddIngredient(ItemID.TreasureMagnet, 2);
             recipe.AddTile(TileID.Solidifier);
             recipe.Register();
@@ -214,37 +236,37 @@ namespace ResonantSouls.OrchidMod.Core
         void ModifyRecipeGroups()
         {
             recipeGroup = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["FargowiltasSouls:AnyCobaltHead"]];
-            recipeGroup.ValidItems.Add(ModContent.ItemType<GuardianCobaltHead>());
+            recipeGroup.ValidItems.Add(ItemType<GuardianCobaltHead>());
 
             recipeGroup = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["FargowiltasSouls:AnyPallaHead"]];
-            recipeGroup.ValidItems.Add(ModContent.ItemType<GuardianPalladiumHead>());
+            recipeGroup.ValidItems.Add(ItemType<GuardianPalladiumHead>());
 
             recipeGroup = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["FargowiltasSouls:AnyMythrilHead"]];
-            recipeGroup.ValidItems.Add(ModContent.ItemType<GuardianMythrilHead>());
+            recipeGroup.ValidItems.Add(ItemType<GuardianMythrilHead>());
 
             recipeGroup = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["FargowiltasSouls:AnyOriHead"]];
-            recipeGroup.ValidItems.Add(ModContent.ItemType<GuardianOrichalcumHead>());
+            recipeGroup.ValidItems.Add(ItemType<GuardianOrichalcumHead>());
 
             recipeGroup = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["FargowiltasSouls:AnyAdamHead"]];
-            recipeGroup.ValidItems.Add(ModContent.ItemType<GuardianAdamantiteHead>());
+            recipeGroup.ValidItems.Add(ItemType<GuardianAdamantiteHead>());
 
             recipeGroup = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["FargowiltasSouls:AnyTitaHead"]];
-            recipeGroup.ValidItems.Add(ModContent.ItemType<GuardianTitaniumHead>());
+            recipeGroup.ValidItems.Add(ItemType<GuardianTitaniumHead>());
 
             recipeGroup = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["FargowiltasSouls:AnyHallowHead"]];
-            recipeGroup.ValidItems.Add(ModContent.ItemType<GuardianHallowedHead>());
+            recipeGroup.ValidItems.Add(ItemType<GuardianHallowedHead>());
 
             recipeGroup = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["FargowiltasSouls:AnyAncientHallowHead"]];
-            recipeGroup.ValidItems.Add(ModContent.ItemType<GuardianAncientHallowedHead>());
+            recipeGroup.ValidItems.Add(ItemType<GuardianAncientHallowedHead>());
 
             recipeGroup = RecipeGroup.recipeGroups[RecipeGroup.recipeGroupIDs["FargowiltasSouls:AnyChloroHead"]];
-            recipeGroup.ValidItems.Add(ModContent.ItemType<GuardianChlorophyteHead>());
+            recipeGroup.ValidItems.Add(ItemType<GuardianChlorophyteHead>());
 
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
-                Recipe recipe = Main.recipe[i];
+                recipe = Main.recipe[i];
 
-                if (recipe.HasResult(ModContent.ItemType<CrystalAssassinEnchant>()) && recipe.HasIngredient(ItemID.CrystalNinjaHelmet))
+                if (recipe.HasResult(ItemType<CrystalAssassinEnchant>()) && recipe.HasIngredient(ItemID.CrystalNinjaHelmet))
                 {
                     recipe.SafeAddRecipeGroup("ResonantSouls:AnyCrystalNinjaHelm");
                     recipe.RemoveIngredient(ItemID.CrystalNinjaHelmet);
@@ -254,20 +276,20 @@ namespace ResonantSouls.OrchidMod.Core
         }
         public override void AddRecipeGroups()
         {
-            recipeGroup = new RecipeGroup(() => RecipeSystem.ItemXOrY(ItemID.CrystalNinjaHelmet, ModContent.ItemType<GuardianCrystalNinjaHelm>()), ItemID.CrystalNinjaHelmet, ModContent.ItemType<GuardianCrystalNinjaHelm>());
+            recipeGroup = new(() => RecipeSystem.ItemXOrY(ItemID.CrystalNinjaHelmet, ItemType<GuardianCrystalNinjaHelm>()), ItemID.CrystalNinjaHelmet, ItemType<GuardianCrystalNinjaHelm>());
             RecipeGroup.RegisterGroup("ResonantSouls:AnyCrystalNinjaHelm", recipeGroup);
 
-            recipeGroup = new RecipeGroup(() => Language.GetTextValue("Mods.ResonantSouls.RecipeGroups.SturdySlab"), ModContent.ItemType<SturdySlab>(), ModContent.ItemType<ParryingMailFeral>(), ModContent.ItemType<ParryingMailFeral>(), ModContent.ItemType<ParryingMailMech>(), ModContent.ItemType<ParryingMailNinja>());
+            recipeGroup = new(() => Language.GetTextValue("Mods.ResonantSouls.RecipeGroups.SturdySlab"), ItemType<SturdySlab>(), ItemType<ParryingMailFeral>(), ItemType<ParryingMailFeral>(), ItemType<ParryingMailMech>(), ItemType<ParryingMailNinja>());
             RecipeGroup.RegisterGroup("ResonantSouls:AnySturdySlab", recipeGroup);
 
-            recipeGroup = new RecipeGroup(() => RecipeSystem.ItemXOrY(ModContent.ItemType<EmpressPlateChest>(), ModContent.ItemType<GuardianEmpressChestAlt>()), ModContent.ItemType<EmpressPlateChest>(), ModContent.ItemType<GuardianEmpressChestAlt>());
+            recipeGroup = new(() => RecipeSystem.ItemXOrY(ItemType<EmpressPlateChest>(), ItemType<GuardianEmpressChestAlt>()), ItemType<EmpressPlateChest>(), ItemType<GuardianEmpressChestAlt>());
             RecipeGroup.RegisterGroup("ResonantSouls:AnyEmpressChest", recipeGroup);
         }
         void AddTravellingMerchantNPCRecipes()
         {
             if (Shapeshifter)
             {
-                recipe = Recipe.Create(ModContent.ItemType<HarnessYouxia>());
+                recipe = Recipe.Create(ItemType<HarnessYouxia>());
                 recipe.AddIngredient(TravellingMerchant);
                 recipe.AddIngredient(ItemID.GoldCoin, 10);
                 recipe.AddTile(TileID.TinkerersWorkbench);
@@ -276,7 +298,7 @@ namespace ResonantSouls.OrchidMod.Core
                 recipe.Register();
             }
 
-            recipe = Recipe.Create(ModContent.ItemType<Skateboard>());
+            recipe = Recipe.Create(ItemType<Skateboard>());
             recipe.AddIngredient(TravellingMerchant);
             recipe.AddIngredient(ItemID.GoldCoin, 10);
             recipe.AddTile(TileID.TinkerersWorkbench);
@@ -284,7 +306,7 @@ namespace ResonantSouls.OrchidMod.Core
             recipe.DisableDecraft();
             recipe.Register();
 
-            recipe = Recipe.Create(ModContent.ItemType<BijouShield>());
+            recipe = Recipe.Create(ItemType<BijouShield>());
             recipe.AddIngredient(TravellingMerchant);
             recipe.AddIngredient(ItemID.GoldCoin, 10);
             recipe.AddTile(TileID.TinkerersWorkbench);
@@ -292,7 +314,7 @@ namespace ResonantSouls.OrchidMod.Core
             recipe.DisableDecraft();
             recipe.Register();
 
-            recipe = Recipe.Create(ModContent.ItemType<HockeyQuarterstaff>());
+            recipe = Recipe.Create(ItemType<HockeyQuarterstaff>());
             recipe.AddIngredient(TravellingMerchant);
             recipe.AddIngredient(ItemID.GoldCoin, 10);
             recipe.AddTile(TileID.TinkerersWorkbench);
@@ -302,8 +324,8 @@ namespace ResonantSouls.OrchidMod.Core
         }
         static void AddConversionRecipes()
         {
-            AddConvertRecipe(ModContent.ItemType<CorruptionQuarterstaff>(), ModContent.ItemType<CrimsonQuarterstaff>());
-            AddConvertRecipe(ModContent.ItemType<TerrifyingMonsterFang>(), ModContent.ItemType<ColossalWormTooth>());
+            AddConvertRecipe(ItemType<CorruptionQuarterstaff>(), ItemType<CrimsonQuarterstaff>());
+            AddConvertRecipe(ItemType<TerrifyingMonsterFang>(), ItemType<ColossalWormTooth>());
         }
         void AddFargosRecipes()
         {
@@ -311,37 +333,37 @@ namespace ResonantSouls.OrchidMod.Core
             {
                 recipe = Main.recipe[i];
 
-                if (recipe.HasResult(ModContent.ItemType<VerdantDoomsayerMask>()))
+                if (recipe.HasResult(ItemType<VerdantDoomsayerMask>()))
                 {
-                    recipe.SafeAddToRecipe(ModContent.ItemType<HorizonFragment>());
+                    recipe.SafeAddToRecipe(ItemType<HorizonFragment>());
                 }
-                else if (recipe.HasResult(ModContent.ItemType<EridanusHat>()))
+                else if (recipe.HasResult(ItemType<EridanusHat>()))
                 {
-                    recipe.SafeAddToRecipe(ModContent.ItemType<HorizonFragment>(), 5);
+                    recipe.SafeAddToRecipe(ItemType<HorizonFragment>(), 5);
                 }
-                else if (recipe.HasResult(ModContent.ItemType<EridanusBattleplate>()))
+                else if (recipe.HasResult(ItemType<EridanusBattleplate>()))
                 {
-                    recipe.SafeAddToRecipe(ModContent.ItemType<HorizonFragment>(), 5);
+                    recipe.SafeAddToRecipe(ItemType<HorizonFragment>(), 5);
                 }
-                else if (recipe.HasResult(ModContent.ItemType<EridanusLegwear>()))
+                else if (recipe.HasResult(ItemType<EridanusLegwear>()))
                 {
-                    recipe.SafeAddToRecipe(ModContent.ItemType<HorizonFragment>(), 5);
+                    recipe.SafeAddToRecipe(ItemType<HorizonFragment>(), 5);
                 }
-                else if (recipe.HasResult(ModContent.ItemType<GaiaHelmet>()))
+                else if (recipe.HasResult(ItemType<GaiaHelmet>()))
                 {
-                    recipe.SafeAddToRecipe(ModContent.ItemType<GuardianEmpressMaterial>(), 5);
+                    recipe.SafeAddToRecipe(ItemType<GuardianEmpressMaterial>(), 5);
                 }
-                else if (recipe.HasResult(ModContent.ItemType<GaiaPlate>()))
+                else if (recipe.HasResult(ItemType<GaiaPlate>()))
                 {
-                    recipe.SafeAddToRecipe(ModContent.ItemType<GuardianEmpressMaterial>(), 8);
+                    recipe.SafeAddToRecipe(ItemType<GuardianEmpressMaterial>(), 8);
                 }
-                else if (recipe.HasResult(ModContent.ItemType<GaiaGreaves>()))
+                else if (recipe.HasResult(ItemType<GaiaGreaves>()))
                 {
-                    recipe.SafeAddToRecipe(ModContent.ItemType<GuardianEmpressMaterial>(), 5);
+                    recipe.SafeAddToRecipe(ItemType<GuardianEmpressMaterial>(), 5);
                 }
-                else if (recipe.HasResult(ModContent.ItemType<GaiaDye>()))
+                else if (recipe.HasResult(ItemType<GaiaDye>()))
                 {
-                    recipe.SafeAddToRecipe(ModContent.ItemType<GuardianEmpressMaterial>(), 1);
+                    recipe.SafeAddToRecipe(ItemType<GuardianEmpressMaterial>(), 1);
                 }
             }
         }

@@ -1,4 +1,5 @@
 using FargowiltasSouls;
+using FargowiltasSouls.Core.ModPlayers;
 using OrchidMod.Content.Guardian;
 
 namespace ResonantSouls.OrchidMod.Core
@@ -9,11 +10,13 @@ namespace ResonantSouls.OrchidMod.Core
     {
         public override void PostUpdate()
         {
-            if (Player.FargoSouls().Atrophied)
+            FargoSoulsPlayer mp = Player.FargoSouls();
+            DamageClass damage = Player.HeldItem.DamageType;
+            if (mp.Atrophied)
             {
                 Player.GetAttackSpeed<GuardianDamageClass>() /= 1.5f;
-                if (Player.HeldItem.DamageType.CountsAsClass<GuardianDamageClass>() || Player.HeldItem.DamageType.CountsAsClass<GuardianDamageClass>())
-                    Player.FargoSouls().AttackSpeed /= 1.5f;
+                if (damage.CountsAsClass<GuardianDamageClass>() || damage.CountsAsClass<GuardianDamageClass>())
+                    mp.AttackSpeed /= 1.5f;
 
                 Player.GetDamage<GuardianDamageClass>() /= 1.5f;
             }

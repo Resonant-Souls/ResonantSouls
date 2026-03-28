@@ -14,12 +14,12 @@ namespace ResonantSouls.OrchidMod.Forces
             base.SetStaticDefaults();
             Enchants[Type] =
             [
-                ModContent.ItemType<BambooEnchant>(),
-                ModContent.ItemType<DawnlightEnchant>(),
-                ModContent.ItemType<HorizonEnchant>(),
-                ModContent.ItemType<MeteorWardenEnchant>(),
-                ModContent.ItemType<PyreEnchant>(),
-                ModContent.ItemType<SoaringEnchant>(),
+                ItemType<BambooEnchant>(),
+                ItemType<DawnlightEnchant>(),
+                ItemType<HorizonEnchant>(),
+                ItemType<MeteorWardenEnchant>(),
+                ItemType<PyreEnchant>(),
+                ItemType<SoaringEnchant>(),
             ];
         }
 

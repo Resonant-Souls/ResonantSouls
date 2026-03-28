@@ -8,15 +8,13 @@ namespace ResonantSouls.Common.Systems
         // Used from Fargos, why make this private...
         internal static int AnyWoodCrate, AnyIronCrate, AnyGoldCrate, AnyJungleCrate, AnySkyCrate, AnyCorruptCrate, AnyCrimsonCrate, AnyHallowedCrate, AnyDungeonCrate, AnyFrozenCrate, AnySandCrate, AnyLavaCrate, AnyOceanCrate;
         internal static int AnyBatBanner;
+        RecipeGroup? group;
         public override void SetStaticDefaults()
         {
-            ModCompatibility.Fargowiltas.Mod.TryFind("TravellingMerchant", out ModItem merchant);
-            ResonantSoulsRecipeHelper.TravellingMerchant = merchant.Type;
+            ResonantSoulsRecipeHelper.TravellingMerchant = ModCompatibility.Fargowiltas.Mod.Find<ModItem>("TravellingMerchant").Type;
         }
         public override void AddRecipeGroups()
         {
-            RecipeGroup group;
-
             group = new RecipeGroup(() => RecipeGroups.ItemXOrY(ItemID.WoodenCrate, ItemID.WoodenCrateHard), ItemID.WoodenCrate, ItemID.WoodenCrateHard);
             AnyWoodCrate = RecipeGroup.RegisterGroup("Fargowiltas:AnyWoodCrate", group);
 

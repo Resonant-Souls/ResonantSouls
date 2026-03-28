@@ -14,27 +14,27 @@ namespace ResonantSouls.BombusApis.Core
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ResonantSoulsBombusApisSystems : ModSystem
     {
+        RecipeGroup? group;
+        Recipe? recipe;
         public override void Load()
         {
-            ModCompatibility.Fargowiltas.Mod.Call("AddCaughtNPC", "TheTraitorBee", ModContent.NPCType<TheTraitorBee>(), Mod.Name);
+            ModCompatibility.Fargowiltas.Mod.Call("AddCaughtNPC", "TheTraitorBee", NPCType<TheTraitorBee>(), Mod.Name);
         }
         public override void AddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
-                Recipe recipe = Main.recipe[i];
-                if (recipe.HasResult(ModContent.ItemType<UniverseSoul>()))
+                recipe = Main.recipe[i];
+                if (recipe.HasResult(ItemType<UniverseSoul>()))
                 {
-                    recipe.SafeAddToRecipe(ModContent.ItemType<ApiaristsSoul>());
+                    recipe.SafeAddToRecipe(ItemType<ApiaristsSoul>());
                     recipe.ShiftRecipeItems();
                 }
             }
         }
         public override void AddRecipeGroups()
         {
-            RecipeGroup group;
-
-            group = new RecipeGroup(() => Language.GetTextValue("Mods.BombusApisBee.Items.HoneyphyteMask.DisplayName"), ModContent.ItemType<HoneyphyteHeadgear>(), ModContent.ItemType<HoneyphyteMask>());
+            group = new RecipeGroup(() => Language.GetTextValue("Mods.BombusApisBee.Items.HoneyphyteMask.DisplayName"), ItemType<HoneyphyteHeadgear>(), ItemType<HoneyphyteMask>());
             RecipeGroup.RegisterGroup("ResonantSouls:AnyHoneyphyteMask", group);
         }
     }

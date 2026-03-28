@@ -1,25 +1,9 @@
-using System;
-using ResonantSouls.Core.Globals.Items;
-
 namespace ResonantSouls.Common.Utilities
 {
     public static class ResonantSoulsExtensionMethods
     {
-        public static ResonantDeveloper ResonantDeveloper(this Item item) => item.GetGlobalItem<ResonantDeveloper>();
         internal static string BombusTexture(this ModType type) => $"ResonantSouls/BombusApis/Assets/Sprites/{type.Name}";
-        /*
-            public static void SafeAddToRecipe(this Recipe recipe, int mainItem, int ingredient, int ingredientCount = 1)
-            {
-                if (recipe.HasResult(mainItem) && !recipe.HasIngredient(ingredient)) recipe.AddIngredient(ingredient, ingredientCount);
-            }
-        */
         internal static string OrchidTexture(this ModType type) => $"ResonantSouls/OrchidMod/Assets/Sprites/{type.Name}";
-        /*
-            public static void SafeAddToRecipe(this Recipe recipe, int mainItem, int ingredient, int ingredientCount = 1)
-            {
-                if (recipe.HasResult(mainItem) && !recipe.HasIngredient(ingredient)) recipe.AddIngredient(ingredient, ingredientCount);
-            }
-        */
         public static void SafeAddToRecipe(this Recipe recipe, int ingredient, int ingredientCount = 1)
         {
             if (recipe.TryGetIngredient(ingredient, out Item item))
@@ -33,14 +17,7 @@ namespace ResonantSouls.Common.Utilities
         }
         public static void SafeAddToRecipe<T>(this Recipe recipe, int ingredientCount = 1) where T : ModItem
         {
-            if (recipe.TryGetIngredient(ModContent.ItemType<T>(), out Item item))
-            {
-                item.stack = ingredientCount;
-            }
-            else
-            {
-                recipe.AddIngredient(ModContent.ItemType<T>(), ingredientCount);
-            }
+            recipe.SafeAddToRecipe(ItemType<T>(), ingredientCount);
         }
         public static void SafeAddRecipeGroup(this Recipe recipe, string recipeGroup)
         {
@@ -49,7 +26,5 @@ namespace ResonantSouls.Common.Utilities
                 recipe.AddRecipeGroup(recipeGroup);
             }
         }
-        public static int IndexOf(this Array array, object? value) => Array.IndexOf(array, value);
-        //    public static Array AddArray(this Array array, Array arrayToAdd) => ResonantSoulsUtilities.MergeTwoArrays(array, arrayToAdd);
     }
 }

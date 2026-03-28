@@ -20,7 +20,7 @@ namespace ResonantSouls.Content.Items.Placeables.Paintings
             Item.consumable = true;
             Item.value = Item.buyPrice(0, 2, 0, 0);
             Item.rare = ItemRarityID.White;
-            Item.createTile = ModContent.TileType<ResonantSoulsPaintingTile>();
+            Item.createTile = TileType<ResonantSoulsPaintingTile>();
         }
         // Thanks to Akira, I don't know how to do this myself. If you have problems with me doing this, I'll figure out how to do it myself - Ropro0923
         public override void ModifyTooltips(List<TooltipLine> tooltips)

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Fargowiltas.Content.Items.Tiles;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
@@ -13,30 +12,17 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
 {
     public class MicroverseSoul : BaseSoul
     {
-        // I met a traveller from an antique land
-        // Who said: Two vast and trunkless legs of stone
-        // Stand in the desert. Near them, on the sand,
-        // Half sunk, a shattered visage lies, whose frown,
-        // And wrinkled lip, and sneer of cold command,
-        // Tell that its sculptor well those passions read
-        // Which yet survive, stamped on these lifeless things,
-        // The hand that mocked them, and the heart that fed:
-        // And on the pedestal, these words appear:
-        // My name is Ozymandias, King of Kings;
-        // Look on my Works, ye Mighty, and despair!
-        // Nothing beside remains. Round the decay
-        // Of that colossal Wreck, boundless and bare
-        // The lone and level sands stretch far away.
-        // - Cheesenuggets
         public override string Texture => "ResonantSouls/Assets/Textures/Content/Items/Accessories/Souls/MicroverseSoul";
         public static readonly List<ModItem> Forces = [];
         public static bool Click => ModCompatibility.FargoClickers.Loaded && ModCompatibility.ClickerClass.Loaded && ResonantSoulsFargosClickerConfig.ClickerCompat;
         public static bool Bee => ModCompatibility.BombusApisBee.Loaded;
         public static bool Bloom => ModCompatibility.OrchidMod.Loaded;
-        public static void AddForce(bool ModLoaded, string Forcename, string ModName = "ResonantSouls")
+        public static void AddForce(bool ModLoaded, string Forcename, string Modname = "ResonantSouls")
         {
-            if (ModLoaded && ModContent.TryFind(ModName, Forcename, out ModItem force))
+            if (ModLoaded && TryFind(Forcename, out ModItem force))
+            {
                 Forces.Add(force);
+            }
         }
         public override void SetStaticDefaults()
         {
@@ -51,11 +37,14 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
         {
             base.SetDefaults();
             Item.width = 84;
-            Item.rare = ModContent.RarityType<AbominableRarity>();
+            Item.rare = RarityType<AbominableRarity>();
             Item.height = 120;
         }
         public override void AddRecipes()
         {
+            if (Forces.Count == 0)
+                return;
+
             Recipe recipe = CreateRecipe();
             Forces.ForEach(force => recipe.AddIngredient(force));
             recipe.AddIngredient<AbomEnergy>(10)
@@ -80,15 +69,15 @@ namespace ResonantSouls.Content.Items.Accessories.Souls
             {
                 if (Click)
                 {
-                    tooltips.Insert(Tooltip, new TooltipLine(Mod, "ForceOfMatrix", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.ForceOfMatrix")));
+                    tooltips.Insert(Tooltip, new(Mod, "ForceOfMatrix", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.ForceOfMatrix")));
                 }
                 if (Bee)
                 {
-                    tooltips.Insert(Tooltip, new TooltipLine(Mod, "PollinationForce", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.PollinationForce")));
+                    tooltips.Insert(Tooltip, new(Mod, "PollinationForce", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.PollinationForce")));
                 }
                 if (Bloom)
                 {
-                    tooltips.Insert(Tooltip, new TooltipLine(Mod, "BloomForce", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.BloomForce")));
+                    tooltips.Insert(Tooltip, new(Mod, "BloomForce", Language.GetTextValue("Mods.ResonantSouls.Items.MicroverseSoul.Effects.BloomForce")));
                 }
             }
         }

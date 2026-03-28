@@ -12,23 +12,24 @@ namespace ResonantSouls.Calamity.Core
     [ExtendsFromMod(ModCompatibility.CalamityMod.Name, ModCompatibility.FargowiltasCrossmod.Name)]
     public class ResonantSoulsCalamityRecipes : ModSystem
     {
+        Recipe? recipe;
         public override void PostAddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
-                Recipe recipe = Main.recipe[i];
+                recipe = Main.recipe[i];
 
                 List<int> Tier2Souls =
                 [
-                    ModContent.ItemType<MicroverseSoul>()
+                    ItemType<MicroverseSoul>()
                 ];
 
-                if (Tier2Souls.Contains(recipe.createItem.type) && !recipe.HasIngredient(ModContent.ItemType<AshesofAnnihilation>()))
+                if (Tier2Souls.Contains(recipe.createItem.type) && !recipe.HasIngredient(ItemType<AshesofAnnihilation>()))
                 {
-                    recipe.SafeAddToRecipe(ModContent.ItemType<AshesofAnnihilation>(), 5);
-                    recipe.SafeAddToRecipe(ModContent.ItemType<ExoPrism>(), 5);
+                    recipe.SafeAddToRecipe(ItemType<AshesofAnnihilation>(), 5);
+                    recipe.SafeAddToRecipe(ItemType<ExoPrism>(), 5);
 
-                    if (recipe.RemoveTile(ModContent.TileType<CrucibleCosmosSheet>()))
+                    if (recipe.RemoveTile(TileType<CrucibleCosmosSheet>()))
                     {
                         recipe.AddTile<DraedonsForge>();
                     }

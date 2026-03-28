@@ -1,5 +1,6 @@
 global using Terraria;
 global using Terraria.ModLoader;
+global using static Terraria.ModLoader.ModContent;
 global using ResonantSouls.Core;
 global using LumUtils = Luminance.Common.Utilities.Utilities;
 using Microsoft.Xna.Framework;
@@ -10,7 +11,7 @@ namespace ResonantSouls
 {
     public class ResonantSouls : Mod
     {
-        internal static ResonantSouls? Instance;
+        public static ResonantSouls? Instance;
         public override void Load()
         {
             Instance = this;
@@ -25,11 +26,9 @@ namespace ResonantSouls
     public class DebugItem : GlobalItem
     {
         internal const string Placeholder = "FargowiltasSouls/Content/Items/Placeholder";
+        public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsClientConfig.Debug;
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (!ResonantSoulsClientConfig.Debug)
-                return;
-
             TooltipLine Value = new(Mod, "Value", "Value: " + item.value.ToString())
             {
                 OverrideColor = Color.Green

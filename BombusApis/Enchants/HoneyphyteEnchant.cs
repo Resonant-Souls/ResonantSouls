@@ -24,11 +24,11 @@ namespace ResonantSouls.BombusApis.Enchants
         {
             CreateRecipe()
             .AddRecipeGroup("ResonantSouls:AnyHoneyphyteMask")
-            .AddIngredient(ModContent.ItemType<HoneyphyteChestpiece>())
-            .AddIngredient(ModContent.ItemType<HoneyphyteGreaves>())
-            .AddIngredient(ModContent.ItemType<LihzardianHornetRelic>())
-            .AddIngredient(ModContent.ItemType<TomeOfTheSun>())
-            .AddIngredient(ModContent.ItemType<MegaHornet>())
+            .AddIngredient(ItemType<HoneyphyteChestpiece>())
+            .AddIngredient(ItemType<HoneyphyteGreaves>())
+            .AddIngredient(ItemType<LihzardianHornetRelic>())
+            .AddIngredient(ItemType<TomeOfTheSun>())
+            .AddIngredient(ItemType<MegaHornet>())
             .AddTile<EnchantedTreeSheet>()
             .Register();
         }

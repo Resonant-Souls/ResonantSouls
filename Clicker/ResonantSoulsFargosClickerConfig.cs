@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using FargoClickers;
 using Terraria.ModLoader.Config;
 
 namespace ResonantSouls.Clicker
@@ -17,6 +18,6 @@ namespace ResonantSouls.Clicker
         [ReloadRequired]
         [DefaultValue(true)]
         public bool Compat { get; set; }
-        public static bool ClickerCompat => Instance?.Compat ?? false;
+        public static bool ClickerCompat => (Instance?.Compat ?? false) && FargoClickersSystem.RemoveClickerAccesoriesFromFargoSoulsForCSE;
     }
 }
