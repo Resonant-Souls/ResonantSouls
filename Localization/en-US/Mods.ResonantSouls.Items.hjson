@@ -178,5 +178,10 @@ BloomingPathsSoul: {
 
 Ozymandias: {
 	DisplayName: Ozymandias
-	Tooltip: Nothing beside remains...
+	Tooltip: "'Nothing beside remains...'"
+}
+
+Catlight: {
+	DisplayName: Catlight
+	Tooltip: ""
 }

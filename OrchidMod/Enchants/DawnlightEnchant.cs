@@ -12,7 +12,7 @@ namespace ResonantSouls.OrchidMod.Enchants
     [ExtendsFromMod(ModCompatibility.OrchidMod.Name)]
     public class DawnlightEnchant : BaseEnchant
     {
-        public override string Texture => DebugItem.Placeholder;
+        public override string Texture => ResonantSouls.Placeholder;
         public override Color nameColor => Color.White;
         public override void SetDefaults()
         {

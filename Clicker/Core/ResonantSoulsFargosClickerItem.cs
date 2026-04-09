@@ -5,6 +5,7 @@ using FargoClickers;
 using FargoClickers.Content.Items.Accessories;
 using FargowiltasSouls.Content.Items;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
+using ResonantSouls.Common.Systems;
 using ResonantSouls.Common.Utilities;
 using ResonantSouls.Content.Items.Accessories.Souls;
 using Terraria.Localization;

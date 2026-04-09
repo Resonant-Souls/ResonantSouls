@@ -1,6 +1,5 @@
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ResonantSouls.Common.Systems;
-using ResonantSouls.Common.Utilities;
 using ResonantSouls.Content.Items.Accessories.Souls;
 
 namespace ResonantSouls.Core

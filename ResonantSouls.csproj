@@ -5,7 +5,7 @@
 	<PropertyGroup>
 		<AssemblyName>ResonantSouls</AssemblyName>
 	   <Nullable>enable</Nullable>
-	   <LangVersion>latest</LangVersion>
+	   <LangVersion>preview</LangVersion>
 	 </PropertyGroup>
 
 	<ItemGroup>
@@ -52,6 +52,10 @@
 
 		<Reference Include="Redemption">
 			<HintPath>..\ModAssemblies\Redemption_v0.8.0.4120.dll</HintPath>
+		</Reference>
+
+		<Reference Include="ResonantSoulsMutantMod">
+			<HintPath>..\ModAssemblies\ResonantSoulsMutantMod_v0.0.1.dll</HintPath>
 		</Reference>
 
 	</ItemGroup>

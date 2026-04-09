@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using FargowiltasSouls.Content.Items;
@@ -11,6 +10,7 @@ using FargowiltasSouls.Content.Items.Armor.Styx;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using OrchidMod;
 using OrchidMod.Common;
+using OrchidMod.Common.Global.Items;
 using ResonantSouls.OrchidMod.Souls;
 using Terraria.Localization;
 
@@ -140,17 +140,6 @@ namespace ResonantSouls.OrchidMod.Core
                 }
             }
         }
-        // From Orchid. Why make this private?
-        private void AddClassTagToTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            var index = tooltips.FindIndex(i => i.Mod.Equals("Terraria") && i.Name.Equals("ItemName"));
-
-            if (index < 0) return;
-
-            tooltips.Insert(index + 1, new TooltipLine(Mod, "ClassTag", Language.GetTextValue("Mods.OrchidMod.DamageClasses.Guardian"))
-            {
-                OverrideColor = OrchidColors.GuardianTag
-            });
-        }
+        private static void AddClassTagToTooltips(Item item, List<TooltipLine> tooltips) => typeof(OrchidGlobalItem).GetMethod("AddClassTagToTooltips", LumUtils.UniversalBindingFlags)?.Invoke(null, [ item, tooltips]);
     }
 }

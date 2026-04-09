@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Fargowiltas.Content.Items.Tiles;
+using ResonantSouls.Common.Systems;
 using ResonantSouls.Common.Utilities;
 using ResonantSouls.Content.Items.Accessories.Souls;
 
@@ -26,8 +27,8 @@ namespace ResonantSouls.Calamity.Core
 
                 if (Tier2Souls.Contains(recipe.createItem.type) && !recipe.HasIngredient(ItemType<AshesofAnnihilation>()))
                 {
-                    recipe.SafeAddToRecipe(ItemType<AshesofAnnihilation>(), 5);
-                    recipe.SafeAddToRecipe(ItemType<ExoPrism>(), 5);
+                    recipe.SafeAddToRecipe<AshesofAnnihilation>(5);
+                    recipe.SafeAddToRecipe<ExoPrism>(5);
 
                     if (recipe.RemoveTile(TileType<CrucibleCosmosSheet>()))
                     {

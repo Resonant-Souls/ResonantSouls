@@ -1,17 +1,7 @@
+using System.Collections.Generic;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using OrchidMod;
-using OrchidMod.Content.Guardian.Armors.Misc;
-using OrchidMod.Content.Guardian.Weapons.Gauntlets;
-using OrchidMod.Content.Guardian.Weapons.Quarterstaves;
-using OrchidMod.Content.Guardian.Weapons.Runes;
-using OrchidMod.Content.Guardian.Weapons.Shields;
-using OrchidMod.Content.Guardian.Weapons.Standards;
-using OrchidMod.Content.Guardian.Weapons.Warhammers;
-using OrchidMod.Content.Shapeshifter.Weapons.Predator;
-using OrchidMod.Content.Shapeshifter.Weapons.Sage;
-using OrchidMod.Content.Shapeshifter.Weapons.Warden;
 using ResonantSouls.Common.Systems;
-using ResonantSouls.Common.Utilities;
 using ResonantSouls.OrchidMod.Souls;
 
 namespace ResonantSouls.OrchidMod.Core
@@ -22,6 +12,10 @@ namespace ResonantSouls.OrchidMod.Core
     {
         public static OrchidGuardian GuardianPlayer(Player player) => player.GetModPlayer<OrchidGuardian>();
         Recipe? recipe;
+        public readonly static List<int> FargoProjectilesBlockBlacklist =
+        [
+            
+        ];
         public override void AddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
@@ -34,30 +28,9 @@ namespace ResonantSouls.OrchidMod.Core
                 }
             }
         }
-        public override void PostSetupContent()
+        public override void SetStaticDefaults()
         {
-            ResonantSoulsUtilities.SetSacrifice(
-                ItemType<GoblinRune>(), 1,
-                ItemType<RuneRune>(), 1,
-                ItemType<PredatorGoblin>(), 1,
-                ItemType<SageBat>(), 1,
-                ItemType<WardenSpider>(), 1,
-                ItemType<CorruptionQuarterstaff>(), 1,
-                ItemType<CrimsonQuarterstaff>(), 1,
-                ItemType<BeeRune>(), 1,
-                ItemType<CorruptionWarhammer>(), 1,
-                ItemType<CrimsonWarhammer>(), 1,
-                ItemType<DemoniteShield>(), 1,
-                ItemType<CrimtaneShield>(), 1
-            );
-
-            ResonantSoulsUtilities.SetHardmodeSacrifice(
-                ItemType<PaladinGauntlet>(), 1,
-                ItemType<PlanteraStandard>(), 1,
-                ItemType<TempleWarhammer>(), 1,
-                ItemType<CrystalGauntlet>(), 1,
-                ItemType<GuardianCrystalNinjaHelm>(), 1
-            );
+            FargoProjectilesBlockBlacklist.ForEach(OrchidGuardian.ProjectilesBlockBlacklist.Add);
         }
     }
 }

@@ -16,10 +16,6 @@ namespace ResonantSouls.BombusApis.Core
     {
         RecipeGroup? group;
         Recipe? recipe;
-        public override void Load()
-        {
-            ModCompatibility.Fargowiltas.Mod.Call("AddCaughtNPC", "TheTraitorBee", NPCType<TheTraitorBee>(), Mod.Name);
-        }
         public override void AddRecipes()
         {
             for (int i = 0; i < Recipe.numRecipes; i++)
@@ -31,11 +27,6 @@ namespace ResonantSouls.BombusApis.Core
                     recipe.ShiftRecipeItems();
                 }
             }
-        }
-        public override void AddRecipeGroups()
-        {
-            group = new RecipeGroup(() => Language.GetTextValue("Mods.BombusApisBee.Items.HoneyphyteMask.DisplayName"), ItemType<HoneyphyteHeadgear>(), ItemType<HoneyphyteMask>());
-            RecipeGroup.RegisterGroup("ResonantSouls:AnyHoneyphyteMask", group);
         }
     }
 }

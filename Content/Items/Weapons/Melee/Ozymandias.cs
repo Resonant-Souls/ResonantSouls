@@ -8,6 +8,7 @@ namespace ResonantSouls.Content.Items.Weapons.Melee
 {
     public class Ozymandias : ResonantDeveloperItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => false; // Wait until mod is more developed to enable
         public override string Developer => "Ropro0923";
         public override string ItemPath => "Weapons/Melee";
         public override void SetDefaults()
@@ -15,8 +16,7 @@ namespace ResonantSouls.Content.Items.Weapons.Melee
             Item.damage = 1;
             Item.width = 76;
             Item.height = 80;
-            Item.useTime = 24;
-            Item.useAnimation = 24;
+            Item.useTime = Item.useAnimation = 20;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.noUseGraphic = true;
             Item.channel = true;
@@ -30,7 +30,7 @@ namespace ResonantSouls.Content.Items.Weapons.Melee
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player == Main.LocalPlayer && player.ownedProjectileCounts[ProjectileType<OzymandiasProjectile>()] < 1)
+            if (player == Main.LocalPlayer && player.ownedProjectileCounts[Item.shoot] < 1)
             {
                 Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             }

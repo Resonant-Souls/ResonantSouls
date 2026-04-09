@@ -8,7 +8,7 @@ namespace ResonantSouls.OrchidMod.Forces
     [ExtendsFromMod(ModCompatibility.OrchidMod.Name)]
     public class BloomForce : BaseForce
     {
-        public override string Texture => DebugItem.Placeholder;
+        public override string Texture => ResonantSouls.Placeholder;
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

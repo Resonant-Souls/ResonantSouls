@@ -11,6 +11,7 @@ namespace ResonantSouls
 {
     public class ResonantSouls : Mod
     {
+        internal const string Placeholder = "FargowiltasSouls/Content/Items/Placeholder";
         public static ResonantSouls? Instance;
         public override void Load()
         {
@@ -25,7 +26,6 @@ namespace ResonantSouls
 
     public class DebugItem : GlobalItem
     {
-        internal const string Placeholder = "FargowiltasSouls/Content/Items/Placeholder";
         public override bool IsLoadingEnabled(Mod mod) => ResonantSoulsClientConfig.Debug;
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

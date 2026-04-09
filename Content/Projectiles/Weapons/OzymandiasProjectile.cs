@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
 using FargowiltasSouls;
-using FargowiltasSouls.Content.Projectiles;
+using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
@@ -11,38 +9,43 @@ namespace ResonantSouls.Content.Projectiles.Weapons
 {
     public class OzymandiasProjectile : ModProjectile
     {
+        public override bool IsLoadingEnabled(Mod mod) => false; // Wait until mod is more developed to enable
         public override string Texture => $"{Mod.Name}/Assets/Textures/Content/Projectiles/Weapons/{Name}";
         public Player Player => Main.player[Projectile.owner];
-        FargoSoulsGlobalProjectile FargoProjectile => Projectile.FargoSouls();
         public override void SetDefaults()
         {
-            Projectile.width = 110 + 110/2;
-            Projectile.height = 114 + 114/2;
-            //    Projectile.scale = 2;
+            Projectile.width = 110 + 110 / 2;
+            Projectile.height = 114 + 114 / 2;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            FargoProjectile.CanSplit = false;
-            FargoProjectile.TimeFreezeImmune = true;
-        //    Projectile.timeLeft = 2;
+            Projectile.FargoSouls().CanSplit = false;
+            Projectile.FargoSouls().TimeFreezeImmune = true;
             Projectile.hide = true;
-            //    Projectile.hide = true;
-            //    Projectile.aiStyle = -1;    
+            //    Projectile.timeLeft
+        }
+        float Rotate => MathHelper.ToRadians(360) / 60 * 3;
+        public override void OnSpawn(IEntitySource source)
+        {
+            Projectile.rotation = (-MathHelper.ToRadians(45) * Player.direction) - Rotate * Player.direction;
         }
         public override void AI()
         {
             if (Projectile.owner < 0 || Projectile.owner >= byte.MaxValue || !Player.active || Player.dead || !Player.channel)
             {
                 Projectile.Kill();
-                    return;
+                return;
             }
 
-            Projectile.rotation += Player.direction == 1 ? 0.25f : -0.25f;
+            Projectile.rotation += Rotate * Player.direction;
+
             Projectile.Center = Player.RotatedRelativePoint(Player.MountedCenter);
             //    Projectile.Center = Player.RotatedRelativePoint(Player.MountedCenter);
             //    Projectile.direction = -Player.direction;
+            //    Player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.ToRadians(90) * Player.direction);
+            //    Main.NewText(Projectile.rotation - MathHelper.ToRadians(90) * Player.direction);
         }
     }
     public class OzymandiasDrawLayer : PlayerDrawLayer

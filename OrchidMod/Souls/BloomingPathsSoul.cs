@@ -14,7 +14,7 @@ namespace ResonantSouls.OrchidMod.Souls
     public class BloomingPathsSoul : BaseSoul
     {
         public override bool IsLoadingEnabled(Mod mod) => false;
-        public override string Texture => DebugItem.Placeholder;
+        public override string Texture => ResonantSouls.Placeholder;
         public override List<AccessoryEffect> ActiveSkillTooltips =>
         [
         //    AccessoryEffectLoader.GetEffect<Effect>(),
