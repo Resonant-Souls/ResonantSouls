@@ -1,6 +1,7 @@
 namespace ResonantSouls.Common.Systems
 {
-    public class ResonantSoulsRecipeSystem : ModSystem
-    {
-    }
+    // public class ResonantSoulsRecipeSystem : ModSystem
+    // {
+    //     
+    // }
 }

@@ -73,5 +73,11 @@ namespace ResonantSouls.Core
             public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.GetMod(Name);
         }
+        public static class ResonantSoulsMutantMod
+        {
+            public const string Name = "ResonantSoulsMutantMod";
+            public static bool Loaded => ModLoader.HasMod(Name);
+            public static Mod Mod => ModLoader.GetMod(Name);
+        }
     }
 }

@@ -3,7 +3,6 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Fargowiltas.Content.Items.Tiles;
 using ResonantSouls.Common.Systems;
-using ResonantSouls.Common.Utilities;
 using ResonantSouls.Content.Items.Accessories.Souls;
 
 namespace ResonantSouls.Calamity.Core

@@ -24,7 +24,7 @@ namespace ResonantSouls.OrchidMod.Enchants
         {
             CreateRecipe()
             .AddIngredient<GuardianEmpressHead>()
-            .AddRecipeGroup("ResonantSouls:AnyEmpressChest")
+            .AddRecipeGroup($"{ModCompatibility.ResonantSoulsMutantMod.Name}:AnyEmpressChest")
             .AddIngredient<GuardianEmpressLegs>()
             .AddIngredient<EmpressRune>()
             .AddIngredient(ItemID.PiercingStarlight)

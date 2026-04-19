@@ -56,7 +56,7 @@ namespace ResonantSouls.OrchidMod.Souls
         {
             CreateRecipe()
                 .AddIngredient(ItemType<TempleSpike>())
-                .AddRecipeGroup("ResonantSouls:AnySturdySlab")
+                .AddRecipeGroup($"{ModCompatibility.ResonantSoulsMutantMod.Name}:AnySturdySlab")
                 .AddIngredient(ItemType<FlamingQuarterstaff>())
                 .AddIngredient(ItemType<JungleWarhammer>())
                 .AddIngredient(ItemType<BeeGauntlet>())
@@ -71,7 +71,7 @@ namespace ResonantSouls.OrchidMod.Souls
 
             CreateRecipe()
                 .AddIngredient(ItemType<TempleSpike>())
-                .AddRecipeGroup("ResonantSouls:AnySturdySlab")
+                .AddRecipeGroup($"{ModCompatibility.ResonantSoulsMutantMod.Name}:AnySturdySlab")
                 .AddIngredient(ItemType<HeavyChain>())
                 .AddIngredient(ItemType<SpectreShield>()) // Replace with with biome weapon when added
                 .AddIngredient(ItemType<PlanteraStandard>()) // Replace with duke gauntlet when added

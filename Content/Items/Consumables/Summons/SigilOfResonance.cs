@@ -7,6 +7,7 @@ namespace ResonantSouls.Content.Items.Consumables.Summons
 {
     public class SigilOfResonance : SigilOfChampions
     {
+        public override bool IsLoadingEnabled(Mod mod) => false;
         public override string Texture => $"{Mod.Name}/Assets/Textures/Content/Items/Summons/SigilOfResonance";
         private static void PrintChampMessage(string key)
         {

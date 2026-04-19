@@ -1,36 +1,13 @@
-using Fargowiltas.Common.Configs;
 using ResonantSouls.Common.Systems;
-using OrchidMod.Content.Shapeshifter.Weapons.Warden;
-using OrchidMod.Content.Guardian.Weapons.Quarterstaves;
-using OrchidMod.Content.Guardian.Accessories;
-using OrchidMod.Content.Guardian.Weapons.Gauntlets;
-using OrchidMod.Content.Shapeshifter.Accessories;
-using OrchidMod.Content.Guardian.Weapons.Shields;
-using OrchidMod.Content.Guardian.Weapons.Runes;
-using OrchidMod.Content.Shapeshifter.Weapons.Predator;
-using OrchidMod.Content.Guardian.Weapons.Standards;
 using Terraria.ID;
 using static ResonantSouls.Common.Systems.ResonantSoulsRecipeHelper;
-using OrchidMod.Content.General.Mounts;
-using OrchidMod.Content.General.Melee;
-using OrchidMod.Content.General.Armor.Vanity;
-using OrchidMod.Content.Guardian.Weapons.Warhammers;
-using OrchidMod.Content.General.Pets;
-using OrchidMod.Content.Shapeshifter.Weapons.Sage;
 using OrchidMod.Content.Guardian.Armors.OreHelms;
-using OrchidMod.Content.Guardian.Armors.Misc;
-using FargowiltasSouls.Core.Systems;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
-using ResonantSouls.Common.Utilities;
-using OrchidMod.Common;
-using Terraria.Localization;
 using FargowiltasSouls.Content.Items.Accessories.Eternity;
 using OrchidMod.Content.Guardian.Misc;
 using FargowiltasSouls.Content.Items.Armor.Eridanus;
 using FargowiltasSouls.Content.Items.Armor.Gaia;
 using FargowiltasSouls.Content.Items.Dyes;
-using OrchidMod.Content.Guardian.Armors.Empress;
-using System.Collections.Generic;
 
 
 namespace ResonantSouls.OrchidMod.Core
@@ -39,7 +16,7 @@ namespace ResonantSouls.OrchidMod.Core
     [ExtendsFromMod(ModCompatibility.OrchidMod.Name)]
     public class ResonantSoulsOrchidRecipes : ModSystem
     {
-        static bool Shapeshifter => GetInstance<OrchidServerConfig>().EnableContentShapeshifter;
+    //    static bool Shapeshifter => GetInstance<OrchidServerConfig>().EnableContentShapeshifter;
         Recipe? recipe;
         RecipeGroup? recipeGroup;
         public override void AddRecipes()
@@ -82,7 +59,7 @@ namespace ResonantSouls.OrchidMod.Core
 
                 if (recipe.HasResult(ItemType<CrystalAssassinEnchant>()) && recipe.HasIngredient(ItemID.CrystalNinjaHelmet))
                 {
-                    recipe.SafeAddRecipeGroup("ResonantSouls:AnyCrystalNinjaHelm");
+                    recipe.SafeAddRecipeGroup($"{ModCompatibility.ResonantSoulsMutantMod.Name}:AnyCrystalNinjaHelm");
                     recipe.RemoveIngredient(ItemID.CrystalNinjaHelmet);
                     recipe.ShiftRecipeItems();
                 }

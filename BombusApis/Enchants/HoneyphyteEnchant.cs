@@ -23,7 +23,7 @@ namespace ResonantSouls.BombusApis.Enchants
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddRecipeGroup("ResonantSouls:AnyHoneyphyteMask")
+            .AddRecipeGroup($"{ModCompatibility.ResonantSoulsMutantMod.Name}:AnyHoneyphyteMask")
             .AddIngredient(ItemType<HoneyphyteChestpiece>())
             .AddIngredient(ItemType<HoneyphyteGreaves>())
             .AddIngredient(ItemType<LihzardianHornetRelic>())

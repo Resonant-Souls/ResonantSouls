@@ -1,6 +1,6 @@
 namespace ResonantSouls.Common.Utilities
 {
-    public class ResonantSoulsUtilities
-    {
-    }
+    //public class ResonantSoulsUtilities
+    //{
+    //}
 }

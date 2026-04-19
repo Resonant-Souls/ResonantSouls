@@ -1,12 +1,6 @@
-using System.Collections.Generic;
-using System.Linq;
-using BombusApisbee.NPCs;
-using BombusApisBee.Items.Armor.BeeKeeperDamageClass;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using ResonantSouls.BombusApis.Souls;
 using ResonantSouls.Common.Systems;
-using ResonantSouls.Common.Utilities;
-using Terraria.Localization;
 
 namespace ResonantSouls.BombusApis.Core
 {
@@ -14,7 +8,6 @@ namespace ResonantSouls.BombusApis.Core
     [ExtendsFromMod(ModCompatibility.BombusApisBee.Name)]
     public class ResonantSoulsBombusApisSystems : ModSystem
     {
-        RecipeGroup? group;
         Recipe? recipe;
         public override void AddRecipes()
         {

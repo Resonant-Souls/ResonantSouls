@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Fargowiltas.Utilities;
-using Terraria.ID;
 
 namespace ResonantSouls.Common.Systems
 {
